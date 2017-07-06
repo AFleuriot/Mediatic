@@ -1,94 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="../css/bootstrap.css" rel="stylesheet"/>
-<title>Mediatic</title>
+	<meta charset="UTF-8">
+	<link href="../css/bootstrap.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Mediatic</title>
 </head>
 <body>
 
+    <header class="container">
+        <img class="col-xs-4" src="http://www.lettrepratique.fr/blog/wp-content/uploads/2012/05/hibou-avec-des-lunettes-lisant-un-livre.jpg" alt="Logo" style="width:150px" />
+        <h1 class="col-xs-8">Médiatic ! Ta médiathèque en ligne de ouf!</h1>
+    </header>
+    
+    <nav class=" container navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="PageAcceuilMediatic.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Médias<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Rechercher</a></li>
+                        <li><a href="#">Ajouter</a></li>
+                        <li><a href="#">Visualiser</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adhérents<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Rechercher</a></li>
+                        <li><a href="#">Ajouter</a></li>
+                        <li><a href="#">Visualiser</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 	<div class="container">
 
-			<form action="#" class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label col-xs-2" for="id">ID commence par :</label>
-				    <div class="col-xs-10">
-				      <input type="text" class="form-control" id="id">
-				    </div>
+		<form action="#" class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-xs-2" for="id">ID commence
+					par :</label>
+				<div class="col-xs-10">
+					<input type="text" class="form-control" id="id">
 				</div>
-				<div class="form-group">
-					<label class="control-label col-xs-2" for="nom">Nom contient :</label>
-				    <div class="col-xs-10">
-				      <input type="text" class="form-control" id="nom">
-				    </div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-xs-2" for="nom">Nom contient
+					:</label>
+				<div class="col-xs-10">
+					<input type="text" class="form-control" id="nom">
 				</div>
-				<div class="form-group"> 
-   					 <div class="col-xs-offset-3 col-xs-3">
-    				  <button type="submit" class="btn btn-info">Rechercher</button>
-    				</div>
-   					 <div class="col-xs-offset-3 col-xs-3">
-    				  <button type="submit" formaction="CreationAdherent.html" class="btn btn-default">Nouveau</button>
-    				</div>
-  				</div>
-			</form>
-			
-			<div class="col-xs-12 table-responsive">
-				<table class="table table-striped table-bordered table-hover">
-				  <tr>
-				    <th>Identifiant</th>
-				    <th>Nom</th>
-				    <th>Date de Naissance</th>
-				    <th>Cotisation à jour ?</th>
-				    <th>Nombre de médias empruntés</th>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">20T138</a></td>
-				    <td>Alexandre Dezier</td>
-				    <td>30/05/1994</td>
-				    <td>Oui</td>
-				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">87T456</a></td>
-				    <td>Aurélien Fleuriot</td>
-				    <td>25/02/1993</td>
-				    <td>Oui</td>
-				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">15T164</a></td>
-				    <td>David Dolle-Schall</td>
-				    <td>31/12/1991</td>
-				    <td>Oui</td>
-				    <td>2</td>
-				  </tr>
-				   <tr>
-				    <td><a href="visualiser_adherent.html">45T787</a></td>
-				    <td>Pierre Deleglise</td>
-				    <td>03/04/1957</td>
-				    <td>Non</td>
-				    <td>6</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">10T788</a></td>
-				    <td>Président Husref</td>
-				    <td>Censuré</td>
-				    <td>Oui</td>
-				    <td>10</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">12T020</a></td>
-				    <td>Suzanne Thomas</td>
-				    <td>21/05/1989</td>
-				    <td>Oui</td>
-				    <td>3</td>
-				  </tr>
-				 
-				</table>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-3 col-xs-3">
+					<button type="submit" class="btn btn-info">Rechercher</button>
+				</div>
+				<div class="col-xs-offset-3 col-xs-3">
+					<button type="submit" formaction="CreationAdherent.html"
+						class="btn btn-default">Nouveau</button>
+				</div>
+			</div>
+		</form>
+
+		<div class="col-xs-12 table-responsive">
+			<table class="table table-striped table-bordered table-hover">
+				<tr>
+					<th>Identifiant</th>
+					<th>Nom</th>
+					<th>Date de Naissance</th>
+					<th>Cotisation à jour ?</th>
+					<th>Nombre de médias empruntés</th>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">20T138</a></td>
+					<td>Alexandre Dezier</td>
+					<td>30/05/1994</td>
+					<td>Oui</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">87T456</a></td>
+					<td>Aurélien Fleuriot</td>
+					<td>25/02/1993</td>
+					<td>Oui</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">15T164</a></td>
+					<td>David Dolle-Schall</td>
+					<td>31/12/1991</td>
+					<td>Oui</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">45T787</a></td>
+					<td>Pierre Deleglise</td>
+					<td>03/04/1957</td>
+					<td>Non</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">10T788</a></td>
+					<td>Président Husref</td>
+					<td>Censuré</td>
+					<td>Oui</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td><a href="visualiser_adherent.html">12T020</a></td>
+					<td>Suzanne Thomas</td>
+					<td>21/05/1989</td>
+					<td>Oui</td>
+					<td>3</td>
+				</tr>
+
+			</table>
 		</div>
-			
+
 	</div>
 
+    <footer class="container">
+        <p>Ceci est un footer</p>
+    </footer>
 
 
 </body>
