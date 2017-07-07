@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Mediatic</title>
+</head>
+    <body>
+
+        <header class="container">
+            <img class="col-xs-4" src="http://www.lettrepratique.fr/blog/wp-content/uploads/2012/05/hibou-avec-des-lunettes-lisant-un-livre.jpg" alt="Logo" style="width:150px" />
+            <h1 class="col-xs-8">Médiatic ! Ta médiathèque en ligne de ouf!</h1>
+        </header>
+
+        <nav class=" container navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="../PageAcceuilMediatic.html">Accueil</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Médias<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="RechercheMedia.html">Rechercher</a></li>
+                            <li><a href="CreationMedia.html">Ajouter</a></li>
+                            <li><a href="visualiser_media.html">Visualiser</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adhérents<span class="caret"></span></a>
+                        <ul class="dropdown-menu" >
+                            <li><a href="RechercheAdherent.html">Rechercher</a></li>
+                            <li><a href="CreationAdherent">Ajouter</a></li>
+                            <li><a href="visualiser_adherent">Visualiser</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <h3>Fiche de l'adhérent</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><b>Nom :</b> Daile</p>
+                    <p><b>Prénom :</b> Selenial</p>
+                    <p><b>Email :</b> mail@mail.mail</p>
+                    <p><b>Ville :</b> Trouville paumé</p>
+                    <p><b>Code postal :</b> 44222</p>
+                    <p><b>Rue :</b> Rue des Chouettes</p>
+                    <p><b>Date de paiement de la cotisation :</b> 03/02/2017</p>
+                    <p><b>Montant de la cotisation :</b> 5 milions d'euros</p>
+                </div>                
+            </div>         
+        </div>
+        <div class="container">
+            <h3>Ajouter un média emprunté</h3>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="titre">Titre</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="titre" value="Emprunteur"/>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="titre">Date</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="date" name="date" value="Date"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="titre">Date de retour</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="date" readonly name="date" value="27/08/2017"/>
+                    </div>
+                </div>
+                <button class="btn btn-default" type="submit">Ajouter</button>
+            </form>
+        </div>
+        <div class="container">
+            <h3>Modifier l'adhérent</h3>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nom">Nom</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="nom" value="Daile"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="prenom">Prénom</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="prenom" value="Selenial"/>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Email</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="email" id="email" value="email@email.email"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="ville">Ville</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="ville"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="cp">Code postal</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="cp" value="44777"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="rue">Rue</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="rue" value="Rue des Chouettes"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="dpc">Date de paiement de la cotisation</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="date" id="dpc" value=""/>
+                    </div>
+                </div>            
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="mc">Montant de la cotisation</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type="text" id="mc" value="3€"/>
+                    </div>
+                </div>            
+                <button class="btn btn-default" type="submit">Modifier</button>
+            </form>
+        </div>
+
+        <footer class="container">
+            <ul>
+                <li>Mentions légales</li>
+                <li>Plan du site</li>
+            </ul>
+        </footer>
+        
+    </body>
+
+</html>
