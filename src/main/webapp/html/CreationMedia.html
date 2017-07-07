@@ -3,20 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <link href="../css/bootstrap.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Médiatic - Création d'un média</title>
 </head>
 
 
 
 <body>
-<div class="col-sm-12">
+
+	<header class="container">
+		<img class="col-xs-4"
+			src="http://www.lettrepratique.fr/blog/wp-content/uploads/2012/05/hibou-avec-des-lunettes-lisant-un-livre.jpg"
+			alt="Logo" style="width: 150px" />
+		<h1 class="col-xs-8">Médiatic ! Ta médiathèque en ligne de ouf!</h1>
+	</header>
+
+	<nav class=" container navbar navbar-default">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="../PageAcceuilMediatic.html">Accueil</a></li>
+				<li class="dropdown active"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Médias<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="RechercheMedia.html">Rechercher</a></li>
+						<li><a href="CreationMedia.html">Ajouter</a></li>
+						<li><a href="visualiser_media.html">Visualiser</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Adhérents<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="RechercheAdherent.html">Rechercher</a></li>
+						<li><a href="CreationAdherent">Ajouter</a></li>
+						<li><a href="visualiser_adherent">Visualiser</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</nav>
+	<div class ="container">
+	<h2>Enregistrement d'un nouveau média !</h2>
 	
-</div>
-<h2>Enregistrement d'un nouveau média !</h2>
-<br><br>
+	<br>
+	<br>
 	<form class="form-horizontal">
+	
+		
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="titremedia">Titre
 				:</label>
@@ -24,26 +57,23 @@
 				<input type="text" class="form-control" id="titremedia"
 					placeholder="Titre du média" required>
 			</div>
-			<div class = "col-sm-offset-1"></div>
+			<div class="col-sm-offset-1"></div>
 		</div>
 		<br>
-
-
-
 
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="typemedia">Type :</label>
 			<div class="col-sm-9">
-				<select class ="form-control">
-					<option><a href="#" class ="glyphicon glyphicon-book">Livre</a></option>
-					<option><a href="#" class ="glyphicon glyphicon-music">CD</a></option>
-					<option><a href="#" class ="glyphicon glyphicon-film">DVD</a></option>
+				<select class="form-control">
+					<option><a href="#" class="glyphicon glyphicon-book">Livre</a></option>
+					<option><a href="#" class="glyphicon glyphicon-music">CD</a></option>
+					<option><a href="#" class="glyphicon glyphicon-film">DVD</a></option>
 				</select>
-								
-				</div>
-				<div class = "col-sm-offset-1"></div>
+
 			</div>
+			<div class="col-sm-offset-1"></div>
 		</div>
+		
 
 		<br>
 		<div class="form-group">
@@ -53,13 +83,17 @@
 				<input type="text" class="form-control" id="auteurmedia"
 					placeholder="Auteur du média" required>
 			</div>
-			<div class = "col-sm-offset-1"></div>
+			<div class="col-sm-offset-1"></div>
 		</div>
+<br>
+				<div class="col-sm-offset-4 ">
+					<input class="col-sm-4 btn-success" type="submit"
+			value="Créer le média">
+				</div>
+		
 	
-				<input class= "col-sm-4 btn-success" type ="submit" value = "Créer le média">
-				
 	</form>
 
-
+</div>
 </body>
 </html>
