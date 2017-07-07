@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+<div class="container">
+        <h3>Fiche de l'adhérent</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <p><b>Nom :</b> Daile</p>
+                <p><b>Prénom :</b> Selenial</p>
+                <p><b>Email :</b> mail@mail.mail</p>
+                <p><b>Ville :</b> Trouville paumé</p>
+                <p><b>Code postal :</b> 44222</p>
+                <p><b>Rue :</b> Rue des Chouettes</p>
+                <p><b>Date de paiement de la cotisation :</b> 03/02/2017</p>
+                <p><b>Montant de la cotisation :</b> 5 milions d'euros</p>
+            </div>                
+        </div>         
+    </div>
+    <div class="container">
+        <h3>Ajouter un prêt</h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="titre">Emprunteur</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="titre" value="Emprunteur"/>
+                </div>
+            </div>  
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="titre">Date</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="date" name="date" value="Date"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="titre">Date de retour</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="date" readonly name="date" value="27/08/2017"/>
+                </div>
+            </div>
+            <button class="btn btn-default" type="submit">Ajouter</button>
+        </form>
+    </div>
+    <div class="container">
+        <h3>Modifier l'adhérent</h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nom">Nom</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="nom" value="Daile"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="prenom">Prénom</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="prenom" value="Selenial"/>
+                </div>
+            </div>  
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="email" id="email" value="email@email.email"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="ville">Ville</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="ville"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cp">Code postal</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="cp" value="44777"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="rue">Rue</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="rue" value="Rue des Chouettes"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="dpc">Date de paiement de la cotisation</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="date" id="dpc" value=""/>
+                </div>
+            </div>            
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="mc">Montant de la cotisation</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="mc" value="3€"/>
+                </div>
+            </div>            
+            <button class="btn btn-default" type="submit">Ajouter</button>
+        </form>
+    </div>
+    </body>
+</html>
