@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Mediatic</title>
 </head>
 
@@ -16,17 +18,29 @@
         </header>
     </div>
 
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="PageAcceuilMediatic.html" />Accueil</a></li>
-                    <li><a href="CreationMedia.html" />Média</a></li>
-                    <li><a href="#" />Adhérents</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <nav class=" container navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="../PageAcceuilMediatic.html">Accueil</a></li>
+                <li class="dropdown active">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Médias<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="RechercheMedia.html">Rechercher</a></li>
+                        <li><a href="CreationMedia.html">Ajouter</a></li>
+                        <li><a href="visualiser_media.html">Visualiser</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adhérents<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="RechercheAdherent.html">Rechercher</a></li>
+                        <li><a href="CreationAdherent.html">Ajouter</a></li>
+                        <li><a href="visualiser_adherent.html">Visualiser</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <h3>Fiche du média</h3>
