@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="../css/bootstrap.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Mediatic - Inscription</title>
+</head>
+<body>
+	<h2>Enregistrement d'un nouvel adhérent</h2>
+	<div class="container-fluid">
+		<br>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Nom :</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="nomadherent"
+						placeholder="Votre nom" required>
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Prénom :</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="prenomadherent"
+						placeholder="Votre prénom" required>
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Date de naissance :</label>
+				<div class="col-sm-9">
+					<input type="date" class="form-control" id="dateadherent" required>
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Email :</label>
+				<div class="col-sm-9">
+					<input type="email" class="form-control" id="emailadherent" placeholder ="Email"
+						required>
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2"  >Adresse :</label>
+				<div class="col-lg-3">
+					<input type="text"
+						class="form-control" id="adresse" placeholder="N° rue"
+						name="adresseadherentl">
+				</div>
+				<div class="col-lg-3">
+					 <input type="number" class="form-control"
+						id="cp" placeholder="Code postal" name="cpadherent">
+				</div>
+				<div class="col-lg-3">
+					<input type="text"
+						class="form-control" id="ville" placeholder="Ville" name="villeadherent">
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2">Date de paiement de la cotisation :</label>
+				<div class="col-sm-9">
+					<input type="date" class="form-control" id="datecotiadherent">
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+	
+			<div class="form-group">
+				<label class="control-label col-sm-2">Montant de la cotisation :</label>
+				<div class="col-sm-9">
+					<input type="number" class="form-control" id="cotiadherent">
+				</div>
+				<div class="col-sm-offset-1"></div>
+			</div>
+			<br>
+		
+	
+			
+			<input class= "col-sm-4 btn-success" type ="submit" value = "Enregistrer">
+		
+		
+		</form>
+
+
+	</div>
+</body>
+</html>
