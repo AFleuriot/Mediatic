@@ -19,7 +19,7 @@
             </header>
         </div>
 
-        <nav class=" container navbar navbar-default">
+        <nav class="container navbar navbar-default">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="../PageAcceuilMediatic.html">Accueil</a></li>
@@ -44,8 +44,8 @@
         </nav>
 
         <div class="container">
-            <h3>Fiche du média</h3>
             <div class="row">
+                <h3>Fiche du média</h3>            
                 <div class="col-sm-3">
                     <img src="http://img1.joyreactor.cc/pics/comment/%D0%B3%D0%B8%D1%84%D0%BA%D0%B8-%D0%98%D0%BD%D0%B4%D0%B8%D1%8F-%D0%A1%D0%B2%D0%BE%D1%8F-%D0%B0%D1%82%D0%BC%D0%BE%D1%81%D1%84%D0%B5%D1%80%D0%B0-2530935.jpeg" width="100" height="100" alt="Problème">
                 </div>
@@ -56,68 +56,69 @@
                 </div>                
             </div>
             <br>
-            <p><b>Liste des adhérents l'ayant emprunté</b></p>
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-info">Quelqu'un doit le rendre dans trois jours.</li>
-                <li class="list-group-item list-group-item-warning">Quelqu'un aurait du le rendre, il y'a 5 jours</li>
-                <li class="list-group-item list-group-item-success">Quelqu'un l'a bien rendu</li>
-            </ul>            
-        </div>
+            <div class="row">
+                <p><b>Liste des adhérents l'ayant emprunté</b></p>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Quelqu'un doit le rendre dans trois jours.</li>
+                    <li class="list-group-item list-group-item-warning">Quelqu'un aurait du le rendre, il y'a 5 jours</li>
+                    <li class="list-group-item list-group-item-success">Quelqu'un l'a bien rendu</li>
+                </ul>            
+            </div>
+            
+            <div class="row">                
+                <h3>Modifier un média</h3>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="text">Titre</label>
+                        <div class="col-sm-11">
+                            <input class="form-control" type="text" id="text" value="Titre"/>    
+                        </div>                    
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="select">Type</label>
+                        <div class="col-sm-11">
+                            <select id="select" class="form-control">
+                                <option value="">Livre</option>
+                                <option value="">CD</option>
+                                <option value="">DVD</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="titre">Auteur</label>
+                        <div class="col-sm-11">
+                            <input class="form-control" type="text" id="titre" value="Auteur"/>
+                        </div>
+                    </div>            
+                    <button class="btn btn-default center-block" type="submit">Enregistrer</button>                                        
+                </form>
+            </div>
 
-        <div class="container">
-            <h3>Modifier un média</h3>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="text">Titre</label>
-                    <div class="col-sm-11">
-                        <input class="form-control" type="text" id="text" value="Titre"/>    
-                    </div>                    
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="select">Type</label>
-                    <div class="col-sm-11">
-                        <select id="select" class="form-control">
-                            <option value="">Livre</option>
-                            <option value="">CD</option>
-                            <option value="">DVD</option>
-                        </select>
+            <div class="row">
+                <h3>Ajouter un prêt</h3>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="titre">Emprunteur</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="emprunteur" value="Emprunteur"/>
+                        </div>
+                    </div>  
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="titre">Date</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="date" value="Date"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="titre">Auteur</label>
-                    <div class="col-sm-11">
-                        <input class="form-control" type="text" id="titre" value="Auteur"/>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="titre">Date de retour</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" readonly name="date" value="27/08/2017"/>
+                        </div>
                     </div>
-                </div>            
-                <button class="btn btn-default center-block" type="submit">Enregistrer</button>                                        
-            </form>
+                    <button class="center-block btn btn-success" type="submit">Ajouter</button>
+                </form>
+            </div>
         </div>
-
-        <div class="container">
-            <h3>Ajouter un prêt</h3>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="titre">Emprunteur</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="text" id="emprunteur" value="Emprunteur"/>
-                    </div>
-                </div>  
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="titre">Date</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="date" name="date" value="Date"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="titre">Date de retour</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="date" readonly name="date" value="27/08/2017"/>
-                    </div>
-                </div>
-                <button class="center-block btn btn-success" type="submit">Ajouter</button>
-            </form>
-        </div>
-
         <footer class="panel-footer container">
             <div class="container-fluid">
                 <p>
