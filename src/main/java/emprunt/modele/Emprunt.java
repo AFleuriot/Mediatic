@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import adherent.modele.Adherent;
 import media.modele.Media;
 
 @Entity
