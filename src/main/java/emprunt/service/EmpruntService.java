@@ -10,15 +10,15 @@ public class EmpruntService {
 	public static void emprunter(Emprunt emprunt) {
 		emprunt.setDateRetourPrevue(emprunt.getDateEmprunt().plusDays(emprunt.getMedia().getType().getJoursEmpruntables()));
 		emprunt.getMedia().setEmpruntactuel(emprunt);
-		MediaDAO.modifierMedia(emprunt.getMedia());
 		creerEmprunt(emprunt);
+		MediaDAO.modifierMedia(emprunt.getMedia());
 	}
 	
 	public static void rendre(Emprunt emprunt) {
 		emprunt.setDateRetour(LocalDate.now());
 		emprunt.getMedia().setEmpruntactuel(null);
-		MediaDAO.modifierMedia(emprunt.getMedia());
 		modifierEmprunt(emprunt);
+		MediaDAO.modifierMedia(emprunt.getMedia());
 	}
 	
 /*	public static List<Media> getMediaEmpruntes(Adherent adherent) {
