@@ -29,6 +29,11 @@ public class Media {
 	@OneToMany(mappedBy = "media")
 	private List<Emprunt> emprunts = new ArrayList<>();
 	
+	@OneToOne
+	private Emprunt empruntactuel;
+	
+
+	
 	public Media() {
 		
 	}
@@ -77,6 +82,14 @@ public class Media {
 
 	public void setEmprunts(List<Emprunt> emprunts) {
 		this.emprunts = emprunts;
+	}
+
+	public Emprunt getEmpruntactuel() {
+		return empruntactuel;
+	}
+
+	public void setEmpruntactuel(Emprunt empruntactuel) {
+		this.empruntactuel = empruntactuel;
 	}
 	
 }
