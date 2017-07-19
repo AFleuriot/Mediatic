@@ -52,7 +52,7 @@ public class MediaService {
 		EntityManager em = createEntityManager();
 		beginTx(em);
 		
-		String sqlquery = "SELECT m FROM Media m LEFT JOIN FETCH m.emprunts e LEFT JOIN FETCH e.adherent "; 
+		String sqlquery = "SELECT m FROM Media m "; 
 		boolean firstwhere = true;
 		
 		if (type != null){
@@ -95,6 +95,7 @@ public class MediaService {
 		commitTxAndClose(em);
 		
 		return resultats;
+		
 		
 				
 	}
