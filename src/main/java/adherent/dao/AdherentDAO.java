@@ -25,6 +25,7 @@ public class AdherentDAO {
 			EntityManager em = createEntityManager();
 			beginTx(em);
 			em.merge(adherent);
+			
 			commitTxAndClose(em);
 		}			
 		
