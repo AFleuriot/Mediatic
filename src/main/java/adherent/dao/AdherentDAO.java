@@ -16,7 +16,7 @@ public class AdherentDAO {
 		
 		public static void majAdherent(Adherent adherent){
 			em.merge(adherent);
-		}
+		}			
 		
 		public static List<Adherent> rechercheAdherents(){
 			TypedQuery<Adherent> query = em.createQuery("from Adherent", Adherent.class);
@@ -25,13 +25,11 @@ public class AdherentDAO {
 		
 		public static List<Adherent> rechercheAdherentParIdEtNom(Long id, String nom){
 			String req = "from Adherent ";
-			int etape = 0;
 			if(id != null){
 				req += "where id = :id";
-				etape++;
 			}
 			if(nom != null){
-				if(etape==1){
+				if(id != null){
 					req+=" and nom like :nom";
 				}
 				else{

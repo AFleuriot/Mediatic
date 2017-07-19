@@ -54,6 +54,13 @@ public class Adherent {
 			
 		}
 		
+		public Adherent(String nom, String prenom, String email, LocalDate dateNaissance) {
+			this.nom = nom;
+			this.prenom = prenom;
+			this.email = email;
+			this.dateNaissance = dateNaissance;
+		}		
+		
 		public Adherent(Long id, String nom, String prenom, String email, LocalDate dateNaissance,
 				Cotisation cotisation, String rue, String ville, Integer cp) {
 			this.id = id;
@@ -160,12 +167,11 @@ public class Adherent {
 			this.emprunt = emprunt;
 		}
 
-		
 		@Override
 		public String toString() {
-			return "Adherent [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateNaissance="
-					+ dateNaissance + ", cotisation=" + cotisation + ", rue=" + rue + ", ville=" + ville + ", cp=" + cp
-					+ "]";
-		}		
+			return "Adherent [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
+					+ ", dateNaissance=" + dateNaissance + ", cotisation=" + cotisation + ", rue=" + rue + ", ville="
+					+ ville + ", cp=" + cp + ", emprunt=" + emprunt + "]";
+		}
 								
 }
