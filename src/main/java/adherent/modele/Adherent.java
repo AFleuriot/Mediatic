@@ -45,6 +45,7 @@ public class Adherent {
 		private String ville;
 		
 		@Column
+
 		private Integer cp;
 		
 		@OneToMany(mappedBy="adherent")
@@ -174,4 +175,5 @@ public class Adherent {
 					+ ville + ", cp=" + cp + ", emprunt=" + emprunt + "]";
 		}
 								
+
 }
