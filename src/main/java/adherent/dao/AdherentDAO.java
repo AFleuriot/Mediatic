@@ -1,18 +1,13 @@
 package adherent.dao;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-
-import org.hibernate.boot.model.relational.Database;
 
 import adherent.modele.Adherent;
 import static databasehelper.DatabaseHelper.*;
 
 public class AdherentDAO {
-		public static EntityManager em = null;
 		
 		public static void creerAdherent(Adherent adherent){
 			EntityManager em = createEntityManager();
@@ -60,8 +55,5 @@ public class AdherentDAO {
 			commitTxAndClose(em);			
 			return resultat;
 		}
-=======
-public class AdherentDAO {
 
->>>>>>> ed15170366d818ef4638b65ed0db28f338aab543
 }
