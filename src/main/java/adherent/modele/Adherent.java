@@ -168,6 +168,9 @@ public class Adherent {
 			this.emprunt = emprunt;
 		}
 
+		public void ajoutEmprunt(Emprunt emprunt){
+			this.emprunt.add(emprunt);
+		}
 		@Override
 		public String toString() {
 			return "Adherent [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
