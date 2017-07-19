@@ -39,7 +39,6 @@ public class Emprunt {
 		this.adherent = adherent;
 		this.media = media;
 		this.dateEmprunt = dateEmprunt;
-		this.dateRetourPrevue = dateEmprunt.plusDays(media.getType().getJoursEmpruntables());
 	}
 
 	public Adherent getAdherent() {

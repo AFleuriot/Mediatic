@@ -1,5 +1,9 @@
 package adherent.dao;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 import java.util.List;
 
 import javax.persistence.*;
@@ -55,5 +59,8 @@ public class AdherentDAO {
 			commitTxAndClose(em);			
 			return resultat;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 }
