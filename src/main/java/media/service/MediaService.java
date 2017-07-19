@@ -37,36 +37,67 @@ public class MediaService {
 	public static List<Media> rechercheMediaParType(TypeMedia type){
 		EntityManager em = createEntityManager();
 		beginTx(em);
-		TypedQuery<Media> rech = em.createQuery("SELECT m FROM Media m AS med WHERE med.type=:type'" , Media.class);
+		TypedQuery<Media> rech = em.createQuery("SELECT m FROM Media m WHERE m.type=:type'" , Media.class);
 		rech.setParameter("type", type );
 		commitTxAndClose(em);
 		return rech.getResultList();
 	}
 	
-	public static List<Media> rechercheMedia(String titreRecherche, String auteurRecherche, TypeMedia type){
-		if (titreRecherche == "" && auteurRecherche == "") {
-			rechercheMediaParType(type);
-		}
-		if (auteurRecherche == "" && type == null) {
-			rechercheMediaParAuteur(titreRecherche);
-		}
-		if (titreRecherche == "" && type == null) {
-			rechercheMediaParAuteur(auteurRecherche);
-		}
-		
+	
+	
+	
+	// ===================================================================================================================
+	public static List<Media> rechercheMedia(String  titreRecherche, String auteurRecherche, TypeMedia type){
+			
 		EntityManager em = createEntityManager();
 		beginTx(em);
-		TypedQuery<Media> rech = em.createQuery("SELECT m FROM media m AS med WHERE med.type=:type'" , Media.class);
-		rech.setParameter("type", type );
+		
+		String sqlquery = "SELECT m FROM Media m LEFT JOIN FETCH m.emprunts e LEFT JOIN FETCH e.adherent "; 
+		boolean firstwhere = true;
+		
+		if (type != null){
+			firstwhere = false;
+			sqlquery += "WHERE m.type=:typerecherche " ; 
+						
+		}
+		if (titreRecherche != null){
+		
+			if(firstwhere){
+				sqlquery += "WHERE ";  
+				firstwhere = false;
+			} else {
+				sqlquery += "AND ";
+			}
+			sqlquery += "m.titre LIKE :titreRecherche " ;
+		}
+		if (auteurRecherche != null) {
+			if(firstwhere){
+				sqlquery += "WHERE ";  
+				firstwhere = false;
+			} else {
+				sqlquery += "AND ";
+			}
+			sqlquery += "m.auteur LIKE :auteurRecherche " ;
+		}
+		
+		TypedQuery<Media> rech = em.createQuery(sqlquery, Media.class);
+		
+		if (type != null) {
+			rech.setParameter("typerecherche", type);
+		}
+		if (auteurRecherche != "") {
+			rech.setParameter("auteurRecherche", "%"+auteurRecherche+"%");
+		}
+		if (titreRecherche != "") {
+			rech.setParameter("titreRecherche",  "%"+titreRecherche+"%");
+		}
+		List<Media> resultats = rech.getResultList();
 		commitTxAndClose(em);
-		return rech.getResultList();
 		
+		return resultats;
 		
-		
-		
-		
+				
 	}
 	
-	// méthode find param id renvoie media avec inner join 
 	
 }
