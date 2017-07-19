@@ -3,8 +3,7 @@ package emprunt.modele;
 import java.time.LocalDate;
 
 import javax.persistence.*;
-
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import adherent.modele.Adherent;
 import media.modele.Media;
@@ -12,18 +11,24 @@ import media.modele.Media;
 @Entity
 public class Emprunt {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@NotNull
 	@ManyToOne
 	private Adherent adherent;
 	
+	@NotNull
 	@ManyToOne
 	private Media media;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate dateEmprunt;
 	
 	private LocalDate dateRetour;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate dateRetourPrevue;
 	
 	public Emprunt() {
@@ -75,6 +80,14 @@ public class Emprunt {
 
 	public void setDateRetourPrevue(LocalDate dateRetourPrevue) {
 		this.dateRetourPrevue = dateRetourPrevue;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

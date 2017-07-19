@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -22,7 +23,7 @@ public class Media {
 	@NotBlank
 	private String auteur;
 	
-	@NotBlank
+	@NotNull
 	private TypeMedia type;
 	
 	@OneToMany(mappedBy = "media")
