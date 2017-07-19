@@ -14,4 +14,11 @@ public class MediaDAO {
 		commitTxAndClose(em);
 	}
 	
+	public static void modifierMedia(Media media){
+		EntityManager em = createEntityManager();
+		beginTx(em);
+		em.merge(media);
+		commitTxAndClose(em);
+	}
+	
 }
