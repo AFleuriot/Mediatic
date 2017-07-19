@@ -41,5 +41,14 @@ public class Adherent {
 		
 		@Column
 		private int cp;
+		
+		public Adherent() {
+			
+		}
+		
+		public Adherent(String nom, String prenom) {
+			this.nom = nom;
+			this.prenom = prenom;
+		}
 								
 }
