@@ -41,5 +41,5 @@ public class Adherent {
 		
 		@Column
 		private int cp;
-								
+
 }
