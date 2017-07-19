@@ -1,8 +1,13 @@
 package media.modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import emprunt.modele.Emprunt;
 
 @Entity
 public class Media {
@@ -19,6 +24,9 @@ public class Media {
 	
 	@NotBlank
 	private TypeMedia type;
+	
+	@OneToMany(mappedBy = "media")
+	private List<Emprunt> emprunts = new ArrayList<>();
 	
 	public Media() {
 		
@@ -60,6 +68,14 @@ public class Media {
 
 	public void setType(TypeMedia type) {
 		this.type = type;
+	}
+
+	public List<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	public void setEmprunts(List<Emprunt> emprunts) {
+		this.emprunts = emprunts;
 	}
 	
 }

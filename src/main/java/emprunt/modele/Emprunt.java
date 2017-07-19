@@ -18,22 +18,62 @@ public class Emprunt {
 	private Media media;
 	
 	@NotBlank
-	private LocalDate date_emprunt;
+	private LocalDate dateEmprunt;
 	
-	private LocalDate date_retour;
+	private LocalDate dateRetour;
 	
 	@NotBlank
-	private LocalDate date_retour_prevue;
+	private LocalDate dateRetourPrevue;
 	
 	public Emprunt() {
 		
 	}
 	
-	public Emprunt(Adherent adherent, Media media, LocalDate date_emprunt) {
+	public Emprunt(Adherent adherent, Media media, LocalDate dateEmprunt) {
 		this.adherent = adherent;
 		this.media = media;
-		this.date_emprunt = date_emprunt;
-		this.date_retour_prevue = date_emprunt.plusDays(media.getType().getJoursEmpruntables());
+		this.dateEmprunt = dateEmprunt;
+		this.dateRetourPrevue = dateEmprunt.plusDays(media.getType().getJoursEmpruntables());
+	}
+
+	public Adherent getAdherent() {
+		return adherent;
+	}
+
+	public void setAdherent(Adherent adherent) {
+		this.adherent = adherent;
+	}
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
+	}
+
+	public LocalDate getDateEmprunt() {
+		return dateEmprunt;
+	}
+
+	public void setDateEmprunt(LocalDate dateEmprunt) {
+		this.dateEmprunt = dateEmprunt;
+	}
+
+	public LocalDate getDateRetour() {
+		return dateRetour;
+	}
+
+	public void setDateRetour(LocalDate dateRetour) {
+		this.dateRetour = dateRetour;
+	}
+
+	public LocalDate getDateRetourPrevue() {
+		return dateRetourPrevue;
+	}
+
+	public void setDateRetourPrevue(LocalDate dateRetourPrevue) {
+		this.dateRetourPrevue = dateRetourPrevue;
 	}
 	
 }
