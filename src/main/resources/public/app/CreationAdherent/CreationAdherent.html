@@ -4,21 +4,19 @@
 			<h2>Enregistrement d'un nouvel adhérent</h2>
 		</div>
 
-		<form class="form-horizontal" action = "#">
+		<form class="form-horizontal" ng-submit="CreationAdherent()">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Nom :</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="nomadherent"
+					<input type="text" class="form-control" id="nomadherent" ng-model="adh.Nom"
 						placeholder="Votre nom" required>
 				</div>
 
 			</div>
-			
-
 			<div class="form-group">
 				<label class="control-label col-sm-2">Prénom :</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="prenomadherent"
+					<input type="text" class="form-control" id="prenomadherent" ng-model="adh.Prenom"
 						placeholder="Votre prénom" required>
 				</div>
 
@@ -27,7 +25,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Date de naissance :</label>
 				<div class="col-sm-9">
-					<input type="date" class="form-control" id="dateadherent" required>
+					<input type="date" id="theDate" class="form-control" ng-model="adh.DateNaiss" required>
 				</div>
 
 			</div>
@@ -35,7 +33,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Âge :</label>
 				<div class="col-sm-9">
-					<input type="number" class="form-control" id="ageadherent" disabled>
+					<input type="number" class="form-control" id="ageadherent" ng-model="adh.Age" disabled>
 				</div>
 
 			</div>
@@ -44,8 +42,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Email :</label>
 				<div class="col-sm-9">
-					<input type="email" class="form-control" id="emailadherent"
-						placeholder="Email" required>
+					<input type="email" class="form-control" id="emailadherent" ng-model="adh.Mail"						placeholder="Email" required>
 				</div>
 
 			</div>
@@ -55,15 +52,15 @@
 				<label class="control-label col-sm-2">Adresse :</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="adresse"
-						placeholder="N° rue" name="adresseadherentl">
+						placeholder="N° rue" name="adresseadherentl" ng-model="adh.Adresse">
 				</div>
 				<div class="col-sm-3">
 					<input type="number" class="form-control" id="cp"
-						placeholder="Code postal" name="cpadherent">
+						placeholder="Code postal" name="cpadherent" ng-model="adh.CP">
 				</div>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="ville"
-						placeholder="Ville" name="villeadherent">
+						placeholder="Ville" name="villeadherent" ng-model="adh.Ville">
 				</div>
 
 			</div>
@@ -73,7 +70,7 @@
 				<label class="control-label col-sm-2">Date de paiement de la
 					cotisation :</label>
 				<div class="col-sm-9">
-					<input type="date" class="form-control" id="datecotiadherent">
+					<input type="date" id="theDate" class="form-control" ng-model="adh.DateCoti">
 				</div>
 
 			</div>
@@ -84,7 +81,7 @@
 				<div class="col-sm-9">
 
 					<input type="number" step="0.01" class="form-control"
-						id="cotiadherent" placeholder="Montant de la cotisation">
+						id="cotiadherent" placeholder="Montant de la cotisation" ng-model="adh.MontantCoti" min="0">
 				</div>
 			</div>
 			
@@ -92,7 +89,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Fin cotisation :</label>
 				<div class="col-sm-9">
-					<input type="date" class="form-control" id="ageadherent" disabled>
+					<input type="date" class="form-control" id="fincotiadhrent" ng-model="adh.DateFinCoti" disabled>
 				</div>
 
 			</div>
@@ -101,6 +98,6 @@
 				type="submit" value="Enregistrer">
 
 		</form>
-
-
+			<pre>{{AdherentsCrees}}</pre>
+			<p class="messAdhMediaCree">{{MessageAdhCree}} </p>
 	</div>

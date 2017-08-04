@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container" ng-if="media==null">
+    <h3>Ce média n'existe pas.</h3>
+</div>
+<div class="container" ng-if="media!=null">
     <div class="row">
         <h3>Fiche du média
             <a href=""><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal"></span></a>
