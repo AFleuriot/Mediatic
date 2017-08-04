@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('mediatic.acceuil',['ngRoute'])
+    .module('mediatic.accueil',['ngRoute'])
     .controller('accueilCtrl', ['$scope', function(){
         
     }]
