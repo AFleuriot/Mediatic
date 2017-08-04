@@ -8,7 +8,8 @@ angular.module('mediatic', [
   'mediatic.CreationMedia',
   'mediatic.CreationAdherent',
   'mediatic.VisuMedia',
-  'mediatic.VisuAdherent'
+  'mediatic.VisuAdherent',
+  'mediatic.acceuil'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
