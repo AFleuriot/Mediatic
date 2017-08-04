@@ -1,11 +1,6 @@
 'use strict';
 
-angular.module(myApp.creationmedia, ['ngRoute'])
+angular.module(mediatic.CreationMedia, ['ngRoute'])
     .controller('CreationMediaCtrl', [function(){
 
-
-
-
- 
-        
     }]);

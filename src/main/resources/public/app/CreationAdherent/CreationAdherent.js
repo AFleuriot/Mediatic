@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module(myApp.CreationAdherent, ['ngRoute'])
+angular.module(mediatic.CreationAdherent, ['ngRoute'])
     .controller('CreationAdherentCtrl', [function(){
 
 
