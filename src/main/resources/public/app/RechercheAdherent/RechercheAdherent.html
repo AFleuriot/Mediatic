@@ -32,47 +32,12 @@
 				    <th>Cotisation à jour ?</th>
 				    <th>Nombre de médias empruntés</th>
 				  </tr>
-				  <tr>
-				    <td><a href="#!/visuAdherent">20T138</a></td>
-				    <td>Alexandre Dezier</td>
-				    <td>30/05/1994</td>
+				  <tr ng-repeat="adherent in adherents">
+				    <td><a href="#!/visuAdherent">{{adherent.id}}</a></td>
+				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
+				    <td>{{adherent.dateNaissance}}</td>
 				    <td>Oui</td>
 				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="#!/visuAdherent">87T456</a></td>
-				    <td>Aurélien Fleuriot</td>
-				    <td>25/02/1993</td>
-				    <td>Oui</td>
-				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="#!/visuAdherent">15T164</a></td>
-				    <td>David Dolle-Schall</td>
-				    <td>31/12/1991</td>
-				    <td>Oui</td>
-				    <td>2</td>
-				  </tr>
-				   <tr>
-				    <td><a href="#!/visuAdherent">45T787</a></td>
-				    <td>Pierre Deleglise</td>
-				    <td>03/04/1957</td>
-				    <td>Non</td>
-				    <td>6</td>
-				  </tr>
-				  <tr>
-				    <td><a href="#!/visuAdherent">10T788</a></td>
-				    <td>Président Husref</td>
-				    <td>Censuré</td>
-				    <td>Oui</td>
-				    <td>10</td>
-				  </tr>
-				  <tr>
-				    <td><a href="#!/visuAdherent">12T020</a></td>
-				    <td>Suzanne Thomas</td>
-				    <td>21/05/1989</td>
-				    <td>Oui</td>
-				    <td>3</td>
 				  </tr>
 				 
 				</table>
