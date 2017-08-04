@@ -5,8 +5,19 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
 
     $scope.adherents = AdherentService.getAdherents();
 
-    console.log($scope.adherents);
+    $scope.rechercher = function() {
+        var criteria = {};
+        criteria.nom_like=$scope.nomContient;
+        criteria.id_like=$scope.idCommencePar;
+        $scope.adherents = AdherentService.searchAdherent(criteria);
+        console.log($scope.adherents);
+    }
 
-    console.log(AdherentService.getAdherentById(1));
+    $scope.cotisationAJour = function(adherent) {
+        if (new Date(adherent.dateFinCotisation) > new Date()) {
+            return 'Oui';
+        }
+        return 'Non';
+    }
 
 }]);
