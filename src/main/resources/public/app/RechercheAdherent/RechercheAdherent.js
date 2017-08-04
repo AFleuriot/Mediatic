@@ -9,7 +9,7 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
         var criteria = {};
         criteria.nom_like=$scope.nomContient;
         criteria.id_like=$scope.idCommencePar;
-        $scope.adherents = AdherentService.searchAdherent(criteria);
+        $scope.adherents = AdherentService.searchAdherent(criteria);                
         console.log($scope.adherents);
     }
 
@@ -20,4 +20,8 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
         return 'Non';
     }
 
+    $scope.returnDate = function(dte){
+        var temp = new Date(dte).toLocaleDateString();
+        return temp!='Invalid Date' ? temp : '' ;
+    }
 }]);

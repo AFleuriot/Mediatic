@@ -35,7 +35,7 @@
 				  <tr ng-repeat="adherent in adherents">
 				    <td><a href="#!/visuAdherent?id={{adherent.id}}">{{adherent.id}}</a></td>
 				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
-				    <td>{{adherent.dateNaissance}}</td>
+				    <td>{{returnDate(adherent.dateNaissance)}}</td>
 				    <td>{{cotisationAJour(adherent)}}</td>
 				    <td>1</td>
 				  </tr>

@@ -16,7 +16,7 @@
             <p><b>Code postal :</b> {{adherent.cp}}</p>
             <p><b>Rue :</b> {{adherent.rue}}</p>
             <p><b>Date de paiement de la cotisation :</b> {{adherent.dateCotisation==null || adherent.dateCotisation=='Invalid Date' ? '' : adherent.dateCotisation.toLocaleDateString()}}</p>
-            <p><b>Date de fin d'abonnement :</b> {{finCotisation=='Invalid Date' ? '' :finCotisation}}</p>
+            <p><b>Date de fin d'abonnement :</b> {{finCotisation=='Invalid Date' ? '' : finCotisation}}</p>
             <p><b>Montant de la cotisation :</b> {{adherent.montantCotisation}}€</p>
         </div>                
     </div>
