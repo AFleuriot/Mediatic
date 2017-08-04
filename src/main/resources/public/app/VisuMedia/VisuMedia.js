@@ -2,14 +2,19 @@
 
 angular
     .module('mediatic.VisuMedia',['ngRoute'])
-    .controller('VisuMediaCtrl', ['$scope', function($scope){
-        $scope.types = ['Livre','CD','DVD']
-        $scope.selectedType = 'CD';
-        $scope.media ={};
-        $scope.media.id = 1;
-        $scope.media.titre = 'Musique d\'été';
-        $scope.media.type = 'CD';
-        $scope.media.auteur = 'Inconnu des dives';
+    .controller('VisuMediaCtrl', ['$scope','$location','MediaService', function($scope,$location,MediaService){
+        $scope.types = ['Livre','CD','DVD']     
+        var location = $location.search();      
+        if(location.id==undefined){
+            $location.path('/rechercheMedia');
+        }
+        else{
+            var resource = MediaService.getMediaById(location.id);        
+            resource.$promise.then(function(response){
+                console.log(resource);
+                $scope.media = resource;
+            }); 
+        }                     
         $scope.datePret = new Date();
         $scope.$watch('datePret',function(){
             if($scope.datePret!=null){
