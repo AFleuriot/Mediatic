@@ -1,22 +1,23 @@
 <div class="container">
 
-			<form action="" class="form-horizontal">
+			<form class="form-horizontal" ng-submit="rechercher()">
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="titre">Titre contient :</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="titre">
+				      <input type="text" class="form-control" id="titre" ng-model="titreContient">
 				    </div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="auteur">Nom auteur contient :</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="auteur">
+				      <input type="text" class="form-control" id="auteur" ng-model="auteurContient">
 				    </div>
 				</div>
 				<div class="form-group">
 				<label class="control-label col-sm-2" for="type">Type :</label>
 					<div class="col-sm-10">
-				  <select class="form-control" id="type">
+				  <select class="form-control" id="type" ng-model="typeEst">
+						<option>Tous</option>
 				    <option>Livre</option>
 				    <option>CD</option>
 				    <option>DVD</option>
@@ -26,7 +27,7 @@
 				</div>
 				<div class="form-group"> 
    					 <div class="col-xs-offset-3 col-xs-3">
-    				  <button class="btn btn-info">Rechercher</button>
+    				  <button type="submit" class="btn btn-info">Rechercher</button>
     				</div>
    					 <div class="col-xs-offset-3 col-xs-3">
     				  <button type="submit" formaction="#!/creationMedia" class="btn btn-default">Nouveau</button>
@@ -44,8 +45,8 @@
 				    <th>Date de retour prévu</th>
 				  </tr>
 				  <tr ng-repeat="media in medias">
-				    <td><a href="#!/visuMedia">{{media.titre}}</a></td>
-				    <td><span class="glyphicon glyphicon-book" data-toggle="tooltip" title="Livre"></span></td>
+				    <td><a href="#!/visuMedia?id={{media.id}}">{{media.titre}}</a></td>
+				    <td><span class="glyphicon {{getTypeIcon(media)}}" data-toggle="tooltip" title="{{media.type}}"></span></td>
 				    <td>{{media.auteur}}</td>
 				    <td>{{media.emprunteur}}</td>
 				    <td>{{media.dateRetourPrevu}}</td>

@@ -21,6 +21,11 @@ angular.module('mediatic')
 
             getMediaById: function(id) {
                 return Media.get({'id':id});
+            },
+
+            searchMedia: function(criteria) {
+                console.log(criteria);
+                return Media.query(criteria);
             }
 
 
