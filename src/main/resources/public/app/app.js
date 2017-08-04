@@ -1,14 +1,53 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('mediatic', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  'mediatic.RechercheMedia',
+  'mediatic.RechercheAdherent',
+  'mediatic.CreationMedia',
+  'mediatic.CreationAdherent',
+  'mediatic.VisuMedia',
+  'mediatic.VisuAdherent'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider
+  .when('/accueil', {
+    templateUrl: 'Login/Login.html',
+    controller: 'LoginCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/rechercheMedia', {
+    templateUrl: 'RechercheMedia/RechercheMedia.html',
+    controller: 'RechercheMediaCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/rechercheAdherent', {
+    templateUrl: 'RechercheAdherent/RechercheAdherent.html',
+    controller: 'RechercheAdherentCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/creationMedia', {
+    templateUrl: 'CreationMedia/CreationMedia.html',
+    controller: 'CreationMediaCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/creationAdherent', {
+    templateUrl: 'CreationAdherent/CreationAdherent.html',
+    controller: 'CreationAdherentCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/visuMedia', {
+    templateUrl: 'VisuMedia/visualiser_media.html',
+    controller: 'VisuMediaCtrl',
+    controllerAs: "ctrl"
+  })  
+  .when('/visuAdherent', {
+    templateUrl: 'VisuAdherent/visualiser_adhrent.html',
+    controller: 'VisuAdherentCtrl',
+    controllerAs: "ctrl"
+  }) 
+  .otherwise({redirectTo: '/accueil'});
 }]);
