@@ -45,7 +45,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     controllerAs: "ctrl"
   })  
   .when('/visuAdherent', {
-    templateUrl: 'VisuAdherent/visualiser_adhrent.html',
+    templateUrl: 'VisuAdherent/visualiser_adherent.html',
     controller: 'VisuAdherentCtrl',
     controllerAs: "ctrl"
   }) 
