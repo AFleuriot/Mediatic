@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container" ng-if="media==null">
+    <h3>Ce média n'existe pas.</h3>
+</div>
+<div class="container" ng-if="media!=null">
     <div class="row">
         <h3>Fiche du média
             <a href=""><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal"></span></a>
@@ -70,7 +73,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-1" for="select">Type</label>
                             <div class="col-sm-4">
-                                <select required id="select" ng-model="selectedType" ng-options="x for x in types" ng-options="" class="form-control">
+                                <select required id="select" ng-model="media.type" ng-options="x for x in types" ng-options="" class="form-control">
                                 </select>
                             </div>
                         </div>
