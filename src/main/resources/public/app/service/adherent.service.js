@@ -21,12 +21,18 @@ angular.module('mediatic')
                 a.ville = adherent.ville;
                 a.cp = adherent.cp;
                 a.dateCotisation = adherent.dateCotisation;
+                a.dateFinCotisation = adherent.dateFinCotisation;
                 a.montantCotisation = adherent.montantCotisation;
                 a.$save();
             },
 
             getAdherentById: function(id) {
                 return Adherent.get({'id':id});
+            },
+
+            searchAdherent: function(criteria) {
+                console.log(criteria);
+                return Adherent.query(criteria);
             }
 
 

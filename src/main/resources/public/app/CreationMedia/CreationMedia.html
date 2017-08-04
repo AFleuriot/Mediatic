@@ -3,15 +3,15 @@
 	
 	<br>
 	<br>
-	<form class="form-horizontal" name="creamediaForm" ng-submit="" action = "#">
+	<form class="form-horizontal" name="creamediaForm" ng-submit="CreationMedia()">
 	
 		
-		<div class="form-group">
+		<div class="form-group" ng-submit="">
 			<label class="control-label col-sm-2" for="titremedia">Titre
 				:</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="titremedia"
-					placeholder="Titre du média" required>
+					placeholder="Titre du média" ng-model="media.titre" required>
 			</div>
 			<div class="col-sm-offset-1"></div>
 		</div>
@@ -20,10 +20,10 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="typemedia">Type :</label>
 			<div class="col-sm-9">
-				<select class="form-control">
-					<option><a href="#" class="glyphicon glyphicon-book">Livre</a></option>
-					<option><a href="#" class="glyphicon glyphicon-music">CD</a></option>
-					<option><a href="#" class="glyphicon glyphicon-film">DVD</a></option>
+				<select class="form-control" ng-model="media.type">
+					<option><span class="glyphicon glyphicon-book" ><span/>Livre</a></option>
+					<option><span class="glyphicon glyphicon-music"><span/>CD</a></option>
+					<option><span class="glyphicon glyphicon-film"><span/>DVD</a></option>
 				</select>
 
 			</div>
@@ -36,7 +36,7 @@
 				:</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="auteurmedia"
-					placeholder="Auteur du média" required>
+					placeholder="Auteur du média" ng-model="media.auteur" required>
 			</div>
 			<div class="col-sm-offset-1"></div>
 		</div>
@@ -48,5 +48,7 @@
 		
 	
 	</form>
+	<p class="messAdhMediaCree">{{MessageMediaCree}}</p>
+	<pre>{{MediaCrees}}</pre>
 
 </div>
