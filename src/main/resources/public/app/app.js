@@ -3,6 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('mediatic', [
   'ngRoute',
+  'ngMessages',
+  'ngResource',
   'mediatic.RechercheMedia',
   'mediatic.RechercheAdherent',
   'mediatic.CreationMedia',

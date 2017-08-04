@@ -1,6 +1,6 @@
 <div class="container">
 
-			<form action="#" class="form-horizontal">
+			<form action="" class="form-horizontal">
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="id">ID commence par :</label>
 				    <div class="col-sm-10">
@@ -15,10 +15,10 @@
 				</div>
 				<div class="form-group"> 
    					 <div class="col-sm-offset-3 col-xs-3">
-    				  <button type="submit" class="btn btn-info">Rechercher</button>
+    				  <button class="btn btn-info">Rechercher</button>
     				</div>
    					 <div class="col-sm-offset-3 col-xs-3">
-    				  <button type="submit" formaction="CreationAdherent.html" class="btn btn-default">Nouveau</button>
+    				  <button formaction="#!/creationAdherent" class="btn btn-default">Nouveau</button>
     				</div>
   				</div>
 			</form>
@@ -32,47 +32,12 @@
 				    <th>Cotisation à jour ?</th>
 				    <th>Nombre de médias empruntés</th>
 				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">20T138</a></td>
-				    <td>Alexandre Dezier</td>
-				    <td>30/05/1994</td>
+				  <tr ng-repeat="adherent in adherents">
+				    <td><a href="#!/visuAdherent">{{adherent.id}}</a></td>
+				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
+				    <td>{{adherent.dateNaissance}}</td>
 				    <td>Oui</td>
 				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">87T456</a></td>
-				    <td>Aurélien Fleuriot</td>
-				    <td>25/02/1993</td>
-				    <td>Oui</td>
-				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">15T164</a></td>
-				    <td>David Dolle-Schall</td>
-				    <td>31/12/1991</td>
-				    <td>Oui</td>
-				    <td>2</td>
-				  </tr>
-				   <tr>
-				    <td><a href="visualiser_adherent.html">45T787</a></td>
-				    <td>Pierre Deleglise</td>
-				    <td>03/04/1957</td>
-				    <td>Non</td>
-				    <td>6</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">10T788</a></td>
-				    <td>Président Husref</td>
-				    <td>Censuré</td>
-				    <td>Oui</td>
-				    <td>10</td>
-				  </tr>
-				  <tr>
-				    <td><a href="visualiser_adherent.html">12T020</a></td>
-				    <td>Suzanne Thomas</td>
-				    <td>21/05/1989</td>
-				    <td>Oui</td>
-				    <td>3</td>
 				  </tr>
 				 
 				</table>
