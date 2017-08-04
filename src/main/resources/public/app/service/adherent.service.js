@@ -3,30 +3,30 @@
 angular.module('mediatic')
     .factory('AdherentService', ['$resource', function($resource) {
 
-        var adherentsList = [];
-
-        var listeUsers = $resource('https://jsonplaceholder.typicode.com/users').query();
-
-        listeUsers.forEach(function(user) {
-            adherentsList.push({'id':user.id, 'nom':user.name, 'prenom':user.username, 'email':user.email, 'dateNaissance':'01/01/1980', 'rue':user.address.street, 'ville':user.address.city, 'cp':user.address.zipcode, 'dateCotisation':'02/02/2017', 'montant':10});
-        });
+        var Adherent = $resource('http://192.168.1.65:3000/adherent/:id');
 
         return {
         
             getAdherents: function() {
-                return adherentsList;
+                return Adherent.query();
             },
 
             addAdherent: function(adherent) {
-                adherentsList.push(adherent);
+                var a = new Adherent();
+                a.nom = adherent.nom;
+                a.prenom = adherent.prenom;
+                a.email = adherent.email;
+                a.dateNaissance = adherent.dateNaissance;
+                a.rue = adherent.rue;
+                a.ville = adherent.ville;
+                a.cp = adherent.cp;
+                a.dateCotisation = adherent.dateCotisation;
+                a.montantCotisation = adherent.montantCotisation;
+                a.$save();
             },
 
             getAdherentById: function(id) {
-                getAdherents().forEach(function(adherent) {
-                    if (id==adherent.id) {
-                        return adherent;
-                    }
-                });
+                return Adherent.get({'id':id});
             }
 
 
