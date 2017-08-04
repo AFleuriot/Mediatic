@@ -16,8 +16,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
   $routeProvider
   .when('/accueil', {
-    templateUrl: 'Login/Login.html',
-    controller: 'LoginCtrl',
+    templateUrl: 'accueil/accueil.html',
+    controller: 'accueilCtrl',
     controllerAs: "ctrl"
   })  
   .when('/rechercheMedia', {

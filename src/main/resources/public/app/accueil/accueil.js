@@ -2,7 +2,7 @@
 
 angular
     .module('mediatic.acceuil',['ngRoute'])
-    .controller('acceuilCtrl', ['$scope', function(){
+    .controller('accueilCtrl', ['$scope', function(){
         
     }]
 );    
