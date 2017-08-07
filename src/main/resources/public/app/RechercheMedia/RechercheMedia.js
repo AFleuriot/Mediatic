@@ -1,10 +1,27 @@
 'use strict';
 
 angular.module('mediatic.RechercheMedia', ['ngRoute'])
-.controller('RechercheMediaCtrl', ['$scope', 'MediaService', function($scope, MediaService) {
+.controller('RechercheMediaCtrl', ['$scope', 'MediaService', 'AdherentService', 'EmpruntService', function($scope, MediaService, AdherentService, EmpruntService) {
     
 
+    var initialiser = function() {
+        $scope.medias.forEach(function(media) {
+            if (media.empruntactuel) {
+                var emprunt = EmpruntService.getEmpruntById(media.empruntactuel);
+                emprunt.$promise.then(function() {
+                    var emprunteur = AdherentService.getAdherentById(emprunt.adherent);
+                    emprunteur.$promise.then(function() {
+                        media.emprunteur = emprunteur.nom+" "+emprunteur.prenom;
+                        media.dateRetourPrevue = emprunt.dateRetourPrevue;
+                    });
+                });
+            }
+        });
+    }
+
     $scope.medias = MediaService.getMedias();
+    $scope.medias.$promise.then(initialiser);
+
 
     $scope.getTypeIcon = function(media) {
         if (media.type =='Livre') {
@@ -26,7 +43,10 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
             criteria.type=$scope.typeEst;
         }
         $scope.medias = MediaService.searchMedia(criteria);
+        $scope.medias.$promise.then(initialiser);
         console.log($scope.medias);
     }
+
+    
 
 }]);

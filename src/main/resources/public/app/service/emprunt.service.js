@@ -42,7 +42,7 @@ angular.module('mediatic')
                 return Emprunt.query(criteria);
             },
 
-            getEmpruntsActuelsOfAdherents: function(adherentId) {
+            getEmpruntsActuelsOfAdherent: function(adherentId) {
                 return this.searchEmprunt({'adherent':adherentId, 'dateRetour':null});
             }
 

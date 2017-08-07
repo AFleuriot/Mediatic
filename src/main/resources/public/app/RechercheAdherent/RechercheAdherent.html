@@ -36,8 +36,8 @@
 				    <td><a href="#!/visuAdherent?id={{adherent.id}}">{{adherent.id}}</a></td>
 				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
 				    <td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>
-				    <td>{{cotisationAJour(adherent)}}</td>
-				    <td>1</td>
+				    <td>{{adherent.cotisation}}</td>
+				    <td>{{adherent.nombreEmprunts}}</td>
 				  </tr>
 				 
 				</table>
