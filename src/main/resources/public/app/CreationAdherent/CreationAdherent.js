@@ -6,6 +6,7 @@ angular.module('mediatic.CreationAdherent', ['ngRoute'])
         
         $scope.AdherentsCrees = [];
         $scope.MessageAdhCree = '';
+        $scope.AddedAdherent =false;
         
        /* $scope.dateReturn = function(dte){
             var temp = new Date(dte).toLocaleDateString();  
@@ -31,6 +32,7 @@ angular.module('mediatic.CreationAdherent', ['ngRoute'])
                  'montantCotisation': $scope.adh.MontantCoti,
                  'dateFinCotisation': $scope.adh.DateFinCoti,
                 });*/
+            $scope.AddedAdherent = true;
             var adherent =  {'nom': $scope.adh.Nom,
                  'prenom': $scope.adh.Prenom,
                  'dateNaissance': $scope.adh.DateNaiss,
