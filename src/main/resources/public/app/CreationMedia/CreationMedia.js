@@ -13,7 +13,8 @@ angular.module('mediatic.CreationMedia', ['ngRoute'])
                 }, 5000);
                 var media = {'titre' : $scope.media.titre,
                      'auteur': $scope.media.auteur,
-                     'type' : $scope.media.type                   
+                     'type' : $scope.media.type, 
+                     'empruntactuel': null                
                     };
                 MediaService.addMedia(media);
             }

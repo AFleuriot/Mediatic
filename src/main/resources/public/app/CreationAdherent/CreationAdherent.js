@@ -6,25 +6,34 @@ angular.module('mediatic.CreationAdherent', ['ngRoute'])
         
         $scope.AdherentsCrees = [];
         $scope.MessageAdhCree = '';
-     
+        
+       /* $scope.dateReturn = function(dte){
+            var temp = new Date(dte).toLocaleDateString();  
+            return temp;
+        }*/
+            
 
         $scope.CreationAdherent = function(){
-            $scope.AdherentsCrees.push(
-                {'nom': $scope.adh.Nom,
+            /*var adhDateNaissance = $scope.adh.DateNaiss;
+            var dateNaissFormat = $scope.dateReturn($scope.adh.DateNaiss);
+            var dateCotiFormat = $scope.dateReturn($scope.adh.DateCoti);
+            var dateFinCotiFormat = $scope.dateReturn($scope.adh.DateFinCoti);
+
+           $scope.AdherentsCrees.push({'nom': $scope.adh.Nom,
                  'prenom': $scope.adh.Prenom,
-                 'dateNaissance':$scope.adh.DateNaiss,
+                 'dateNaissance' :$scope.adh.DateNaiss,
                  'age': $scope.adh.Age,
                  'email': $scope.adh.Mail,
                  'rue': $scope.adh.Adresse, 
                  'cp': $scope.adh.CP,  
                  'ville': $scope.adh.Ville,
-                 'dateCotisation': $scope.adh.DateCoti,
+                 'dateCotisation':$scope.adh.DateCoti,
                  'montantCotisation': $scope.adh.MontantCoti,
                  'dateFinCotisation': $scope.adh.DateFinCoti,
-                });
+                });*/
             var adherent =  {'nom': $scope.adh.Nom,
                  'prenom': $scope.adh.Prenom,
-                 'dateNaissance':$scope.adh.DateNaiss,
+                 'dateNaissance': $scope.adh.DateNaiss,
                  'age': $scope.adh.Age,
                  'email': $scope.adh.Mail,
                  'rue': $scope.adh.Adresse, 
@@ -57,9 +66,7 @@ angular.module('mediatic.CreationAdherent', ['ngRoute'])
             {$scope.adh.Age = date - 1;} else {$scope.adh.Age = date;}
         })
 
-  
 
-        
 
  
     }]);
