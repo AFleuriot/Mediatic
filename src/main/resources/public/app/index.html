@@ -24,7 +24,7 @@
         <h1 class="col-xs-8">Médiatic ! Ta médiathèque en ligne de ouf!</h1>
     </header>
 
-   <nav class=" container navbar navbar-default">
+   <nav class=" container navbar navbar-default" ng-if="username">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#!/accueil">Accueil</a></li>
@@ -45,6 +45,10 @@
                     </ul>
                 </li>
             </ul>
+            <div class="nav navbar-nav navbar-right">
+                <p>Bienvenu {{username}}</p>
+                <p><a href="" ng-click="disconnect()">logout</a></p>
+            </div>
         </div>
     </nav>
 
@@ -84,6 +88,7 @@
   <script src="service/media.service.js"></script>
   <script src="service/adherent.service.js"></script>
   <script src="service/emprunt.service.js"></script>
+  <script src="service/accueil.service.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
