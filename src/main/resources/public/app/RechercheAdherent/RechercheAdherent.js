@@ -1,19 +1,28 @@
 'use strict';
 
 angular.module('mediatic.RechercheAdherent', ['ngRoute'])
-.controller('RechercheAdherentCtrl', ['$scope', 'AdherentService', function($scope, AdherentService) {
+.controller('RechercheAdherentCtrl', ['$scope', 'AdherentService', 'EmpruntService', function($scope, AdherentService, EmpruntService) {
+
+    var initialiser = function() {
+        $scope.adherents.forEach(function(adherent) {
+            adherent.cotisation = cotisationAJour(adherent);
+            adherent.nombreEmprunts = getNombreEmprunts(adherent.id);
+        });
+    };
 
     $scope.adherents = AdherentService.getAdherents();
+    $scope.adherents.$promise.then(initialiser);
 
     $scope.rechercher = function() {
         var criteria = {};
         criteria.nom_like=$scope.nomContient;
         criteria.id_like=$scope.idCommencePar;
-        $scope.adherents = AdherentService.searchAdherent(criteria);                
+        $scope.adherents = AdherentService.searchAdherent(criteria);   
+        $scope.adherents.$promise.then(initialiser);            
         console.log($scope.adherents);
     }
 
-    $scope.cotisationAJour = function(adherent) {
+    var cotisationAJour = function(adherent) {
         if (new Date(adherent.dateFinCotisation) > new Date()) {
             return 'Oui';
         }
@@ -26,5 +35,9 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
         //3. on vérifie si la date est valide sinon on retourne une chaine vide
         var temp = new Date(dte).toLocaleDateString();
         return temp!='Invalid Date' ? temp : '' ;
+    }
+
+    var getNombreEmprunts = function(adherentId) {
+        return EmpruntService.getEmpruntsActuelsOfAdherent(adherentId).length;
     }
 }]);

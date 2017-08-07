@@ -18,7 +18,7 @@
     				  <button class="btn btn-info">Rechercher</button>
     				</div>
    					 <div class="col-sm-offset-3 col-xs-3">
-    				  <button formaction="#!/creationAdherent" class="btn btn-default">Nouveau</button>
+    				  <a href="#!/creationAdherent" class="btn btn-default">Nouveau</a>
     				</div>
   				</div>
 			</form>
@@ -35,9 +35,9 @@
 				  <tr ng-repeat="adherent in adherents">
 				    <td><a href="#!/visuAdherent?id={{adherent.id}}">{{adherent.id}}</a></td>
 				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
-				    <td>{{returnDate(adherent.dateNaissance)}}</td>
-				    <td>{{cotisationAJour(adherent)}}</td>
-				    <td>1</td>
+				    <td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>
+				    <td>{{adherent.cotisation}}</td>
+				    <td>{{adherent.nombreEmprunts}}</td>
 				  </tr>
 				 
 				</table>

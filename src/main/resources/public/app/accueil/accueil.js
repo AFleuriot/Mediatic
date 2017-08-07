@@ -4,6 +4,8 @@ angular
     .module('mediatic.accueil',['ngRoute'])
     .controller('accueilCtrl', ['$scope','$location', function($scope, $location){
 
+        $scope.badLogin = '';
+
         $scope.submit = function() {
             console.log($scope.username == 'admin');
             console.log($scope.password == 'admin1234');
@@ -13,6 +15,7 @@ angular
             } else {
                 // console.log('accueil');
                 $location.path('/accueil');
+                $scope.badLogin = 'Mauvais login ou mot de passe !'
             }
              
         }
