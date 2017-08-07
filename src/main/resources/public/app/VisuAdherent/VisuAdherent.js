@@ -2,7 +2,7 @@
 
 angular
     .module('mediatic.VisuAdherent',['ngRoute'])
-    .controller('VisuAdherentCtrl', ['$scope', '$location','AdherentService', function($scope,$location,AdherentService){
+    .controller('VisuAdherentCtrl', ['$scope', '$location','AdherentService','$timeout', function($scope,$location,AdherentService,$timeout){
         var location = $location.search();      
         if(location.id==undefined){
             $location.path('/rechercheAdherent');
@@ -10,8 +10,9 @@ angular
         else{
             var resource = AdherentService.getAdherentById(location.id);        
             resource.$promise.then(function(response){
-                console.log(resource); 
+                console.log(resource);                 
                 $scope.adherent = resource;  
+                $scope.adherent.id = location.id;
                 $scope.adherent.cp = parseInt($scope.adherent.cp);
                 $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);
                 $scope.adherent.dateCotisation = new Date($scope.adherent.dateCotisation);
@@ -50,7 +51,10 @@ angular
 
         $scope.submit = function(){ 
             $("#myModalun").modal('hide');
-            $location.path('/rechercheAdherent');
+            $timeout(function () {
+                AdherentService.updateAdherent($scope.adherent);
+                $location.path('/rechercheAdherent');
+            }, 500);    
         }
 
     }]
