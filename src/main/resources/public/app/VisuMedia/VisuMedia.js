@@ -60,13 +60,12 @@ angular
         });
         
         $scope.submit = function(){
-            console.log($scope.emprunt.selectedAdherent.id);
             var emprunt={};
             emprunt.adherent = parseInt($scope.emprunt.selectedAdherent.id);
             emprunt.media = parseInt($scope.media.id);
             emprunt.dateEmprunt = $scope.emprunt.datePret;
             emprunt.dateRetour = null;
-            emprunt.dateRetourPrevue = $scope.dateRetour;
+            emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;
             EmpruntService.addEmprunt(emprunt).then(function(resp) {
                 $scope.media.empruntactuel=resp.id;
                 MediaService.updateMedia($scope.media);

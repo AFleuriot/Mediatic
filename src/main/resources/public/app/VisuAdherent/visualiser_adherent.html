@@ -20,28 +20,37 @@
             <p><b>Montant de la cotisation :</b> {{adherent.montantCotisation}}€</p>
         </div>                
     </div>
+    <br>
+    <div class="row">
+        <p><b>Liste des adhérents l'ayant emprunté</b></p>
+        <ul class="list-group">
+            <li ng-repeat="emprunt in UserEmprunts" class="list-group-item {{verifierDate(emprunt)}}">{{emprunter(emprunt)}}</li>
+            <li ng-if="!UserEmprunts.length" class="list-group-item list-group-item-info"> Aucun adhérent ne l'a encore emprunté </li>
+        </ul>
+    </div>
     <div class="row">         
         <h3>Ajouter un média emprunté</h3>
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-submit="submitEmprunt()">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="titre">Titre</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" id="titre" ng-model="Titre"/>
+                    <select class="form-control" ng-model="emprunt.selectedMedia" ng-options="media.titre + ' par ' + media.auteur + ' (' + media.type + ')' for media in medias">
+                    </select>
                 </div>
             </div>  
             <div class="form-group">
                 <label class="control-label col-sm-2" for="titre">Date</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="date" ng-model="dateEmprunt" name="date" id="date"/>
+                    <input class="form-control" type="date" ng-model="emprunt.dateEmprunt" name="date" id="date"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="titre">Date de retour</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="date" ng-model="dateRetour" readonly name="date" id="date_retour"/>
+                    <input class="form-control" type="date" ng-model="emprunt.dateRetour" readonly name="date" id="date_retour"/>
                 </div>
             </div>
-            <button class="btn btn-success center-block" type="submit">Ajouter</button>                
+            <input class="btn btn-success center-block" type="submit" value="Enregistrer"/>
         </form>
     </div>
 
