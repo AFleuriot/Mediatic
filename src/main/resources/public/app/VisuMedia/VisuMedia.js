@@ -5,6 +5,7 @@ angular
     .controller('VisuMediaCtrl', ['$scope','$location','MediaService','$timeout','AdherentService', 'EmpruntService', 
     function($scope,$location,MediaService, $timeout, AdherentService, EmpruntService){
         $scope.types = ['Livre','CD','DVD']     
+        $scope.emprunt ={};
         var location = $location.search();      
         if(location.id==undefined){
             $location.path('/rechercheMedia');
@@ -14,12 +15,21 @@ angular
             resource.$promise.then(function(response){
                 $scope.media = response;
                 $scope.media.id = location.id;
+                var dateAller = new Date();
+                if($scope.media.type=='CD' || $scope.media.type=='DVD'){
+                    dateAller.setDate(dateAller.getDate()+15);
+                }                    
+                else{
+                    dateAller.setDate(dateAller.getDate()+30);
+                }                
+                $scope.emprunt.dateRetour = dateAller;
+                console.log($scope.media);
             }); 
 
             resource = AdherentService.getAdherents();
             resource.$promise.then(function(response){                
                 $scope.adherents = response;
-                $scope.selectedAdherent = $scope.adherents[0];
+                $scope.emprunt.selectedAdherent = $scope.adherents[0];
             });
 
             resource = EmpruntService.searchEmprunt({'media':location.id});
@@ -32,24 +42,31 @@ angular
                     element.media = resource;
                 }, this);
             });            
-        }                     
-        $scope.datePret = new Date();
-        $scope.$watch('datePret',function(){
-            if($scope.datePret!=null){
-                var date = new Date($scope.datePret.getFullYear(), $scope.datePret.getMonth(), $scope.datePret.getDate());
-                date.setYear(date.getFullYear()+1);
-                $scope.dateRetour = date;   
-            }            
-        });
+        }  
 
+        $scope.emprunt.datePret = new Date();
+                
+        $scope.$watch('emprunt.datePret',function(newvalue, oldvalue){
+            var dateAller = new Date(newvalue);                        
+            if($scope.media != undefined){                                
+                if($scope.media.type=='CD' || $scope.media.type=='DVD'){
+                    dateAller.setDate(dateAller.getDate()+15);
+                }                    
+                else{
+                    dateAller.setDate(dateAller.getDate()+30);
+                }                                            
+                $scope.emprunt.dateRetour = new Date(dateAller);
+            }
+        });
+        
         $scope.submit = function(){
-            console.log($scope.selectedAdherent.id);
+            console.log($scope.emprunt.selectedAdherent.id);
             var emprunt={};
-            emprunt.adherent = parseInt($scope.selectedAdherent.id);
+            emprunt.adherent = parseInt($scope.emprunt.selectedAdherent.id);
             emprunt.media = parseInt($scope.media.id);
-            emprunt.dateEmprunt = $scope.datePret;
+            emprunt.dateEmprunt = $scope.emprunt.datePret;
             emprunt.dateRetour = null;
-            emprunt.dateRetourPrevue = $scope.dateRetour;
+            emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;
             EmpruntService.addEmprunt(emprunt);
         };
 
@@ -59,8 +76,8 @@ angular
 
         $scope.submitMedia = function(){
             $("#myModal").modal('hide');
+            MediaService.updateMedia($scope.media);
             $timeout(function () {
-                MediaService.updateMedia($scope.media);
                 $location.path('/rechercheMedia');
             }, 500);            
         }
@@ -78,16 +95,7 @@ angular
         }
 
         $scope.changerDate = function(){
-            var dateAller = $scope.datePret;
-            if($scope.media != undefined){
-                if($scope.media.type=='CD' || $scope.media.type=='DVD'){
-                    dateAller.setDate(dateAller.getDate()+15);
-                }                    
-                else{
-                    dateAller.setDate(dateAller.getDate()+30);
-                }                
-                $scope.dateRetour = dateAller;
-            }
+            console.log($scope.datepret);
         };
 
         $scope.emprunter = function(emprunt){

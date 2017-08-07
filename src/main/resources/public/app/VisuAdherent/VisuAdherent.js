@@ -51,8 +51,8 @@ angular
 
         $scope.submit = function(){ 
             $("#myModalun").modal('hide');
+            AdherentService.updateAdherent($scope.adherent);
             $timeout(function () {
-                AdherentService.updateAdherent($scope.adherent);
                 $location.path('/rechercheAdherent');
             }, 500);    
         }
