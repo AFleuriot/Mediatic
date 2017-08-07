@@ -38,20 +38,21 @@
 			<div class="col-xs-12 table-responsive">
 				<table class="table table-striped table-bordered table-hover">
 				  <tr>
-				    <th>Titre</th>
-				    <th>Type</th>
-				    <th>Auteur</th>
-				    <th>Emprunté par</th>
-				    <th>Date de retour prévu</th>
+				    <th ng-click="sort('titre')">Titre</th>
+				    <th ng-click="sort('type')">Type</th>
+				    <th ng-click="sort('auteur')">Auteur</th>
+				    <th ng-click="sort('emprunteur')">Emprunté par</th>
+				    <th ng-click="sort('dateRetourPrevue')">Date de retour prévu</th>
 				  </tr>
-				  <tr ng-repeat="media in medias">
+				  <tr ng-repeat="media in medias | orderBy:sortBy:sortReverse">
 				    <td><a href="#!/visuMedia?id={{media.id}}">{{media.titre}}</a></td>
 				    <td><span class="glyphicon {{getTypeIcon(media)}}" data-toggle="tooltip" title="{{media.type}}"></span></td>
 				    <td>{{media.auteur}}</td>
 				    <td>{{media.emprunteur}}</td>
-				    <td>{{media.dateRetourPrevue}}</td>
+				    <td>{{media.dateRetourPrevue | date:'dd/MM/yyyy'}}</td>
 				  </tr>
 				</table>
+
 		</div>
 			
 	</div>

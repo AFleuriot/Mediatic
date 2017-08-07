@@ -22,8 +22,8 @@ angular
                 $scope.selectedAdherent = $scope.adherents[0];
             });
 
-            resource = EmpruntService.searchEmprunt({'emprunt':location.id});
-            resource.$promise.then(function(response){
+            resource = EmpruntService.searchEmprunt({'media':location.id});
+            resource.$promise.then(function(response){                
                 $scope.emprunts = response;                
                 $scope.emprunts.forEach(function(element) {
                     resource = AdherentService.getAdherentById(element.adherent);
@@ -50,7 +50,10 @@ angular
             emprunt.dateEmprunt = $scope.datePret;
             emprunt.dateRetour = null;
             emprunt.dateRetourPrevue = $scope.dateRetour;
-            EmpruntService.addEmprunt(emprunt);
+            EmpruntService.addEmprunt(emprunt).then(function(resp) {
+                $scope.media.empruntactuel=resp.id;
+                MediaService.updateMedia($scope.media);
+            });
         };
 
         $scope.changeAdherent =function(adherent){

@@ -20,6 +20,7 @@
         <p><b>Liste des adhérents l'ayant emprunté</b></p>
         <ul class="list-group">
             <li ng-repeat="emprunt in emprunts" class="list-group-item {{verifierDate(emprunt)}}">{{emprunter(emprunt)}}</li>
+            <li ng-if="!emprunts.length" class="list-group-item list-group-item-info"> Il n'y a aucun emprunt. </li>
         </ul>
     </div>
 

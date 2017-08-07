@@ -2,7 +2,7 @@
 
 angular.module('mediatic.RechercheMedia', ['ngRoute'])
 .controller('RechercheMediaCtrl', ['$scope', 'MediaService', 'AdherentService', 'EmpruntService', function($scope, MediaService, AdherentService, EmpruntService) {
-    
+
 
     var initialiser = function() {
         $scope.medias.forEach(function(media) {
@@ -19,9 +19,11 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         });
     }
 
-    $scope.medias = MediaService.getMedias();
+    $scope.medias = MediaService.searchMedia({});
     $scope.medias.$promise.then(initialiser);
 
+    $scope.sortBy = "";
+    $scope.sortReverse = false;
 
     $scope.getTypeIcon = function(media) {
         if (media.type =='Livre') {
@@ -45,8 +47,12 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         $scope.medias = MediaService.searchMedia(criteria);
         $scope.medias.$promise.then(initialiser);
         console.log($scope.medias);
-    }
+    };
 
+    $scope.sort = function(col) {
+        $scope.sortBy = col;
+        $scope.sortReverse = !$scope.sortReverse
+    }
     
 
 }]);
