@@ -3,12 +3,19 @@
 angular.module('mediatic')
     .factory('MediaService', ['$resource', function($resource) {
 
-        var Media = $resource('http://192.168.1.65:3000/media/:id');
+        var Media = $resource('http://192.168.1.65:3000/media/:id', null,
+                {
+                    'update': { method:'PUT' }
+                });
 
         return {
         
             getMedias: function() {
                 return Media.query();
+            },
+
+             getMediaById: function(id) {
+                return Media.get({'id':id});
             },
 
             addMedia: function(media) {
@@ -19,8 +26,12 @@ angular.module('mediatic')
                 m.$save();
             },
 
-            getMediaById: function(id) {
-                return Media.get({'id':id});
+            updateMedia: function(media) {
+                var m = this.getMediaById(media.id);
+                m.titre = media.titre;
+                m.auteur = media.auteur;
+                m.type = media.type;
+                Media.update({'id':media.id}, m);
             },
 
             searchMedia: function(criteria) {

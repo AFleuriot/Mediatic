@@ -3,7 +3,10 @@
 angular.module('mediatic')
     .factory('AdherentService', ['$resource', function($resource) {
 
-        var Adherent = $resource('http://192.168.1.65:3000/adherent/:id');
+        var Adherent = $resource('http://192.168.1.65:3000/adherent/:id', null,
+                {
+                    'update': { method:'PUT' }
+                });
 
         return {
         
@@ -24,6 +27,21 @@ angular.module('mediatic')
                 a.dateFinCotisation = adherent.dateFinCotisation;
                 a.montantCotisation = adherent.montantCotisation;
                 a.$save();
+            },
+
+            updateAdherent: function(adherent) {
+                var a = this.getAdherentById(adherent.id);
+                a.nom = adherent.nom;
+                a.prenom = adherent.prenom;
+                a.email = adherent.email;
+                a.dateNaissance = adherent.dateNaissance;
+                a.rue = adherent.rue;
+                a.ville = adherent.ville;
+                a.cp = adherent.cp;
+                a.dateCotisation = adherent.dateCotisation;
+                a.dateFinCotisation = adherent.dateFinCotisation;
+                a.montantCotisation = adherent.montantCotisation;
+                Adherent.update({'id':adherent.id}, a);
             },
 
             getAdherentById: function(id) {
