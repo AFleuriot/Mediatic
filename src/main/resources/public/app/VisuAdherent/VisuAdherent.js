@@ -41,8 +41,8 @@ angular
         $scope.$watch('adherent.dateCotisation',function() {
             if($scope.adherent != undefined){
                 var dateBase = new Date($scope.adherent.dateCotisation);
-                console.log(dateBase);
                 var date = new Date(dateBase.getFullYear(), dateBase.getMonth(), dateBase.getDate());
+                console.log(date);
                 date.setYear(date.getFullYear()+1);
                 $scope.finCotisation = date.toLocaleDateString();   
             }

@@ -7,16 +7,10 @@ angular.module('mediatic.CreationMedia', ['ngRoute'])
             $scope.MessageMediaCree = '';
 
             $scope.CreationMedia = function(){
-                $scope.MediaCrees.push(
-                    {'titre' : $scope.media.titre,
-                     'auteur': $scope.media.auteur,
-                     'type' : $scope.media.type                   
-                    });
-                $scope.MessageMediaCree = 'Le nouveau média a été enregistré !'
+                 $scope.MessageMediaCree = 'Le nouveau média a été enregistré !'
                 $timeout(function(){
                 $scope.MessageMediaCree ='';
                 }, 5000);
-
                 var media = {'titre' : $scope.media.titre,
                      'auteur': $scope.media.auteur,
                      'type' : $scope.media.type                   
