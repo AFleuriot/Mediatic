@@ -37,7 +37,6 @@ angular.module('mediatic')
             },
 
             searchMedia: function(criteria) {
-                console.log(criteria);
                 return Media.query(criteria);
             }
 

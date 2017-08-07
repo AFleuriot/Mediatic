@@ -19,7 +19,7 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         });
     }
 
-    $scope.medias = MediaService.getMedias();
+    $scope.medias = MediaService.searchMedia({});
     $scope.medias.$promise.then(initialiser);
 
 
@@ -45,8 +45,7 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         $scope.medias = MediaService.searchMedia(criteria);
         $scope.medias.$promise.then(initialiser);
         console.log($scope.medias);
-    }
-
+    };
     
 
 }]);
