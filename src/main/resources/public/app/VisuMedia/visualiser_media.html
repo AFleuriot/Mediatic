@@ -19,10 +19,8 @@
     <div class="row">
         <p><b>Liste des adhérents l'ayant emprunté</b></p>
         <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Quelqu'un doit le rendre dans trois jours.</li>
-            <li class="list-group-item list-group-item-warning">Quelqu'un aurait du le rendre, il y'a 5 jours</li>
-            <li class="list-group-item list-group-item-success">Quelqu'un l'a bien rendu</li>
-        </ul>            
+            <li ng-repeat="emprunt in emprunts" class="list-group-item {{verifierDate(emprunt)}}">{{emprunter(emprunt)}}</li>
+        </ul>
     </div>
 
     <div class="row">
@@ -31,17 +29,18 @@
             <div class="form-group">
                 <label class="control-label col-sm-2"  for="titre">Emprunteur</label>
                 <div class="col-sm-10">
-                    <input class="form-control" required type="text" id="emprunteur" ng-model="emprunteur"/>
+                    <select class="form-control" ng-model="selectedAdherent" ng-options="adherent.nom + ' ' + adherent.prenom for adherent in adherents" ng-change="changeAdherent(selectedAdherent)">
+                    </select>
                 </div>
             </div>  
             <div class="form-group">
                 <label class="control-label col-sm-2" for="titre">Date</label>
                 <div class="col-sm-10">
-                    <input class="form-control" required type="date" name="date" ng-model="datePret"/>
+                    <input class="form-control" ng-change="changerDate()" required type="date" name="date" ng-model="datePret"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="titre">Date de retour</label>
+                <label class="control-label col-sm-2" for="titre">Date de retour prévu</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="date" readonly name="date" ng-model="dateRetour"/>
                 </div>

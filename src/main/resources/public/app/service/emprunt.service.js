@@ -15,7 +15,7 @@ angular.module('mediatic')
             },
 
             addEmprunt: function(emprunt) {
-                var e = new Adherent();
+                var e = new Emprunt();
                 e.adherent = emprunt.adherent;
                 e.media = emprunt.media;
                 e.dateEmprunt = emprunt.dateEmprunt;

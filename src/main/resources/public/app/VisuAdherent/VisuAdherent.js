@@ -38,7 +38,7 @@ angular
                 return age + " ans";
             }
         }
-
+        
         $scope.$watch('adherent.dateCotisation',function() {
             if($scope.adherent != undefined){
                 var dateBase = new Date($scope.adherent.dateCotisation);
