@@ -23,7 +23,8 @@ angular.module('mediatic')
                 m.titre = media.titre;
                 m.auteur = media.auteur;
                 m.type = media.type;
-                m.$save();
+                m.empruntactuel = media.empruntactuel;
+                return m.$save();
             },
 
             updateMedia: function(media) {
@@ -31,7 +32,8 @@ angular.module('mediatic')
                 m.titre = media.titre;
                 m.auteur = media.auteur;
                 m.type = media.type;
-                Media.update({'id':media.id}, m);
+                m.empruntactuel = media.empruntactuel;
+                return Media.update({'id':media.id}, m);
             },
 
             searchMedia: function(criteria) {

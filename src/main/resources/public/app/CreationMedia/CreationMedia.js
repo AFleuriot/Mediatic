@@ -16,7 +16,8 @@ angular.module('mediatic.CreationMedia', ['ngRoute'])
                      'type' : $scope.media.type, 
                      'empruntactuel': null                
                     };
-                MediaService.addMedia(media);
+                var test = MediaService.addMedia(media);
+                console.log(test);
             }
 
      

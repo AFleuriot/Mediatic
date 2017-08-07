@@ -50,7 +50,10 @@ angular
             emprunt.dateEmprunt = $scope.datePret;
             emprunt.dateRetour = null;
             emprunt.dateRetourPrevue = $scope.dateRetour;
-            EmpruntService.addEmprunt(emprunt);
+            EmpruntService.addEmprunt(emprunt).then(function(resp) {
+                $scope.media.empruntactuel=resp.id;
+                MediaService.updateMedia($scope.media);
+            });
         };
 
         $scope.changeAdherent =function(adherent){

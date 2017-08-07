@@ -21,17 +21,18 @@ angular.module('mediatic')
                 e.dateEmprunt = emprunt.dateEmprunt;
                 e.dateRetour = emprunt.dateRetour;
                 e.dateRetourPrevue = emprunt.dateRetourPrevue;
-                e.$save();
+                return e.$save();
             },
 
-            updateAdherent: function(emprunt) {
+            updateEmprunt: function(emprunt) {
                 var e = this.getEmpruntById(emprunt.id);
                 e.adherent = emprunt.adherent;
                 e.media = emprunt.media;
                 e.dateEmprunt = emprunt.dateEmprunt;
                 e.dateRetour = emprunt.dateRetour;
                 e.dateRetourPrevue = emprunt.dateRetourPrevue;
-                Adherent.update({'id':emprunt.id}, e);
+                Emprunt.update({'id':emprunt.id}, e);
+                return e.id;
             },
 
             getEmpruntById: function(id) {
