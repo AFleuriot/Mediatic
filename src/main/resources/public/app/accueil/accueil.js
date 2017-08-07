@@ -11,7 +11,7 @@ angular
                 console.log('recherche media');
                 $location.path('/rechercheMedia');          
             } else {
-                console.log('accueil');
+                // console.log('accueil');
                 $location.path('/accueil');
             }
              
