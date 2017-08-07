@@ -26,7 +26,7 @@ angular.module('mediatic')
                 a.dateCotisation = adherent.dateCotisation;
                 a.dateFinCotisation = adherent.dateFinCotisation;
                 a.montantCotisation = adherent.montantCotisation;
-                a.$save();
+                return a.$save();
             },
 
             updateAdherent: function(adherent) {
@@ -41,7 +41,7 @@ angular.module('mediatic')
                 a.dateCotisation = adherent.dateCotisation;
                 a.dateFinCotisation = adherent.dateFinCotisation;
                 a.montantCotisation = adherent.montantCotisation;
-                Adherent.update({'id':adherent.id}, a);
+                return Adherent.update({'id':adherent.id}, a);
             },
 
             getAdherentById: function(id) {
@@ -49,7 +49,6 @@ angular.module('mediatic')
             },
 
             searchAdherent: function(criteria) {
-                console.log(criteria);
                 return Adherent.query(criteria);
             }
 
