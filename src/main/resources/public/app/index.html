@@ -23,30 +23,29 @@
         <img class="col-xs-4" src="http://www.lettrepratique.fr/blog/wp-content/uploads/2012/05/hibou-avec-des-lunettes-lisant-un-livre.jpg" alt="Logo" style="width:150px" />
         <h1 class="col-xs-8">Médiatic ! Ta médiathèque en ligne de ouf!</h1>
     </header>
-
    <nav class=" container navbar navbar-default" ng-if="username">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!/accueil">Accueil</a></li>
-                <li class="dropdown">
+                <li class="dropdown {{verifType('Media')}}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Médias<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#!/rechercheMedia">Rechercher</a></li>
-                        <li><a href="#!/creationMedia">Ajouter</a></li>
+                        <li class="{{verifLocation('/rechercheMedia')}}"><a href="#!/rechercheMedia">Rechercher</a></li>
+                        <li class="{{verifLocation('/creationMedia')}}"><a href="#!/creationMedia">Ajouter</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown {{verifType('Adherent')}}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Adhérents<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#!/rechercheAdherent">Rechercher</a></li>
-                        <li><a href="#!/creationAdherent">Ajouter</a></li>
+                        <li class="{{verifLocation('/rechercheAdherent')}}"><a href="#!/rechercheAdherent">Rechercher</a></li>
+                        <li class="{{verifLocation('/creationAdherent')}}"><a href="#!/creationAdherent">Ajouter</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>Bienvenu {{username}}</li>
-                <li><a href="" ng-click="disconnect()">logout</a></li>
+                <li><a class="not-active" href="">Bienvenue {{username}}</a></li>
+                <li><a href="" ng-click="disconnect()">Logout</a></li>   
             </ul>
+            {{verifLogin()}}
         </div>
     </nav>
 
