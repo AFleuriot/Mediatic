@@ -34,7 +34,24 @@ angular
             $location.path('/accueil');
         }
     }])
-    .run (function (AccueilService, $rootScope) {
+    .run (function (AccueilService, $rootScope,$location) {
             AccueilService.addAuthorization();
             $rootScope.disconnect = AccueilService.disconnect;
+            $rootScope.verifLocation = function(url){            
+                if(url == $location.path()){
+                    return 'active';
+                }
+            }
+            $rootScope.verifType = function(type){
+                if($location.path().indexOf(type)!=-1){
+                    return 'active_dropdown';
+                }
+            }         
+            $rootScope.verifLogin = function(){
+                if ($rootScope.username!=null) {
+                    if($location.path()=='/accueil'){
+                        $location.path('/rechercheAdherent');
+                    }
+                }    
+            }   
     });

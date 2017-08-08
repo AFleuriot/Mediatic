@@ -1,5 +1,15 @@
 /* app css stylesheet */
 
+.active_dropdown{
+  background-color: #c0bbab;
+
+}
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
