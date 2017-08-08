@@ -5,6 +5,7 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
 
     var initialiser = function() {
         $scope.adherents.forEach(function(adherent) {
+            adherent.nomComplet = adherent.nom+" "+adherent.prenom
             adherent.cotisation = cotisationAJour(adherent);
             adherent.nombreEmprunts = getNombreEmprunts(adherent.id);
         });
@@ -13,7 +14,7 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     $scope.adherents = AdherentService.getAdherents();
     $scope.adherents.$promise.then(initialiser);
 
-    $scope.sortBy = "id";
+    $scope.sortBy = "nomComplet";
     $scope.sortReverse = false;
 
     $scope.rechercher = function() {

@@ -25,6 +25,8 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
     $scope.sortBy = "";
     $scope.sortReverse = false;
 
+    $scope.typeEst="Tous";
+
     $scope.getTypeIcon = function(media) {
         if (media.type =='Livre') {
             return 'glyphicon-book';
