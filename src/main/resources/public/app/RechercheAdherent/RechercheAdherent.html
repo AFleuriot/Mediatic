@@ -24,15 +24,35 @@
 			</form>
 			
 			<div class="col-xs-12 table-responsive">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table table-striped table-bordered table-hover table-sortable">
 				  <tr>
-				    <th>Identifiant</th>
-				    <th>Nom</th>
-				    <th>Date de Naissance</th>
-				    <th>Cotisation à jour ?</th>
-				    <th>Nombre de médias empruntés</th>
+				    <th ng-click="sort('id')">Identifiant
+							<span ng-if="notSorted('id')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('id')" class="glyphicon glyphicon-sort-by-order-alt sort-icon"></span>
+							<span ng-if="reverseSorted('id')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
+						</th>
+				    <th ng-click="sort('nom')">Nom
+							<span ng-if="notSorted('nom')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('nom')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('nom')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('dateNaissance')">Date de Naissance
+							<span ng-if="notSorted('dateNaissance')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('dateNaissance')" class="glyphicon glyphicon-sort-by-order-alt sort-icon"></span>
+							<span ng-if="reverseSorted('dateNaissance')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
+						</th>
+				    <th ng-click="sort('cotisation')">Cotisation à jour ?
+							<span ng-if="notSorted('cotisation')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('cotisation')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('cotisation')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('nombreEmprunts')">Nombre de médias empruntés
+							<span ng-if="notSorted('nombreEmprunts')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('nombreEmprunts')" class="glyphicon glyphicon-sort-by-order-alt sort-icon"></span>
+							<span ng-if="reverseSorted('nombreEmprunts')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
+						</th>
 				  </tr>
-				  <tr ng-repeat="adherent in adherents">
+				  <tr ng-repeat="adherent in adherents | orderBy:sortBy:sortReverse">
 				    <td><a href="#!/visuAdherent?id={{adherent.id}}">{{adherent.id}}</a></td>
 				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
 				    <td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>

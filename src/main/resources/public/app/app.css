@@ -28,3 +28,11 @@
   color:green;
   text-align: center;
 }
+
+.table-sortable th {
+  cursor: pointer;
+}
+
+.sort-icon {
+  float:right;
+}

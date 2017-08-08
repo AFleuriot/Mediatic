@@ -36,13 +36,33 @@
 			</form>
 			
 			<div class="col-xs-12 table-responsive">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table table-striped table-bordered table-hover table-sortable">
 				  <tr>
-				    <th ng-click="sort('titre')">Titre</th>
-				    <th ng-click="sort('type')">Type</th>
-				    <th ng-click="sort('auteur')">Auteur</th>
-				    <th ng-click="sort('emprunteur')">Emprunté par</th>
-				    <th ng-click="sort('dateRetourPrevue')">Date de retour prévu</th>
+				    <th ng-click="sort('titre')">Titre
+							<span ng-if="notSorted('titre')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('titre')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('titre')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('type')">Type
+							<span ng-if="notSorted('type')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('type')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('type')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('auteur')">Auteur
+							<span ng-if="notSorted('auteur')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('auteur')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('auteur')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('emprunteur')">Emprunté par
+							<span ng-if="notSorted('emprunteur')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('emprunteur')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('emprunteur')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+						</th>
+				    <th ng-click="sort('dateRetourPrevue')">Date de retour prévu
+							<span ng-if="notSorted('dateRetourPrevue')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('dateRetourPrevue')" class="glyphicon glyphicon-sort-by-order-alt sort-icon"></span>
+							<span ng-if="reverseSorted('dateRetourPrevue')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
+						</th>
 				  </tr>
 				  <tr ng-repeat="media in medias | orderBy:sortBy:sortReverse">
 				    <td><a href="#!/visuMedia?id={{media.id}}">{{media.titre}}</a></td>

@@ -13,6 +13,9 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     $scope.adherents = AdherentService.getAdherents();
     $scope.adherents.$promise.then(initialiser);
 
+    $scope.sortBy = "id";
+    $scope.sortReverse = false;
+
     $scope.rechercher = function() {
         var criteria = {};
         criteria.nom_like=$scope.nomContient;
@@ -40,4 +43,22 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     var getNombreEmprunts = function(adherentId) {
         return EmpruntService.getEmpruntsActuelsOfAdherent(adherentId).length;
     }
+
+    $scope.sort = function(col) {
+        $scope.sortBy = col;
+        $scope.sortReverse = !$scope.sortReverse
+    };
+
+    $scope.notSorted = function(col) {
+        return $scope.sortBy!=col;
+    };
+
+    $scope.sorted = function(col) {
+        return !$scope.sortReverse && $scope.sortBy==col;
+    };
+
+    $scope.reverseSorted = function(col) {
+        return $scope.sortReverse && $scope.sortBy==col;
+    };
+
 }]);
