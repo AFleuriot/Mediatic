@@ -1,5 +1,15 @@
 /* app css stylesheet */
 
+.active_dropdown{
+  background-color: #c0bbab;
+
+}
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,4 +37,16 @@
   font-size:150%;
   color:green;
   text-align: center;
+}
+
+.messBadLogin {
+  color: red;
+}
+
+.table-sortable th, .table-sortable tr {
+  cursor: pointer;
+}
+
+.sort-icon {
+  float:right;
 }

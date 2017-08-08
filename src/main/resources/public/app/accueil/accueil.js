@@ -17,7 +17,7 @@ angular
             } else {
                 // console.log('accueil');
                 $location.path('/accueil');
-                $scope.badLogin = 'Mauvais login ou mot de passe !'
+                $scope.badLogin = 'Le login ou le mot de passe est incorrect'
             }
              
         }

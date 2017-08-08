@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mediatic.RechercheAdherent', ['ngRoute'])
-.controller('RechercheAdherentCtrl', ['$scope', 'AdherentService', 'EmpruntService', function($scope, AdherentService, EmpruntService) {
+.controller('RechercheAdherentCtrl', ['$scope', '$location', 'AdherentService', 'EmpruntService', function($scope, $location, AdherentService, EmpruntService) {
 
     var initialiser = function() {
         $scope.adherents.forEach(function(adherent) {
@@ -12,6 +12,9 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
 
     $scope.adherents = AdherentService.getAdherents();
     $scope.adherents.$promise.then(initialiser);
+
+    $scope.sortBy = "id";
+    $scope.sortReverse = false;
 
     $scope.rechercher = function() {
         var criteria = {};
@@ -40,4 +43,26 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     var getNombreEmprunts = function(adherentId) {
         return EmpruntService.getEmpruntsActuelsOfAdherent(adherentId).length;
     }
+
+    $scope.sort = function(col) {
+        $scope.sortBy = col;
+        $scope.sortReverse = !$scope.sortReverse
+    };
+
+    $scope.notSorted = function(col) {
+        return $scope.sortBy!=col;
+    };
+
+    $scope.sorted = function(col) {
+        return !$scope.sortReverse && $scope.sortBy==col;
+    };
+
+    $scope.reverseSorted = function(col) {
+        return $scope.sortReverse && $scope.sortBy==col;
+    };
+
+    $scope.goTo = function(adherentId) {
+        $location.path('/visuAdherent').search({'id':adherentId});
+    }
+
 }]);
