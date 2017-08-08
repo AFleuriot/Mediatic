@@ -45,18 +45,39 @@ angular
                     }, this);
                 console.log($scope.UserEmprunts);
             });
-        } 
 
-        $scope.$watch('emprunt.dateEmprunt',function(newvalue, oldvalue){
-            var dateAller = new Date(newvalue);
+
+
+
+            
+        }
+
+
+        $scope.$watch('emprunt.selectedMedia', function(){
+            console.log($scope.emprunt.selectedMedia.type);
+            if($scope.emprunt.selectedMedia.type=='Livre'){
+                $scope.dureeEmprunt=30;
+            } else {
+                $scope.dureeEmprunt=15;
+            }
+            changerDateRetour();
+
+        });
+
+        var changerDateRetour = function(){
+            var dateAller = new Date();  
             if($scope.emprunt.selectedMedia=='CD' || $scope.emprunt.selectedMedia=='DVD'){
-                dateAller.setDate(dateAller.getDate()+15);
+                dateAller.setDate(dateAller.getDate()+$scope.dureeEmprunt);
             }                    
             else{
-                dateAller.setDate(dateAller.getDate()+30);
+                dateAller.setDate(dateAller.getDate()+$scope.dureeEmprunt);
             }                                            
             $scope.emprunt.dateRetour = new Date(dateAller);
-        });
+        };
+
+
+        $scope.$watch('emprunt.dateEmprunt', changerDateRetour, true);
+
 
         $scope.getAge = function getAge() 
         {
@@ -91,20 +112,9 @@ angular
             }, 500);    
         }
 
-        $scope.changeMedia = function(media){            
-            $scope.selectedMedia = media;
-            console.log( $scope.selectedMedia);
-            var dateAller = new Date($scope.emprunt.dateEmprunt);
-            if($scope.emprunt.selectedMedia.type=='CD' || $scope.emprunt.selectedMedia.type=='DVD'){
-                dateAller.setDate(dateAller.getDate()+15);
-            }                    
-            else{
-                dateAller.setDate(dateAller.getDate()+30);
-            }                                            
-            $scope.emprunt.dateRetour = new Date(dateAller);
-        }
 
         $scope.submitEmprunt = function(){
+            if($scope.emprunt.selectedMedia.empruntactuel == null){
             var emprunt={};
             emprunt.adherent = parseInt($scope.adherent.id);
 
@@ -113,13 +123,17 @@ angular
             emprunt.dateEmprunt = $scope.emprunt.dateEmprunt;
             emprunt.dateRetour = null;
             emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;
-            EmpruntService.addEmprunt(emprunt).then(function(resp) {
+            EmpruntService.addEmprunt(emprunt).then(function (resp) {
                
-                var mediaEmprunte = MediaService.getMediaById(emprunt.media);
-                mediaEmprunte.empruntactuel = resp.id;
-                MediaService.updateMedia(mediaEmprunte);
-
-            });
+                $scope.emprunt.selectedMedia.empruntactuel = resp.id;
+                MediaService.updateMedia($scope.emprunt.selectedMedia);
+                
+                 console.log('Pas emprunté !')
+            })
+            } else {
+                console.log('Emprunté !')
+                $scope.MessMediaDejaEmprunte = 'Ce média a déjà été emprunté !'
+            }
         }
 
         $scope.verifierDate = function(emprunt){
