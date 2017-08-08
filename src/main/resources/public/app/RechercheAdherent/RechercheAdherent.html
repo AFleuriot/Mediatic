@@ -31,10 +31,10 @@
 							<span ng-if="sorted('id')" class="glyphicon glyphicon-sort-by-order-alt sort-icon"></span>
 							<span ng-if="reverseSorted('id')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
 						</th>
-				    <th ng-click="sort('nom')">Nom
-							<span ng-if="notSorted('nom')" class="glyphicon glyphicon-sort sort-icon"></span>
-							<span ng-if="sorted('nom')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
-							<span ng-if="reverseSorted('nom')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
+				    <th ng-click="sort('nomComplet')">Nom
+							<span ng-if="notSorted('nomComplet')" class="glyphicon glyphicon-sort sort-icon"></span>
+							<span ng-if="sorted('nomComplet')" class="glyphicon glyphicon-sort-by-alphabet sort-icon"></span>
+							<span ng-if="reverseSorted('nomComplet')" class="glyphicon glyphicon-sort-by-alphabet-alt sort-icon"></span>
 						</th>
 				    <th ng-click="sort('dateNaissance')">Date de Naissance
 							<span ng-if="notSorted('dateNaissance')" class="glyphicon glyphicon-sort sort-icon"></span>
@@ -54,7 +54,7 @@
 				  </tr>
 				  <tr ng-repeat="adherent in adherents | orderBy:sortBy:sortReverse" ng-click="goTo(adherent.id)">
 							<td>{{adherent.id}}</td>
-							<td>{{adherent.prenom}} {{adherent.nom}}</td>
+							<td>{{adherent.nomComplet}}</td>
 							<td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>
 							<td>{{adherent.cotisation}}</td>
 							<td>{{adherent.nombreEmprunts}}</td>
