@@ -29,6 +29,10 @@
   text-align: center;
 }
 
+.messBadLogin {
+  color: red;
+}
+
 .table-sortable th {
   cursor: pointer;
 }
