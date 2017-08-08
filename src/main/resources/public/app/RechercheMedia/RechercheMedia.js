@@ -52,7 +52,19 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
     $scope.sort = function(col) {
         $scope.sortBy = col;
         $scope.sortReverse = !$scope.sortReverse
-    }
+    };
+
+    $scope.notSorted = function(col) {
+        return $scope.sortBy!=col;
+    };
+
+    $scope.sorted = function(col) {
+        return !$scope.sortReverse && $scope.sortBy==col;
+    };
+
+    $scope.reverseSorted = function(col) {
+        return $scope.sortReverse && $scope.sortBy==col;
+    };
     
 
 }]);

@@ -42,3 +42,11 @@
 .messBadLogin {
   color: red;
 }
+
+.table-sortable th {
+  cursor: pointer;
+}
+
+.sort-icon {
+  float:right;
+}
