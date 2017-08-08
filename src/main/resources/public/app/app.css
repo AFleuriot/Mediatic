@@ -33,7 +33,7 @@
   color: red;
 }
 
-.table-sortable th {
+.table-sortable th, .table-sortable tr {
   cursor: pointer;
 }
 

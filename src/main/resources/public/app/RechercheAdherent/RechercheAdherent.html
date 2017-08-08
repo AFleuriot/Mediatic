@@ -52,12 +52,12 @@
 							<span ng-if="reverseSorted('nombreEmprunts')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
 						</th>
 				  </tr>
-				  <tr ng-repeat="adherent in adherents | orderBy:sortBy:sortReverse">
-				    <td><a href="#!/visuAdherent?id={{adherent.id}}">{{adherent.id}}</a></td>
-				    <td>{{adherent.prenom}} {{adherent.nom}}</td>
-				    <td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>
-				    <td>{{adherent.cotisation}}</td>
-				    <td>{{adherent.nombreEmprunts}}</td>
+				  <tr ng-repeat="adherent in adherents | orderBy:sortBy:sortReverse" ng-click="goTo(adherent.id)">
+							<td>{{adherent.id}}</td>
+							<td>{{adherent.prenom}} {{adherent.nom}}</td>
+							<td>{{adherent.dateNaissance | date:"dd/MM/yyyy"}}</td>
+							<td>{{adherent.cotisation}}</td>
+							<td>{{adherent.nombreEmprunts}}</td>
 				  </tr>
 				 
 				</table>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mediatic.RechercheAdherent', ['ngRoute'])
-.controller('RechercheAdherentCtrl', ['$scope', 'AdherentService', 'EmpruntService', function($scope, AdherentService, EmpruntService) {
+.controller('RechercheAdherentCtrl', ['$scope', '$location', 'AdherentService', 'EmpruntService', function($scope, $location, AdherentService, EmpruntService) {
 
     var initialiser = function() {
         $scope.adherents.forEach(function(adherent) {
@@ -60,5 +60,9 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     $scope.reverseSorted = function(col) {
         return $scope.sortReverse && $scope.sortBy==col;
     };
+
+    $scope.goTo = function(adherentId) {
+        $location.path('/visuAdherent').search({'id':adherentId});
+    }
 
 }]);

@@ -64,8 +64,8 @@
 							<span ng-if="reverseSorted('dateRetourPrevue')" class="glyphicon glyphicon-sort-by-order sort-icon"></span>
 						</th>
 				  </tr>
-				  <tr ng-repeat="media in medias | orderBy:sortBy:sortReverse">
-				    <td><a href="#!/visuMedia?id={{media.id}}">{{media.titre}}</a></td>
+				  <tr ng-repeat="media in medias | orderBy:sortBy:sortReverse" ng-click="goTo(media.id)">
+				    <td>{{media.titre}}</td>
 				    <td><span class="glyphicon {{getTypeIcon(media)}}" data-toggle="tooltip" title="{{media.type}}"></span></td>
 				    <td>{{media.auteur}}</td>
 				    <td>{{media.emprunteur}}</td>

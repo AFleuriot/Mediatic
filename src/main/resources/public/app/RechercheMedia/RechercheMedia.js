@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mediatic.RechercheMedia', ['ngRoute'])
-.controller('RechercheMediaCtrl', ['$scope', 'MediaService', 'AdherentService', 'EmpruntService', function($scope, MediaService, AdherentService, EmpruntService) {
+.controller('RechercheMediaCtrl', ['$scope', '$location', 'MediaService', 'AdherentService', 'EmpruntService', function($scope, $location, MediaService, AdherentService, EmpruntService) {
 
 
     var initialiser = function() {
@@ -66,5 +66,8 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         return $scope.sortReverse && $scope.sortBy==col;
     };
     
+    $scope.goTo = function(mediaId) {
+        $location.path('/visuMedia').search({'id':mediaId});
+    };
 
 }]);
