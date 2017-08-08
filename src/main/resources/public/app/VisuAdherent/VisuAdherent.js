@@ -5,7 +5,8 @@ angular
     .controller('VisuAdherentCtrl', ['$scope', '$location','AdherentService','$timeout','MediaService', 'EmpruntService',
     function($scope,$location,AdherentService,$timeout,MediaService, EmpruntService){
         var location = $location.search();      
-        $scope.emprunt ={};
+        $scope.emprunt = {};
+        
         if(location.id==undefined){
             $location.path('/rechercheAdherent');
         }
@@ -34,12 +35,14 @@ angular
             resource = EmpruntService.searchEmprunt({'adherent':location.id});
             resource.$promise.then(function(response){
                 $scope.UserEmprunts = response;
-                $scope.UserEmprunts.forEach(function(element) {
+                    $scope.UserEmprunts.forEach(function(element) {
+
                     resource = AdherentService.getAdherentById(element.adherent);
                     element.adherent = resource;
                     resource = MediaService.getMediaById(element.media);
                     element.media = resource;
-                }, this);
+
+                    }, this);
                 console.log($scope.UserEmprunts);
             });
         } 
@@ -104,13 +107,18 @@ angular
         $scope.submitEmprunt = function(){
             var emprunt={};
             emprunt.adherent = parseInt($scope.adherent.id);
+
             emprunt.media = parseInt($scope.emprunt.selectedMedia.id);
+            
             emprunt.dateEmprunt = $scope.emprunt.dateEmprunt;
             emprunt.dateRetour = null;
             emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;
             EmpruntService.addEmprunt(emprunt).then(function(resp) {
-                $scope.media.empruntactuel=resp.id;
-                MediaService.updateMedia($scope.media);
+               
+                var mediaEmprunte = MediaService.getMediaById(emprunt.media);
+                mediaEmprunte.empruntactuel = resp.id;
+                MediaService.updateMedia(mediaEmprunte);
+
             });
         }
 
@@ -125,6 +133,24 @@ angular
 
         $scope.emprunter = function(emprunt){
             return emprunt.media.titre + ' par ' + emprunt.media.auteur + ' (' + emprunt.media.type + ') (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+').';
+        }
+
+
+        $scope.rendreMedia = function() {
+            console.log($scope.emprunt.selectedRendreMedia)
+            var nouveaumedia = $scope.emprunt.selectedRendreMedia.media;
+            var rendreemprunt = $scope.emprunt.selectedRendreMedia; 
+
+            rendreemprunt.adherent = rendreemprunt.adherent.id;
+            rendreemprunt.media = rendreemprunt.media.id;
+            rendreemprunt.dateRetour = new Date();
+            EmpruntService.updateEmprunt(rendreemprunt);   
+
+            nouveaumedia.empruntactuel = null;
+            MediaService.updateMedia(nouveaumedia);
+            console.log($scope.emprunt.selectedRendreMedia)
+        
+
         }
 
     }]

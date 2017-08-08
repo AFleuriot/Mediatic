@@ -21,13 +21,29 @@
         </div>                
     </div>
     <br>
+     <!-- Liste des médias -->
     <div class="row">
-        <p><b>Liste des adhérents l'ayant emprunté</b></p>
+        <p><b>Liste des médias empruntés</b></p>
         <ul class="list-group">
-            <li ng-repeat="emprunt in UserEmprunts" class="list-group-item {{verifierDate(emprunt)}}">{{emprunter(emprunt)}}</li>
-            <li ng-if="!UserEmprunts.length" class="list-group-item list-group-item-info"> Aucun adhérent ne l'a encore emprunté </li>
+            <li ng-model="listeEmprunt" ng-repeat="emprunt in UserEmprunts | filter: { dateRetour: null }" class="list-group-item {{verifierDate(emprunt)}}">{{emprunter(emprunt)}}</li>
+            <li ng-if="!UserEmprunts" class="list-group-item list-group-item-info"> Aucun média n'a été emprunté par cet adhérent</li>
         </ul>
     </div>
+    <!-- Rendre un média -->
+    <div class= "row">
+        <h3>Rendre un média</h3>
+    <form class="form-horizontal" ng-submit="rendreMedia()">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="titreMedia">Titre du média</label>
+            <div class="col-sm-10">
+                    <select class="form-control" ng-model="emprunt.selectedRendreMedia" ng-options="emprunt.media.titre + ' par ' + emprunt.media.auteur for emprunt in UserEmprunts | filter: { dateRetour: null }">
+                    </select>
+            </div>
+        </div>
+        <input class="btn btn-success center-block" type="submit" value="Rendre"/>
+    </form>
+    </div>
+    <!-- Emprunter un média -->
     <div class="row">         
         <h3>Ajouter un média emprunté</h3>
         <form class="form-horizontal" ng-submit="submitEmprunt()">
