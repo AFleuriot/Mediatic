@@ -53,5 +53,8 @@ angular
                         $location.path('/rechercheAdherent');
                     }
                 }    
+                if($rootScope.username==undefined){
+                    $location.path('/accueil');
+                }
             }   
     });
