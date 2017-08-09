@@ -13,7 +13,7 @@ angular
         else{
             var resource = AdherentService.getAdherentById(location.id);        
             resource.$promise.then(function(response){
-                console.log(resource);                 
+                              
                 $scope.adherent = response;  
                 $scope.adherent.id = location.id;
                 $scope.adherent.cp = parseInt($scope.adherent.cp);
@@ -43,7 +43,7 @@ angular
                     element.media = resource;
 
                     }, this);
-                console.log($scope.UserEmprunts);
+               
             });
 
 
@@ -51,34 +51,25 @@ angular
 
             
         }
-
-
-        $scope.$watch('emprunt.selectedMedia', function(){
-            console.log($scope.emprunt.selectedMedia.type);
-            if($scope.emprunt.selectedMedia.type=='Livre'){
-                $scope.dureeEmprunt=30;
-            } else {
-                $scope.dureeEmprunt=15;
-            }
-            changerDateRetour();
-
-        });
-
+// MàJ date retour emprunt  =============================================== 
         var changerDateRetour = function(){
-            var dateAller = new Date();  
-            if($scope.emprunt.selectedMedia=='CD' || $scope.emprunt.selectedMedia=='DVD'){
-                dateAller.setDate(dateAller.getDate()+$scope.dureeEmprunt);
-            }                    
-            else{
-                dateAller.setDate(dateAller.getDate()+$scope.dureeEmprunt);
-            }                                            
-            $scope.emprunt.dateRetour = new Date(dateAller);
+            
+            var dateAller = new Date($scope.emprunt.dateEmprunt.getFullYear(),$scope.emprunt.dateEmprunt.getMonth(),$scope.emprunt.dateEmprunt.getDate());
+            var typeMedia = $scope.emprunt.selectedMedia.type;
+            var nbreJoursEmprunt = $scope.dureeEmprunt;
+            if(typeMedia=='Livre'){
+                nbreJoursEmprunt=30;
+            } else {
+                nbreJoursEmprunt=15;
+            }
+            dateAller.setDate(dateAller.getDate()+nbreJoursEmprunt);
+            $scope.emprunt.dateRetour = dateAller;
         };
 
-
+        $scope.$watch('emprunt.selectedMedia', changerDateRetour,true);
         $scope.$watch('emprunt.dateEmprunt', changerDateRetour, true);
 
-
+// Voir l'âge de l'adhérent =============================================== 
         $scope.getAge = function getAge() 
         {
             if($scope.adherent != undefined){
@@ -93,17 +84,28 @@ angular
                 return age + " ans";
             }
         }
-        
+
+// Voir date fin coti =============================================== 
         $scope.$watch('adherent.dateCotisation',function() {
             if($scope.adherent != undefined){
                 var dateBase = new Date($scope.adherent.dateCotisation);
                 var date = new Date(dateBase.getFullYear(), dateBase.getMonth(), dateBase.getDate());
-                console.log(date);
+               
                 date.setYear(date.getFullYear()+1);
                 $scope.finCotisation = date.toLocaleDateString();   
             }
         })
-
+// Vérification date retour prévue dépassé ================================ 
+        $scope.verifierDate = function(emprunt){
+            if(new Date(emprunt.dateRetourPrevue)<new Date() && emprunt.dateRetour == null){
+                return 'list-group-item-danger';
+            }
+            else{
+                return 'list-group-item-success';
+            }
+        }
+        
+// Modal  =============================================== 
         $scope.submit = function(){ 
             $("#myModalun").modal('hide');
             AdherentService.updateAdherent($scope.adherent);
@@ -112,9 +114,12 @@ angular
             }, 500);    
         }
 
+// Emprunter un média =============================================== 
+$scope.MessMediaDejaEmprunte = '';
+$scope.MediaBienEmprunte = '';
 
         $scope.submitEmprunt = function(){
-            if($scope.emprunt.selectedMedia.empruntactuel == null){
+            
             var emprunt={};
             emprunt.adherent = parseInt($scope.adherent.id);
 
@@ -127,31 +132,31 @@ angular
                
                 $scope.emprunt.selectedMedia.empruntactuel = resp.id;
                 MediaService.updateMedia($scope.emprunt.selectedMedia);
-                
-                 console.log('Pas emprunté !')
+                $scope.MediaBienEmprunte ='Le média a bien été emprunté !';
+                $timeout(function () {
+                $scope.MediaBienEmprunte ='';
+            }, 2500);
             })
-            } else {
-                console.log('Emprunté !')
-                $scope.MessMediaDejaEmprunte = 'Ce média a déjà été emprunté !'
-            }
+          
         }
 
-        $scope.verifierDate = function(emprunt){
-            if(new Date(emprunt.dateRetourPrevue)<new Date() && emprunt.dateRetour == null){
-                return 'list-group-item-danger';
+
+        $scope.$watch('emprunt.selectedMedia', function(){
+            if($scope.emprunt.selectedMedia.empruntactuel != null){
+            $scope.MessMediaDejaEmprunte = 'Ce média a déjà été emprunté !';
+                $timeout(function () {
+                $scope.MessMediaDejaEmprunte ='';
+            }, 2500);
             }
-            else{
-                return 'list-group-item-success';
-            }
-        }
+        })
 
         $scope.emprunter = function(emprunt){
             return emprunt.media.titre + ' par ' + emprunt.media.auteur + ' (' + emprunt.media.type + ') (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+').';
         }
 
-
+// Rendre un média ============================================
         $scope.rendreMedia = function() {
-            console.log($scope.emprunt.selectedRendreMedia)
+            
             var nouveaumedia = $scope.emprunt.selectedRendreMedia.media;
             var rendreemprunt = $scope.emprunt.selectedRendreMedia; 
 
@@ -162,7 +167,7 @@ angular
 
             nouveaumedia.empruntactuel = null;
             MediaService.updateMedia(nouveaumedia);
-            console.log($scope.emprunt.selectedRendreMedia)
+            
         
 
         }

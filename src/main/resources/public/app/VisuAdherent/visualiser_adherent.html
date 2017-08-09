@@ -52,6 +52,7 @@
                 <div class="col-sm-10">
                     <select class="form-control" ng-model="emprunt.selectedMedia" ng-options="media.titre + ' par ' + media.auteur + ' (' + media.type + ')' for media in medias">
                     </select>
+                    
                 </div>
             </div>  
             <div class="form-group">
@@ -68,7 +69,9 @@
             </div>
             <input class="btn btn-success center-block" type="submit" value="Enregistrer"/>
         </form>
-        <p>{{MessMediaDejaEmprunte}}</p>
+        <br>
+         <p class="messAdhMediaCree">{{MediaBienEmprunte}}</p>
+        <p class="messBadLogin">{{MessMediaDejaEmprunte}}</p>
     </div>
 
 <!-- Modal -->

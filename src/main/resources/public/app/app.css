@@ -38,9 +38,10 @@
   color:green;
   text-align: center;
 }
-
 .messBadLogin {
-  color: red;
+  font-size:150%;
+  color:red;
+  text-align: center;
 }
 
 .table-sortable th, .table-sortable tr {
