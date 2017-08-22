@@ -4,7 +4,12 @@ import java.time.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.databasehelper.LocalDateDeserializer;
+import fr.dta.databasehelper.LocalDateSerializer;
 
 @Entity
 @Table
@@ -18,6 +23,8 @@ public class Cotisation {
 	private Adherent adherent;
 	
 	@Column
+	@JsonSerialize(using=LocalDateSerializer.class)
+	@JsonDeserialize(using=LocalDateDeserializer.class)
 	private LocalDate dateCotisation;
 	
 	@Column

@@ -6,9 +6,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import fr.dta.adherent.modele.Adherent;
+import org.springframework.stereotype.Repository;
 
-public class AdherentDAO {
+import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.AbstractJpaRepository;
+
+@Repository
+public class AdherentDAO extends AbstractJpaRepository<Adherent>{
 		
 		public static void creerAdherent(Adherent adherent){
 			EntityManager em = createEntityManager();
@@ -59,6 +63,11 @@ public class AdherentDAO {
 			List<Adherent> resultat = query.getResultList();
 			commitTxAndClose(em);			
 			return resultat;
+		}
+
+		@Override
+		protected Class<Adherent> getEntityClass() {
+			return Adherent.class;
 		}
 
 }

@@ -4,16 +4,23 @@ import java.time.*;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import fr.dta.configuration.IoEntity;
 import fr.dta.cotisation.modele.Cotisation;
+import fr.dta.databasehelper.LocalDateDeserializer;
+import fr.dta.databasehelper.LocalDateSerializer;
 import fr.dta.emprunt.modele.Emprunt;
 
 
 @Entity
 @Table
-public class Adherent {	
+public class Adherent implements IoEntity {	
 
 		@GeneratedValue
 		@Id
@@ -32,7 +39,9 @@ public class Adherent {
 		private String email;
 		
 		@Column
-		@NotBlank
+		@NotNull
+		@JsonSerialize(using=LocalDateSerializer.class)
+		@JsonDeserialize(using=LocalDateDeserializer.class)
 		private LocalDate dateNaissance;
 		
 		@OneToOne
