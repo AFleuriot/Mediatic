@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('mediatic.RechercheAdherent', ['ngRoute'])
-.controller('RechercheAdherentCtrl', ['$scope', '$location', 'AdherentService', 'EmpruntService', function($scope, $location, AdherentService, EmpruntService) {
-
+.controller('RechercheAdherentCtrl', ['$scope', '$location', 'AdherentService', 'EmpruntService', '$http',
+	function($scope, $location, AdherentService, EmpruntService, $http) {
+	
     var initialiser = function() {
         $scope.adherents.forEach(function(adherent) {
             adherent.nomComplet = adherent.nom+" "+adherent.prenom

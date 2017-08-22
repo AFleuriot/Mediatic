@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('mediatic')
-    .factory('AdherentService', ['$resource', function($resource) {
+    .factory('AdherentService', ['$resource', '$http', function($resource, $http) {
 
-        var Adherent = $resource('http://192.168.1.65:3000/adherent/:id', null,
+        var Adherent = $resource('http://localhost:8080/adherent/:id', null,
                 {
                     'update': { method:'PUT' }
                 });
 
         return {
         
-            getAdherents: function() {
+            getAdherents: function() {         	
                 return Adherent.query();
             },
 
