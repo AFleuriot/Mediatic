@@ -1,13 +1,13 @@
-import adherent.dao.AdherentDAO;
-import adherent.modele.Adherent;
-import cotisation.dao.CotisationDAO;
-import cotisation.modele.Cotisation;
+import fr.dta.adherent.dao.AdherentDAO;
+import fr.dta.adherent.modele.Adherent;
+import fr.dta.cotisation.dao.CotisationDAO;
+import fr.dta.cotisation.modele.Cotisation;
 
 import java.time.LocalDate;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void pasMain() {
 		
 		Adherent adherent1 = new Adherent("Thomas", "Suzanne", "patate@gmail.com", LocalDate.of(1989, 05, 21));
 		AdherentDAO.creerAdherent(adherent1);
