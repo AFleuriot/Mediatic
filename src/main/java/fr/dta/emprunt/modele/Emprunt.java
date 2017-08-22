@@ -5,11 +5,14 @@ import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.IoEntity;
 import fr.dta.media.modele.Media;
 
 @Entity
-public class Emprunt {
+public class Emprunt implements IoEntity {
 
 	@Id
 	@GeneratedValue
@@ -21,6 +24,7 @@ public class Emprunt {
 	
 	@NotNull
 	@ManyToOne
+	@JsonIgnore
 	private Media media;
 	
 	@NotNull
