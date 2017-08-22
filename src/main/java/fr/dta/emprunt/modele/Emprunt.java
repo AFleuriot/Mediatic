@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import fr.dta.adherent.modele.Adherent;
 import fr.dta.media.modele.Media;
 
@@ -21,6 +23,7 @@ public class Emprunt {
 	
 	@NotNull
 	@ManyToOne
+	@JsonIgnore
 	private Media media;
 	
 	@NotNull

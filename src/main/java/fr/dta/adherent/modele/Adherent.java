@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -58,6 +59,7 @@ public class Adherent implements IoEntity {
 		private Integer cp;
 		
 		@OneToMany(mappedBy="adherent")
+		@JsonIgnore
 		private List<Emprunt> emprunt;
 		
 		public Adherent(){
