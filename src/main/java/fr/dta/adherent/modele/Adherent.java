@@ -178,6 +178,4 @@ public class Adherent {
 					+ ", dateNaissance=" + dateNaissance + ", cotisation=" + cotisation + ", rue=" + rue + ", ville="
 					+ ville + ", cp=" + cp + ", emprunt=" + emprunt + "]";
 		}
-								
-
 }
