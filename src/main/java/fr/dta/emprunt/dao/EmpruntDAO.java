@@ -2,23 +2,11 @@ package fr.dta.emprunt.dao;
 
 import static fr.dta.databasehelper.DatabaseHelper.*;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.persistence.EntityManager;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
-
-import fr.dta.configuration.AbstractJpaRepository;
 import fr.dta.emprunt.modele.Emprunt;
-import fr.dta.media.modele.Media;
-import fr.dta.media.modele.TypeMedia;
 
-@Repository
-public class EmpruntDAO extends AbstractJpaRepository<Emprunt>{
+public class EmpruntDAO {
 	
 	public static void creerEmprunt(Emprunt emprunt) {
 		EntityManager em = createEntityManager();
@@ -51,27 +39,4 @@ public class EmpruntDAO extends AbstractJpaRepository<Emprunt>{
 		return emprunt;
 	}
 
-	@Override
-	protected Class<Emprunt> getEntityClass() {
-		return Emprunt.class;
-	}
-
-	public List<Emprunt> rechercheCriteriaMedia(Map<String,String> criteria){
-		Criteria c = getSession().createCriteria(getEntityClass());
-		System.out.println(criteria);
-		if(!criteria.isEmpty()) {
-			if( ( criteria.get("adherent")!=null && !criteria.get("adherent").isEmpty() )) {
-				c = c.add(Restrictions.eq("adherent", criteria.get("adherent")));
-			} 
-			if( criteria.get("dateRetour")!=null && criteria.get("dateRetour")=="nulle") {
-				c = c.add(Restrictions.isNull("dateRetour"));
-			}
-		}
-		return (List<Emprunt>) c.list();
-	}
-	
-	
-	
-	
-	
 }

@@ -3,19 +3,12 @@ package fr.dta.emprunt.service;
 import static fr.dta.emprunt.dao.EmpruntDAO.*;
 
 import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.stereotype.Service;
 
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.media.dao.MediaDAO;
 
-@Service
 public class EmpruntService {
-	/*
-	 * 
-	 * =================== Ancienne méthode ==================== Hibernate sans Spring
-	 * 
+	
 	public static void emprunter(Emprunt emprunt) {
 		emprunt.setDateRetourPrevue(emprunt.getDateEmprunt().plusDays(emprunt.getMedia().getType().getJoursEmpruntables()));
 		emprunt.getMedia().setEmpruntactuel(emprunt);
@@ -30,7 +23,7 @@ public class EmpruntService {
 		MediaDAO.modifierMedia(emprunt.getMedia());
 	}
 	
-	public static List<Media> getMediaEmpruntes(Adherent adherent) {
+/*	public static List<Media> getMediaEmpruntes(Adherent adherent) {
 		EntityManager em = createEntityManager();
 		beginTx(em);
 		TypedQuery<Media> query = em.createQuery("SELECT m FROM "+ Emprunt.class.getName() +" e INNER JOIN FETCH e.media m WHERE e.adherent=:id" ,Media.class);
