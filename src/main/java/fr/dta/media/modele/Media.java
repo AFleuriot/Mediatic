@@ -8,10 +8,11 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import fr.dta.configuration.IoEntity;
 import fr.dta.emprunt.modele.Emprunt;
 
 @Entity
-public class Media {
+public class Media implements IoEntity {
 
 	@Id
 	@GeneratedValue
