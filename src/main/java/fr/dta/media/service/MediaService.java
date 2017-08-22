@@ -43,6 +43,12 @@ public class MediaService {
 		return rech.getResultList();
 	}
 	
+	public static Media rechercheMediaParId(Long id) {
+		EntityManager em = createEntityManager();
+		beginTx(em);
+		return em.find(Media.class, id);
+	}
+	
 	
 	
 	

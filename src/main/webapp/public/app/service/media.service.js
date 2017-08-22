@@ -3,7 +3,7 @@
 angular.module('mediatic')
     .factory('MediaService', ['$resource', function($resource) {
 
-        var Media = $resource('http://192.168.1.65:3000/media/:id', null,
+        var Media = $resource('/media/:id', null,
                 {
                     'update': { method:'PUT' }
                 });
