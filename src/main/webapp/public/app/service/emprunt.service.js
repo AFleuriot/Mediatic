@@ -26,13 +26,13 @@ angular.module('mediatic')
             },
 
             updateEmprunt: function(emprunt) {
-                var e = this.getEmpruntById(emprunt.id);
+                /*var e = this.getEmpruntById(emprunt.id);
                 e.adherent = emprunt.adherent;
                 e.media = emprunt.media;
                 e.dateEmprunt = emprunt.dateEmprunt;
                 e.dateRetour = emprunt.dateRetour;
-                e.dateRetourPrevue = emprunt.dateRetourPrevue;
-                return Emprunt.update({'id':emprunt.id}, e);
+                e.dateRetourPrevue = emprunt.dateRetourPrevue;*/
+                return Emprunt.update({'id':emprunt.id}, emprunt);
             },
 
             getEmpruntById: function(id) {

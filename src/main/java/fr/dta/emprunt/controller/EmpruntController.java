@@ -23,6 +23,7 @@ import fr.dta.configuration.View;
 import fr.dta.emprunt.dao.EmpruntDAO;
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.emprunt.service.EmpruntService;
+import fr.dta.media.dao.MediaDAO;
 import fr.dta.media.modele.Media;
 import fr.dta.media.modele.TypeMedia;
 
@@ -34,7 +35,10 @@ public class EmpruntController {
 	EmpruntDAO dao; 
 	
 	@Autowired
-	AdherentDAO adherentdao;;
+	AdherentDAO adherentdao;
+	
+	@Autowired
+	MediaDAO mediadao;
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void creerEmprunt(@RequestBody Emprunt emprunt){
@@ -46,9 +50,9 @@ public class EmpruntController {
 
 	@RequestMapping(value="{id}", method = RequestMethod.PUT)
 	public void rendreEmprunt(@PathVariable Integer id, @RequestBody Emprunt emprunt){
-		emprunt.setDateRetour(LocalDate.now());
-		emprunt.getMedia().setEmpruntactuel(null);
-		dao.save(emprunt);
+			emprunt.setDateRetour(LocalDate.now());
+			emprunt.getMedia().setEmpruntactuel(null);
+			dao.update(emprunt);
 		}
 	
 	@JsonView(View.EmpruntSummary.class)
