@@ -102,7 +102,7 @@ angular
                 return 'list-group-item-danger';
             }
             else{
-                return 'list-group-item-success';
+                return 'list-group-item-info';
             }
         }
         
