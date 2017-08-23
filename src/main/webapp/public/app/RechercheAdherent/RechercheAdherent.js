@@ -7,8 +7,10 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     var initialiser = function() {
         $scope.adherents.forEach(function(adherent) {
             adherent.nomComplet = adherent.nom+" "+adherent.prenom
-            adherent.cotisation = cotisationAJour(adherent);
-            adherent.nombreEmprunts = getNombreEmprunts(adherent.id);
+            adherent.cotisationAJour = cotisationAJour(adherent.cotisation.dateCotisation);
+            EmpruntService.getEmpruntsActuelsOfAdherent(adherent.id).$promise.then(function(response) {
+            	adherent.nombreEmprunts = response.length;
+            })
         });
     };
 
@@ -24,11 +26,13 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
         criteria.id_like=$scope.idCommencePar;
         $scope.adherents = AdherentService.searchAdherent(criteria);   
         $scope.adherents.$promise.then(initialiser);            
-        console.log($scope.adherents);
+        
     }
 
-    var cotisationAJour = function(adherent) {
-        if (new Date(adherent.dateFinCotisation) > new Date()) {
+    var cotisationAJour = function(dateCotisation) {
+    	var date = new Date(dateCotisation);
+    	
+        if (new Date(date.getFullYear()+1, date.getMonth(), date.getDate()) > new Date()) {
             return 'Oui';
         }
         return 'Non';
@@ -42,9 +46,6 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
         return temp!='Invalid Date' ? temp : '' ;
     }
 
-    var getNombreEmprunts = function(adherentId) {
-        return EmpruntService.getEmpruntsActuelsOfAdherent(adherentId).length;
-    }
 
     $scope.sort = function(col) {
         $scope.sortBy = col;
