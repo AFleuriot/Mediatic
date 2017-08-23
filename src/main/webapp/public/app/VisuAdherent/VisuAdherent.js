@@ -17,9 +17,19 @@ angular
                 $scope.adherent = response;  
                 $scope.adherent.id = location.id;
                 $scope.adherent.cp = parseInt($scope.adherent.cp);
+                if(isNaN($scope.adherent.cp)){
+                    $scope.adherent.cp = '';
+                }
                 $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);
-                $scope.adherent.dateCotisation = new Date($scope.adherent.dateCotisation);
-                $scope.adherent.montantCotisation = parseInt($scope.adherent.montantCotisation);
+                $scope.adherent.dateCotisation = new Date($scope.adherent.dateCotisation);    
+                if($scope.adherent.cotisation!=undefined){
+                    if(isNaN($scope.adherent.cotisation.montant)){
+                        $scope.adherent.cotisation.montant = '';
+                    }
+                    else{
+                        $scope.adherent.cotisation.montant += "€";
+                    }
+                }          
                 $scope.emprunt.dateEmprunt = new Date();
                 var temp = new Date();
                 temp.setDate(temp.getDate()+15);     
@@ -54,17 +64,18 @@ angular
         }
 // MàJ date retour emprunt  =============================================== 
         var changerDateRetour = function(){
-            
-            var dateAller = new Date($scope.emprunt.dateEmprunt.getFullYear(),$scope.emprunt.dateEmprunt.getMonth(),$scope.emprunt.dateEmprunt.getDate());
-            var typeMedia = $scope.emprunt.selectedMedia.type;
-            var nbreJoursEmprunt = $scope.dureeEmprunt;
-            if(typeMedia=='Livre'){
-                nbreJoursEmprunt=30;
-            } else {
-                nbreJoursEmprunt=15;
-            }
-            dateAller.setDate(dateAller.getDate()+nbreJoursEmprunt);
-            $scope.emprunt.dateRetour = dateAller;
+            if($scope.emprunt.dateEmprunt!=undefined && $scope.emprunt.selectedMedia){
+                var dateAller = new Date($scope.emprunt.dateEmprunt.getFullYear(),$scope.emprunt.dateEmprunt.getMonth(),$scope.emprunt.dateEmprunt.getDate());
+                var typeMedia = $scope.emprunt.selectedMedia.type;
+                var nbreJoursEmprunt = $scope.dureeEmprunt;
+                if(typeMedia=='Livre'){
+                    nbreJoursEmprunt=30;
+                } else {
+                    nbreJoursEmprunt=15;
+                }
+                dateAller.setDate(dateAller.getDate()+nbreJoursEmprunt);
+                $scope.emprunt.dateRetour = dateAller;
+            }            
         };
 
         $scope.$watch('emprunt.selectedMedia', changerDateRetour,true);
@@ -87,13 +98,22 @@ angular
         }
 
 // Voir date fin coti =============================================== 
-        $scope.$watch('adherent.dateCotisation',function() {
+        $scope.$watch('adherent.cotisation.dateCotisation',function() {
             if($scope.adherent != undefined){
-                var dateBase = new Date($scope.adherent.dateCotisation);
-                var date = new Date(dateBase.getFullYear(), dateBase.getMonth(), dateBase.getDate());
-               
-                date.setYear(date.getFullYear()+1);
-                $scope.finCotisation = date.toLocaleDateString();   
+                if($scope.adherent.cotisation.dateCotisation!= 'Invalid Date'){
+                    var dateBase = new Date($scope.adherent.cotisation.dateCotisation);
+                    var date = new Date(dateBase.getFullYear(), dateBase.getMonth(), dateBase.getDate());
+                   
+                    date.setYear(date.getFullYear()+1);
+                    $scope.finCotisation = date.toLocaleDateString();   
+                }
+                else{
+                    $scope.adherent.dateCotisation = '';
+                }
+
+                if($scope.finCotisation == 'Invalid Date'){
+                    $scope.finCotisation = '';
+                }
             }
         })
 // Vérification date retour prévue dépassé ================================ 
@@ -143,16 +163,17 @@ $scope.MediaBienEmprunte = '';
 
 
         $scope.$watch('emprunt.selectedMedia', function(){
-            if($scope.emprunt.selectedMedia.empruntactuel != null){
-            $scope.MessMediaDejaEmprunte = 'Ce média a déjà été emprunté !';
-                $timeout(function () {
-                $scope.MessMediaDejaEmprunte ='';
-            }, 2500);
+            if($scope.emprunt.selectedMedia!=undefined){
+                if($scope.emprunt.selectedMedia.empruntactuel != undefined){
+                    $scope.MessMediaDejaEmprunte = 'Ce média a déjà été emprunté !';
+                        $timeout(function () {
+                        $scope.MessMediaDejaEmprunte ='';
+                    }, 2500);
+                }
             }
-        })
+        });
 
         $scope.emprunter = function(emprunt){
-        	console.log(emprunt);
             return emprunt.media.titre + ' par ' + emprunt.media.auteur + ' (' + emprunt.media.type + ') (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+').';
         }
 
