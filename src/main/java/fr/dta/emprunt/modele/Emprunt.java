@@ -7,13 +7,9 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import fr.dta.adherent.modele.Adherent;
-
 import fr.dta.configuration.IoEntity;
-
 import fr.dta.configuration.View;
-
 import fr.dta.media.modele.Media;
 
 @Entity
