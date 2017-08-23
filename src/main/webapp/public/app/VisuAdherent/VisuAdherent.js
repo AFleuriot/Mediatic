@@ -37,10 +37,10 @@ angular
                 $scope.UserEmprunts = response;
                     $scope.UserEmprunts.forEach(function(element) {
 
-                    resource = AdherentService.getAdherentById(element.adherent);
-                    element.adherent = resource;
-                    resource = MediaService.getMediaById(element.media);
-                    element.media = resource;
+                    //resource = AdherentService.getAdherentById(element.adherent);
+                    //element.adherent = response.adherent;
+                    //resource = MediaService.getMediaById(element.media);
+                    //element.media = response.media;
 
                     }, this);
                
@@ -151,6 +151,7 @@ $scope.MediaBienEmprunte = '';
         })
 
         $scope.emprunter = function(emprunt){
+        	console.log(emprunt);
             return emprunt.media.titre + ' par ' + emprunt.media.auteur + ' (' + emprunt.media.type + ') (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+').';
         }
 

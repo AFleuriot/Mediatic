@@ -2,13 +2,21 @@ package fr.dta.emprunt.dao;
 
 import static fr.dta.databasehelper.DatabaseHelper.*;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.adherent.modele.Adherent;
 import fr.dta.configuration.AbstractJpaRepository;
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.media.modele.Media;
+import fr.dta.media.modele.TypeMedia;
 
 @Repository
 public class EmpruntDAO extends AbstractJpaRepository<Emprunt> {
@@ -47,6 +55,21 @@ public class EmpruntDAO extends AbstractJpaRepository<Emprunt> {
 	@Override
 	protected Class<Emprunt> getEntityClass() {
 		return Emprunt.class;
+	}
+	
+	public List<Emprunt> rechercheEmpruntParAdherent(Adherent adherent){
+		Criteria c = getSession().createCriteria(getEntityClass());
+		c = c.add(Restrictions.eq("adherent", adherent))
+				.add(Restrictions.isNull("dateRetour"));
+		
+		List<Emprunt> liste = (List<Emprunt>) c.list();
+		
+		for (Emprunt e : liste) {
+			System.out.println(e.getAdherent().getNom());
+			System.out.println(e.getMedia().getTitre());
+		}
+		
+		return liste;
 	}
 
 }

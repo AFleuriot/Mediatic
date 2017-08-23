@@ -30,13 +30,13 @@ public class Emprunt implements IoEntity{
 	@NotNull
 	@ManyToOne
 	@JsonDeserialize(using=AdherentIdDeserializer.class)
-	@JsonView(View.MediaSummary.class)
+	@JsonView({View.MediaSummary.class, View.EmpruntSummary.class})
 	private Adherent adherent;
 	
 	@NotNull
 	@ManyToOne
 	@JsonDeserialize(using=MediaIdDeserializer.class)
-	@JsonView(View.AdherentSummary.class)
+	@JsonView({View.AdherentSummary.class, View.EmpruntSummary.class})
 	private Media media;
 	
 	@NotNull

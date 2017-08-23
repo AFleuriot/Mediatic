@@ -45,7 +45,7 @@ angular.module('mediatic')
             },
 
             getEmpruntsActuelsOfAdherent: function(adherentId) {
-                return this.searchEmprunt({'adherent':adherentId, 'dateRetour':null});
+                return this.searchEmprunt({'adherent':adherentId});
             }
 
 
