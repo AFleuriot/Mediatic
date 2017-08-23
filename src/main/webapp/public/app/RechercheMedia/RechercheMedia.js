@@ -7,14 +7,9 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
     var initialiser = function() {
         $scope.medias.forEach(function(media) {
             if (media.empruntactuel) {
-                var emprunt = EmpruntService.getEmpruntById(media.empruntactuel);
-                emprunt.$promise.then(function() {
-                    var emprunteur = AdherentService.getAdherentById(emprunt.adherent);
-                    emprunteur.$promise.then(function() {
-                        media.emprunteur = emprunteur.nom+" "+emprunteur.prenom;
-                        media.dateRetourPrevue = emprunt.dateRetourPrevue;
-                    });
-                });
+            	media.emprunteur = media.empruntactuel.adherent.nom+" "+media.empruntactuel.adherent.prenom;
+                media.dateRetourPrevue = media.empruntactuel.dateRetourPrevue;
+                
             }
         });
     }

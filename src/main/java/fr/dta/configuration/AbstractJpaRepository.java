@@ -44,7 +44,7 @@ public abstract class AbstractJpaRepository<T extends IoEntity> {
 	}
 
 	@Transactional
-	public T findOne(Long id) {
+	public T findOne(Integer id) {
 		return em.find(entityClass, id);
 	}
 

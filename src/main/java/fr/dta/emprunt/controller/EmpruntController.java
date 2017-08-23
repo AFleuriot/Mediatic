@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,22 +25,22 @@ public class EmpruntController {
 	EmpruntDAO dao; 
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public void creerEmprunt(Emprunt emprunt){
+	public void creerEmprunt(@RequestBody Emprunt emprunt){
 		emprunt.setDateRetourPrevue(emprunt.getDateEmprunt().plusDays(emprunt.getMedia().getType().getJoursEmpruntables()));
 		emprunt.getMedia().setEmpruntactuel(emprunt);
 		dao.save(emprunt);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public void rendreEmprunt(Emprunt emprunt){
+	public void rendreEmprunt(@RequestBody Emprunt emprunt){
 		emprunt.setDateRetour(LocalDate.now());
 		emprunt.getMedia().setEmpruntactuel(null);
 		dao.save(emprunt);
 		}
 	
-	@JsonView(View.Summary.class)
+	@JsonView(View.EmpruntSummary.class)
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public void trouverEmprunt(@PathVariable Long id){
+	public void trouverEmprunt(@PathVariable Integer id){
 		dao.findOne(id);
 	}
 	
