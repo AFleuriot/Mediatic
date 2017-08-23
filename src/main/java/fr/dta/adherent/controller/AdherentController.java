@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.View;
 import fr.dta.media.modele.Media;
 
 @RestController
