@@ -20,7 +20,7 @@ public class Media implements IoEntity {
 	@Id
 	@GeneratedValue
 	@JsonView(View.Summary.class)
-	private Long id;
+	private Integer id;
 	
 	@NotBlank
 	@JsonView(View.Summary.class)
@@ -53,11 +53,11 @@ public class Media implements IoEntity {
 		this.setType(type);
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

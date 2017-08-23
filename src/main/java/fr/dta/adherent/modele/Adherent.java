@@ -28,7 +28,7 @@ public class Adherent implements IoEntity {
 		@GeneratedValue
 		@Id
 		@JsonView(View.Summary.class)
-		private Long id;		
+		private Integer id;		
 		
 		@Column
 		@NotBlank
@@ -83,7 +83,7 @@ public class Adherent implements IoEntity {
 			this.dateNaissance = dateNaissance;
 		}		
 		
-		public Adherent(Long id, String nom, String prenom, String email, LocalDate dateNaissance,
+		public Adherent(Integer id, String nom, String prenom, String email, LocalDate dateNaissance,
 				Cotisation cotisation, String rue, String ville, Integer cp) {
 			this.id = id;
 			this.nom = nom;
@@ -109,11 +109,11 @@ public class Adherent implements IoEntity {
 			this.cp = cp;
 		}
 
-		public Long getId() {
+		public Integer getId() {
 			return id;
 		}
 
-		public void setId(Long id) {
+		public void setId(Integer id) {
 			this.id = id;
 		}
 
