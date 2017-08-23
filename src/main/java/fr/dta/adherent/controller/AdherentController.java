@@ -42,6 +42,12 @@ public class AdherentController {
 		return dao.save(adh);
 	}
 	
+	@JsonView(View.Summary.class)
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)
+	public Adherent updateAdherent(@PathVariable Integer id, @RequestBody Adherent adh) {
+		return dao.update(adh);
+	}
+	
 	
 	@RequestMapping(method=RequestMethod.GET)
 	@JsonView(View.AdherentSummary.class)
