@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -41,6 +42,7 @@ public class AdherentController {
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
+	@JsonView(View.Summary.class)
 	public List<Adherent> getAdherents(@RequestParam Map<String,String> criteria) {
 		return dao.rechercheCriteriaAdherent(criteria);
 	}
