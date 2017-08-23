@@ -15,9 +15,9 @@
             <p><b>Ville :</b> {{adherent.ville}}</p>
             <p><b>Code postal :</b> {{adherent.cp}}</p>
             <p><b>Rue :</b> {{adherent.rue}}</p>
-            <p><b>Date de paiement de la cotisation :</b> {{adherent.dateCotisation | date:'dd/MM/yyyy'}}</p>
+            <p><b>Date de paiement de la cotisation :</b> {{adherent.cotisation.dateCotisation | date:'dd/MM/yyyy'}}</p>
             <p><b>Date de fin d'abonnement :</b> {{finCotisation | date:'dd/MM/yyyy'}}</p>
-            <p><b>Montant de la cotisation :</b> {{adherent.montantCotisation}}€</p>
+            <p><b>Montant de la cotisation :</b> {{adherent.cotisation.montant}}</p>
         </div>                
     </div>
     <br>
