@@ -20,9 +20,9 @@ angular
                 if(isNaN($scope.adherent.cp)){
                     $scope.adherent.cp = '';
                 }
-                $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);
-                $scope.adherent.cotisation.dateCotisation = new Date($scope.adherent.cotisation.dateCotisation);    
+                $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);                
                 if($scope.adherent.cotisation!=undefined){
+                    $scope.adherent.cotisation.dateCotisation = new Date($scope.adherent.cotisation.dateCotisation);    
                     if(isNaN($scope.adherent.cotisation.montant)){
                         $scope.adherent.cotisation.montant = '';
                     }
