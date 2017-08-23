@@ -49,23 +49,23 @@ public class Adherent implements IoEntity {
 		@NotNull
 		@JsonSerialize(using=LocalDateSerializer.class)
 		@JsonDeserialize(using=LocalDateDeserializer.class)
-		@JsonView(View.Summary.class)
+		@JsonView(View.AdherentSummary.class)
 		private LocalDate dateNaissance;
 		
 		@OneToOne
-		@JsonView(View.Summary.class)
+		@JsonView(View.AdherentSummary.class)
 		private Cotisation cotisation;
 		
 		@Column
-		@JsonView(View.Summary.class)
+		@JsonView(View.AdherentSummary.class)
 		private String rue;
 		
 		@Column
-		@JsonView(View.Summary.class)
+		@JsonView(View.AdherentSummary.class)
 		private String ville;
 		
 		@Column
-		@JsonView(View.Summary.class)
+		@JsonView(View.AdherentSummary.class)
 		private Integer cp;
 		
 		@OneToMany(mappedBy="adherent")

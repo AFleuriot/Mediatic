@@ -47,10 +47,18 @@ public class MediaController {
 		return dao.save(media);
 	}
 	
+<<<<<<< HEAD
 	@JsonView(View.MediaSummary.class)
+=======
+	@JsonView(View.Summary.class)
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public Media updateMedia(@PathVariable Integer id, @RequestBody Media media) {
+<<<<<<< HEAD
 		return dao.save(media);
+=======
+		return dao.update(media);
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 	}
 	
 	
