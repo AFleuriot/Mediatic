@@ -39,14 +39,9 @@ public class AdherentController {
 		return dao.save(adh);
 	}
 	
-	@RequestMapping (method = RequestMethod.GET)
-	public List<Adherent> rechercheAdherents(@RequestParam Map<String, String> criteria) throws JsonProcessingException {
-		/*Adherent adherent1 = new Adherent("Thomas", "Suzanne", "s.thomas@gmail.com", LocalDate.of(1989, 05, 21));
-		AdherentDAO.creerAdherent(adherent1);
-		List<Adherent> listAdherents = AdherentDAO.rechercheAdherents();
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(listAdherents);
-		System.out.println(json);*/
-		return dao.findAll();
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public List<Adherent> getAdherents(@RequestParam Map<String,String> criteria) {
+		return dao.rechercheCriteriaAdherent(criteria);
 	}
 }
