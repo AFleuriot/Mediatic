@@ -29,6 +29,9 @@ public class MediaController {
 	@JsonView(View.MediaSummary.class)
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Media> getMedias(@RequestParam Map<String,String> criteria) {
+		if(!criteria.isEmpty() && !criteria.get("emprunte").isEmpty()){
+			return dao.rechercheMediaNonEmprunté();
+		}				
 		return dao.rechercheCriteriaMedia(criteria);
 	}
 	

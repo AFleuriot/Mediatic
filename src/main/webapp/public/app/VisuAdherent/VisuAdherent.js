@@ -25,8 +25,9 @@ angular
                 temp.setDate(temp.getDate()+15);     
                 $scope.emprunt.dateRetour = temp;                
             }); 
-
-            resource = MediaService.getMedias();
+            var obj = {};
+            obj.emprunte="true";
+            resource = MediaService.searchMedia(obj);
             resource.$promise.then(function(response){
                 $scope.medias = response;
                 $scope.emprunt.selectedMedia = $scope.medias[0]
