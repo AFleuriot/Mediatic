@@ -7,13 +7,24 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+<<<<<<< HEAD
 import fr.dta.adherent.modele.Adherent;
 import fr.dta.configuration.IoEntity;
 import fr.dta.configuration.View;
+=======
+
+import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.IoEntity;
+import fr.dta.configuration.View;
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 import fr.dta.media.modele.Media;
 
 @Entity
+<<<<<<< HEAD
 public class Emprunt implements IoEntity {
+=======
+public class Emprunt implements IoEntity{
+>>>>>>> branch 'master' of https://github.com/AFleuriot/Mediatic.git
 
 	@Id
 	@GeneratedValue
