@@ -8,7 +8,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.dta.configuration.IoEntity;
+import fr.dta.configuration.View;
 import fr.dta.emprunt.modele.Emprunt;
 
 @Entity
@@ -16,21 +19,26 @@ public class Media implements IoEntity {
 
 	@Id
 	@GeneratedValue
+	@JsonView(View.Summary.class)
 	private Long id;
 	
 	@NotBlank
+	@JsonView(View.Summary.class)
 	private String titre;
 	
 	@NotBlank
+	@JsonView(View.Summary.class)
 	private String auteur;
 	
 	@NotNull
+	@JsonView(View.Summary.class)
 	private TypeMedia type;
 	
 	@OneToMany(mappedBy = "media")
 	private List<Emprunt> emprunts = new ArrayList<>();
 	
 	@OneToOne
+	@JsonView(View.MediaSummary.class)
 	private Emprunt empruntactuel;
 	
 

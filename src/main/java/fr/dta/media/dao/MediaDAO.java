@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -48,13 +49,12 @@ public class MediaDAO extends AbstractJpaRepository<Media> {
 
 	public List<Media> rechercheCriteriaMedia(Map<String,String> criteria){
 		Criteria c = getSession().createCriteria(getEntityClass());
-		System.out.println(criteria);
 		if(!criteria.isEmpty()) {
 			if( ( criteria.get("titre_like")!=null && !criteria.get("titre_like").isEmpty() )) {
-				c = c.add(Restrictions.like("titre", criteria.get("titre_like")));
+				c = c.add(Restrictions.like("titre", criteria.get("titre_like"), MatchMode.ANYWHERE));
 			} 
 			if( criteria.get("auteur_like")!=null && !criteria.get("auteur_like").isEmpty()) {
-				c = c.add(Restrictions.like("auteur", criteria.get("auteur_like")));
+				c = c.add(Restrictions.like("auteur", criteria.get("auteur_like"), MatchMode.ANYWHERE));
 			}
 			if(criteria.get("type")!=null && !criteria.get("type").equals("Tous")) {
 				c = c.add(Restrictions.eq("type",  TypeMedia.valueOf(criteria.get("type"))));
