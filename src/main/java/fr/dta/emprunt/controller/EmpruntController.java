@@ -43,8 +43,9 @@ public class EmpruntController {
 		dao.save(emprunt);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
-	public void rendreEmprunt(@RequestBody Emprunt emprunt){
+
+	@RequestMapping(value="{id}", method = RequestMethod.PUT)
+	public void rendreEmprunt(@PathVariable Integer id, @RequestBody Emprunt emprunt){
 		emprunt.setDateRetour(LocalDate.now());
 		emprunt.getMedia().setEmpruntactuel(null);
 		dao.save(emprunt);

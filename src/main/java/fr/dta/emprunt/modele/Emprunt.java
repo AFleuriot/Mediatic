@@ -7,9 +7,11 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.IoEntity;
+import fr.dta.configuration.View;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import fr.dta.adherent.modele.Adherent;
 import fr.dta.configuration.IoEntity;
 import fr.dta.configuration.View;
@@ -20,7 +22,7 @@ import fr.dta.databasehelper.MediaIdDeserializer;
 import fr.dta.media.modele.Media;
 
 @Entity
-public class Emprunt implements IoEntity{
+public class Emprunt implements IoEntity {
 
 	@Id
 	@GeneratedValue
