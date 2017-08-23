@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.IoEntity;
 import fr.dta.configuration.View;
 import fr.dta.media.modele.Media;
 
 @Entity
-public class Emprunt {
+public class Emprunt implements IoEntity{
 
 	@Id
 	@GeneratedValue

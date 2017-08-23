@@ -3,7 +3,7 @@
 angular.module('mediatic')
     .factory('EmpruntService', ['$resource', function($resource) {
 
-        var Emprunt = $resource('http://192.168.1.65:3000/emprunt/:id', null,
+        var Emprunt = $resource('http://localhost:8080/emprunt/:id', null,
                 {
                     'update': { method:'PUT' }
                 });

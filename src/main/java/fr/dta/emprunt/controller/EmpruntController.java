@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.dta.configuration.View;
 import fr.dta.emprunt.dao.EmpruntDAO;
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.emprunt.service.EmpruntService;
@@ -33,7 +37,7 @@ public class EmpruntController {
 		dao.save(emprunt);
 		}
 	
-	
+	@JsonView(View.Summary.class)
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public void trouverEmprunt(@PathVariable Long id){
 		dao.findOne(id);
