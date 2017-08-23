@@ -63,6 +63,12 @@ public class MediaDAO extends AbstractJpaRepository<Media> {
 		return (List<Media>) c.list();
 	}
 	
+	public List<Media> rechercheMediaNonEmprunté(){
+		Criteria c = getSession().createCriteria(getEntityClass());
+		c = c.add(Restrictions.isNull("empruntactuel"));
+		return (List<Media>) c.list();
+	}
+	
 	protected Class<Media> getEntityClass() {
 		return Media.class;
 	}
