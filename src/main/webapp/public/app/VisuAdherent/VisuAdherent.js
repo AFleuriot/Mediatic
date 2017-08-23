@@ -188,8 +188,8 @@ $scope.MediaBienEmprunte = '';
             rendreemprunt.dateRetour = new Date();
             EmpruntService.updateEmprunt(rendreemprunt);   
 
-            nouveaumedia.empruntactuel = null;
-            MediaService.updateMedia(nouveaumedia);
+            //nouveaumedia.empruntactuel = null;
+            //MediaService.updateMedia(nouveaumedia);
             
         
 

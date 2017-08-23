@@ -9,18 +9,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.IoEntity;
 import fr.dta.configuration.View;
 import fr.dta.databasehelper.LocalDateDeserializer;
 import fr.dta.databasehelper.LocalDateSerializer;
 
 @Entity
 @Table
-public class Cotisation {	
+public class Cotisation implements IoEntity{	
 	
 	@GeneratedValue
 	@Id
 	@JsonView(View.Summary.class)
-	private Long id;
+	private Integer id;
 	
 	@OneToOne
 	private Adherent adherent;
@@ -40,7 +41,7 @@ public class Cotisation {
 		
 	}
 	
-	public Cotisation(Long id, Adherent adherent, LocalDate dateCotisation, Double montant) {
+	public Cotisation(Integer id, Adherent adherent, LocalDate dateCotisation, Double montant) {
 		this.id = id;
 		this.adherent = adherent;
 		this.dateCotisation = dateCotisation;
@@ -53,11 +54,11 @@ public class Cotisation {
 		this.montant = montant;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

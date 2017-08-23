@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.modele.Adherent;
 import fr.dta.configuration.View;
+import fr.dta.cotisation.dao.CotisationDAO;
 import fr.dta.media.modele.Media;
 
 @RestController
@@ -31,20 +32,29 @@ public class AdherentController {
 	@Autowired
 	AdherentDAO dao;
 	
+	@Autowired
+	CotisationDAO cotDao;
+	
 	@RequestMapping (value = "{id}", method = RequestMethod.GET)
 	@JsonView(View.AdherentSummary.class)
 	public Adherent rechercheAdherent( @PathVariable Integer id) {
 		return dao.findOne(id);
 	}
 	
+	@JsonView(View.Summary.class)
 	@RequestMapping(method = RequestMethod.POST)
-	public Adherent createMedia(@RequestBody Adherent adh) {
-		return dao.save(adh);
+	public Adherent createAdherent(@RequestBody Adherent adh) {
+		cotDao.save(adh.getCotisation());
+		Adherent res = dao.save(adh);
+		adh.getCotisation().setAdherent(res);
+		cotDao.update(adh.getCotisation());
+		return res;
 	}
 	
-	@JsonView(View.Summary.class)
+	@JsonView(View.AdherentSummary.class)
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public Adherent updateAdherent(@PathVariable Integer id, @RequestBody Adherent adh) {
+		cotDao.update(adh.getCotisation());
 		return dao.update(adh);
 	}
 	

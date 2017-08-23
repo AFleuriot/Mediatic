@@ -15,7 +15,7 @@ angular.module('mediatic')
             },
 
             addAdherent: function(adherent) {
-                var a = new Adherent();
+                /*var a = new Adherent();
                 a.nom = adherent.nom;
                 a.prenom = adherent.prenom;
                 a.email = adherent.email;
@@ -25,8 +25,8 @@ angular.module('mediatic')
                 a.cp = adherent.cp;
                 a.dateCotisation = adherent.dateCotisation;
                 a.dateFinCotisation = adherent.dateFinCotisation;
-                a.montantCotisation = adherent.montantCotisation;
-                return a.$save();
+                a.montantCotisation = adherent.montantCotisation;*/
+                return Adherent.save(adherent);
             },
 
             updateAdherent: function(adherent) {

@@ -41,9 +41,12 @@ angular.module('mediatic.CreationAdherent', ['ngRoute'])
                  'rue': $scope.adh.Adresse, 
                  'cp': $scope.adh.CP,  
                  'ville': $scope.adh.Ville,
-                 'dateCotisation': $scope.adh.DateCoti,
-                 'montantCotisation': $scope.adh.MontantCoti,
-                 'dateFinCotisation': $scope.adh.DateFinCoti,
+                 'cotisation': {
+                	 'dateCotisation': $scope.adh.DateCoti,
+                	 'montant': $scope.adh.MontantCoti,
+                     'dateFinCotisation': $scope.adh.DateFinCoti
+                 }
+                 
                 };
             AdherentService.addAdherent(adherent);
             $scope.MessageAdhCree = 'L\'adhérent a bien été enregistré !';
