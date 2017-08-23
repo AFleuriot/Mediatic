@@ -6,9 +6,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.dta.adherent.modele.Adherent;
+
 import fr.dta.configuration.IoEntity;
+
+import fr.dta.configuration.View;
+
 import fr.dta.media.modele.Media;
 
 @Entity
@@ -16,23 +21,28 @@ public class Emprunt implements IoEntity {
 
 	@Id
 	@GeneratedValue
+	@JsonView(View.Summary.class)
 	private Long id;
 	
 	@NotNull
 	@ManyToOne
+	@JsonView(View.MediaSummary.class)
 	private Adherent adherent;
 	
 	@NotNull
 	@ManyToOne
-	@JsonIgnore
+	@JsonView(View.AdherentSummary.class)
 	private Media media;
 	
 	@NotNull
+	@JsonView(View.Summary.class)
 	private LocalDate dateEmprunt;
 	
+	@JsonView(View.Summary.class)
 	private LocalDate dateRetour;
 	
 	@NotNull
+	@JsonView(View.Summary.class)
 	private LocalDate dateRetourPrevue;
 	
 	public Emprunt() {

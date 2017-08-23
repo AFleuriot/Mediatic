@@ -9,10 +9,12 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import fr.dta.configuration.IoEntity;
+import fr.dta.configuration.View;
 import fr.dta.cotisation.modele.Cotisation;
 import fr.dta.databasehelper.LocalDateDeserializer;
 import fr.dta.databasehelper.LocalDateSerializer;
@@ -25,41 +27,49 @@ public class Adherent implements IoEntity {
 
 		@GeneratedValue
 		@Id
+		@JsonView(View.Summary.class)
 		private Long id;		
 		
 		@Column
 		@NotBlank
+		@JsonView(View.Summary.class)
 		private String nom;
 		
 		@Column
 		@NotBlank
+		@JsonView(View.Summary.class)
 		private String prenom;
 		
 		@Column
 		@NotBlank
+		@JsonView(View.Summary.class)
 		private String email;
 		
 		@Column
 		@NotNull
 		@JsonSerialize(using=LocalDateSerializer.class)
 		@JsonDeserialize(using=LocalDateDeserializer.class)
+		@JsonView(View.Summary.class)
 		private LocalDate dateNaissance;
 		
 		@OneToOne
+		@JsonView(View.Summary.class)
 		private Cotisation cotisation;
 		
 		@Column
+		@JsonView(View.Summary.class)
 		private String rue;
 		
 		@Column
+		@JsonView(View.Summary.class)
 		private String ville;
 		
 		@Column
-
+		@JsonView(View.Summary.class)
 		private Integer cp;
 		
 		@OneToMany(mappedBy="adherent")
-		@JsonIgnore
+		@JsonView(View.AdherentSummary.class)
 		private List<Emprunt> emprunt;
 		
 		public Adherent(){

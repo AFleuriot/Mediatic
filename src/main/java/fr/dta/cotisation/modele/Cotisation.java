@@ -4,10 +4,12 @@ import java.time.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.View;
 import fr.dta.databasehelper.LocalDateDeserializer;
 import fr.dta.databasehelper.LocalDateSerializer;
 
@@ -17,6 +19,7 @@ public class Cotisation {
 	
 	@GeneratedValue
 	@Id
+	@JsonView(View.Summary.class)
 	private Long id;
 	
 	@OneToOne
@@ -25,9 +28,11 @@ public class Cotisation {
 	@Column
 	@JsonSerialize(using=LocalDateSerializer.class)
 	@JsonDeserialize(using=LocalDateDeserializer.class)
+	@JsonView(View.Summary.class)
 	private LocalDate dateCotisation;
 	
 	@Column
+	@JsonView(View.Summary.class)
 	private Double montant;
 
 	
