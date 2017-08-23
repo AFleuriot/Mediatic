@@ -101,7 +101,17 @@ angular
         };
 
         $scope.emprunter = function(emprunt){
-            return emprunt.adherent.nom +  ' ' + emprunt.adherent.prenom + ' a emprunté ce média (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+').';
+            var chaine = "";
+            if (new Date(emprunt.dateRetourPrevue)<new Date()) {
+            	chaine = "(En retard)";
+            }
+            else if(emprunt.dateRetour == null){
+                chaine = "(En cours)";
+            }
+            else{
+                chaine = "(Rendu)";
+            }
+            return emprunt.adherent.nom +  ' ' + emprunt.adherent.prenom + ' a emprunté ce média (Date retour prévue le '+ new Date(emprunt.dateRetourPrevue).toLocaleDateString()+' : '+ chaine +' ).';
         }
 
         $scope.verifierDate = function(emprunt){
