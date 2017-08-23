@@ -32,6 +32,7 @@ public class AdherentController {
 	AdherentDAO dao;
 	
 	@RequestMapping (value = "{id}", method = RequestMethod.GET)
+	@JsonView(View.AdherentSummary.class)
 	public Adherent rechercheAdherent( @PathVariable Integer id) {
 		return dao.findOne(id);
 	}
@@ -43,7 +44,7 @@ public class AdherentController {
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
-	@JsonView(View.Summary.class)
+	@JsonView(View.AdherentSummary.class)
 	public List<Adherent> getAdherents(@RequestParam Map<String,String> criteria) {
 		return dao.rechercheCriteriaAdherent(criteria);
 	}

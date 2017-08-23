@@ -130,8 +130,8 @@ $scope.MediaBienEmprunte = '';
             emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;            
             EmpruntService.addEmprunt(emprunt).then(function (resp) {
                
-                $scope.emprunt.selectedMedia.empruntactuel = resp.id;
-                MediaService.updateMedia($scope.emprunt.selectedMedia);
+                //$scope.emprunt.selectedMedia.empruntactuel = resp.id;
+                //MediaService.updateMedia($scope.emprunt.selectedMedia);
                 $scope.MediaBienEmprunte ='Le média a bien été emprunté !';
                 $timeout(function () {
                 $scope.MediaBienEmprunte ='';
