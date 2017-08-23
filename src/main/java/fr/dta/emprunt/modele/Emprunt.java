@@ -7,10 +7,16 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import fr.dta.adherent.modele.Adherent;
 import fr.dta.configuration.IoEntity;
 import fr.dta.configuration.View;
+import fr.dta.databasehelper.AdherentIdDeserializer;
+import fr.dta.databasehelper.LocalDateDeserializer;
+import fr.dta.databasehelper.LocalDateSerializer;
+import fr.dta.databasehelper.MediaIdDeserializer;
 import fr.dta.media.modele.Media;
 
 @Entity
@@ -19,26 +25,34 @@ public class Emprunt implements IoEntity{
 	@Id
 	@GeneratedValue
 	@JsonView(View.Summary.class)
-	private Long id;
+	private Integer id;
 	
 	@NotNull
 	@ManyToOne
+	@JsonDeserialize(using=AdherentIdDeserializer.class)
 	@JsonView(View.MediaSummary.class)
 	private Adherent adherent;
 	
 	@NotNull
 	@ManyToOne
+	@JsonDeserialize(using=MediaIdDeserializer.class)
 	@JsonView(View.AdherentSummary.class)
 	private Media media;
 	
 	@NotNull
+	@JsonSerialize(using=LocalDateSerializer.class)
+	@JsonDeserialize(using=LocalDateDeserializer.class)
 	@JsonView(View.Summary.class)
 	private LocalDate dateEmprunt;
 	
 	@JsonView(View.Summary.class)
+	@JsonSerialize(using=LocalDateSerializer.class)
+	@JsonDeserialize(using=LocalDateDeserializer.class)
 	private LocalDate dateRetour;
 	
 	@NotNull
+	@JsonSerialize(using=LocalDateSerializer.class)
+	@JsonDeserialize(using=LocalDateDeserializer.class)
 	@JsonView(View.Summary.class)
 	private LocalDate dateRetourPrevue;
 	
@@ -92,12 +106,16 @@ public class Emprunt implements IoEntity{
 		this.dateRetourPrevue = dateRetourPrevue;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String toString() {
+		return "media : "+media+" adherent : "+adherent+" dateEmprunt : "+dateEmprunt+" dateRetourPrevue : "+dateRetourPrevue;
 	}
 	
 }

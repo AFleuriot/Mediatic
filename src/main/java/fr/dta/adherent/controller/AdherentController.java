@@ -32,7 +32,7 @@ public class AdherentController {
 	AdherentDAO dao;
 	
 	@RequestMapping (value = "{id}", method = RequestMethod.GET)
-	public Adherent rechercheAdherent( @PathVariable Long id) {
+	public Adherent rechercheAdherent( @PathVariable Integer id) {
 		return dao.findOne(id);
 	}
 	

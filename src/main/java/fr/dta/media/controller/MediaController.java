@@ -35,7 +35,7 @@ public class MediaController {
 	
 	@JsonView(View.MediaSummary.class)
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public Media getMediaById(@PathVariable Long id) {
+	public Media getMediaById(@PathVariable Integer id) {
 		return dao.findOne(id);
 	}
 	

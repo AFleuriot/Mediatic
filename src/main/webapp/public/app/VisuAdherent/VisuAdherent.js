@@ -127,7 +127,7 @@ $scope.MediaBienEmprunte = '';
             
             emprunt.dateEmprunt = $scope.emprunt.dateEmprunt;
             emprunt.dateRetour = null;
-            emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;
+            emprunt.dateRetourPrevue = $scope.emprunt.dateRetour;            
             EmpruntService.addEmprunt(emprunt).then(function (resp) {
                
                 $scope.emprunt.selectedMedia.empruntactuel = resp.id;
