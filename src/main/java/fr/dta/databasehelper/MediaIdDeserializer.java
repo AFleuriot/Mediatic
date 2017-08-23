@@ -35,7 +35,12 @@ public class MediaIdDeserializer extends StdDeserializer<Media> {
 	@Override
 	public Media deserialize(JsonParser p, DeserializationContext ctxt)
 			throws IOException, JsonProcessingException {
-		return dao.findOne(p.readValueAs(Integer.class));
+		try {
+			return dao.findOne(p.readValueAs(Integer.class));
+		}
+		catch(IOException e) {
+			return p.readValueAs(Media.class);
+		}
 	}
 
 }

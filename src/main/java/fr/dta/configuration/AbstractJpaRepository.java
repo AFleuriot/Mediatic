@@ -42,6 +42,11 @@ public abstract class AbstractJpaRepository<T extends IoEntity> {
 
 		return entity;
 	}
+	
+	@Transactional
+	public T update(T entity) {
+			return em.merge(entity);
+	}
 
 	@Transactional
 	public T findOne(Integer id) {

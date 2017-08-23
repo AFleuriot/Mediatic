@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,7 +28,13 @@ public class LocalDateDeserializer extends StdDeserializer<LocalDate> {
 	@Override
 	public LocalDate deserialize(JsonParser p, DeserializationContext ctxt)
 			throws IOException, JsonProcessingException {
-		return LocalDateTime.ofInstant(Instant.parse(p.readValueAs(String.class)), ZoneId.systemDefault()).toLocalDate();
+		String valeur = p.readValueAs(String.class);
+		try {
+			return LocalDateTime.ofInstant(Instant.parse(valeur), ZoneId.systemDefault()).toLocalDate();
+		}
+		catch(DateTimeParseException e) {
+			return LocalDate.parse(valeur, DateTimeFormatter.ISO_LOCAL_DATE);
+		}
 	}
 
 }

@@ -28,12 +28,12 @@ angular.module('mediatic')
             },
 
             updateMedia: function(media) {
-                var m = this.getMediaById(media.id);
-                m.titre = media.titre;
-                m.auteur = media.auteur;
-                m.type = media.type;
-                m.empruntactuel = media.empruntactuel;
-                return Media.update({'id':media.id}, m);
+                //var m = this.getMediaById(media.id);
+                //m.titre = media.titre;
+                //m.auteur = media.auteur;
+                //m.type = media.type;
+                //m.empruntactuel = media.empruntactuel;
+                return Media.update({'id':media.id}, media);
             },
 
             searchMedia: function(criteria) {
