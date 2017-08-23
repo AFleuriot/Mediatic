@@ -13,21 +13,21 @@ angular
         else{
             var resource = AdherentService.getAdherentById(location.id);        
             resource.$promise.then(function(response){
-                              
+                console.log(response);
                 $scope.adherent = response;  
                 $scope.adherent.id = location.id;
                 $scope.adherent.cp = parseInt($scope.adherent.cp);
                 if(isNaN($scope.adherent.cp)){
                     $scope.adherent.cp = '';
                 }
-                $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);
-                $scope.adherent.dateCotisation = new Date($scope.adherent.dateCotisation);    
+                $scope.adherent.dateNaissance = new Date($scope.adherent.dateNaissance);                
                 if($scope.adherent.cotisation!=undefined){
+                    $scope.adherent.cotisation.dateCotisation = new Date($scope.adherent.cotisation.dateCotisation);    
                     if(isNaN($scope.adherent.cotisation.montant)){
                         $scope.adherent.cotisation.montant = '';
                     }
                     else{
-                        $scope.adherent.cotisation.montant += "€";
+                        $scope.montant = $scope.adherent.cotisation.montant + "€";
                     }
                 }          
                 $scope.emprunt.dateEmprunt = new Date();
@@ -108,7 +108,7 @@ angular
                     $scope.finCotisation = date.toLocaleDateString();   
                 }
                 else{
-                    $scope.adherent.dateCotisation = '';
+                    $scope.adherent.cotisation.dateCotisation = '';
                 }
 
                 if($scope.finCotisation == 'Invalid Date'){

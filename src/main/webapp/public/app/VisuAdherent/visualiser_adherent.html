@@ -17,7 +17,7 @@
             <p><b>Rue :</b> {{adherent.rue}}</p>
             <p><b>Date de paiement de la cotisation :</b> {{adherent.cotisation.dateCotisation | date:'dd/MM/yyyy'}}</p>
             <p><b>Date de fin d'abonnement :</b> {{finCotisation | date:'dd/MM/yyyy'}}</p>
-            <p><b>Montant de la cotisation :</b> {{adherent.cotisation.montant}}</p>
+            <p><b>Montant de la cotisation :</b> {{montant}}</p>
         </div>                
     </div>
     <br>
@@ -142,7 +142,7 @@
                             <label class="control-label col-sm-2">Date de paiement de la
                                 cotisation :</label>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" ng-model="adherent.dateCotisation"
+                                <input type="date" class="form-control" ng-model="adherent.cotisation.dateCotisation"
                                 id="datecotiadherent">
                                 <p><b>Date de fin d'abonnement :</b> {{finCotisation}}</p>
                             </div>
@@ -153,7 +153,7 @@
                             <div class="col-sm-4">
 
                                 <input type="number" class="form-control"
-                                    id="cotiadherent" ng-model="adherent.montantCotisation" placeholder="Montant de la cotisation">                                
+                                    id="cotiadherent" ng-model="adherent.cotisation.montant" placeholder="Montant de la cotisation">                                
                             </div>
                         </div>                                    
                         <input value="Enregistrer" type="submit" ng-disabled="adherentForm.$error.required" class="btn btn-default btn-sm center-block">
