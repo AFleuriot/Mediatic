@@ -36,10 +36,10 @@ angular
             resource.$promise.then(function(response){                
                 $scope.emprunts = response;                
                 $scope.emprunts.forEach(function(element) {
-                    resource = AdherentService.getAdherentById(element.adherent);
-                    element.adherent = resource;
-                    resource = MediaService.getMediaById(element.media);
-                    element.media = resource;
+                    //resource = AdherentService.getAdherentById(element.adherent);
+                    //element.adherent = resource;
+                    //resource = MediaService.getMediaById(element.media);
+                    //element.media = resource;
                 }, this);
             });            
         }  

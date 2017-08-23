@@ -47,8 +47,9 @@ public class MediaController {
 		return dao.save(media);
 	}
 	
+	@JsonView(View.MediaSummary.class)
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)
-	public Media updateMedia(@PathVariable Long id, @RequestBody Media media) {
+	public Media updateMedia(@PathVariable Integer id, @RequestBody Media media) {
 		return dao.save(media);
 	}
 	
