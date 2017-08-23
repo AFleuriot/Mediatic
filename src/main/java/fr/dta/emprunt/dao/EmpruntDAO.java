@@ -62,13 +62,7 @@ public class EmpruntDAO extends AbstractJpaRepository<Emprunt> {
 		c = c.add(Restrictions.eq("adherent", adherent))
 				.add(Restrictions.isNull("dateRetour"));
 		
-		List<Emprunt> liste = (List<Emprunt>) c.list();
-		
-		for (Emprunt e : liste) {
-			System.out.println(e.getAdherent().getNom());
-			System.out.println(e.getMedia().getTitre());
-		}
-		
+		List<Emprunt> liste = (List<Emprunt>) c.list();		
 		return liste;
 	}
 

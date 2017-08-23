@@ -30,7 +30,7 @@ angular.module('mediatic')
             },
 
             updateAdherent: function(adherent) {
-                var a = this.getAdherentById(adherent.id);
+                /*var a = this.getAdherentById(adherent.id);
                 a.nom = adherent.nom;
                 a.prenom = adherent.prenom;
                 a.email = adherent.email;
@@ -40,8 +40,8 @@ angular.module('mediatic')
                 a.cp = adherent.cp;
                 a.dateCotisation = adherent.dateCotisation;
                 a.dateFinCotisation = adherent.dateFinCotisation;
-                a.montantCotisation = adherent.montantCotisation;
-                return Adherent.update({'id':adherent.id}, a);
+                a.montantCotisation = adherent.montantCotisation;*/
+                return Adherent.update({'id':adherent.id}, adherent);
             },
 
             getAdherentById: function(id) {
