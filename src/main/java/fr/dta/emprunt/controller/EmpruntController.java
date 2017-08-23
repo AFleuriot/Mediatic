@@ -63,17 +63,28 @@ public class EmpruntController {
 	
 	@JsonView(View.EmpruntSummary.class)
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Emprunt> trouverEmpruntDeAdherent(@RequestParam Map<String,String> criteria){
+	public List<Emprunt> trouverEmpruntDeAdherentOuDeMedia(@RequestParam Map<String,String> criteria){
 		if (criteria.get("adherent")!=null) {
 			Adherent a =  trouverAdherent(Integer.parseInt(criteria.get("adherent")));
 			return dao.rechercheEmpruntParAdherent(a);
 		}
+		else if (criteria.get("media")!=null) {
+			Media m =  trouverMedia(Integer.parseInt(criteria.get("media")));
+			return dao.rechercheEmpruntParMedia(m);
+		}
 		return dao.findAll();
 	}
+	
+
 	
 	@JsonView(View.AdherentSummary.class)
 	private Adherent trouverAdherent(Integer ad) {
 		return adherentdao.findOne(ad);
+	}
+	
+	@JsonView(View.AdherentSummary.class)
+	private Media trouverMedia(Integer ad) {
+		return mediadao.findOne(ad);
 	}
 	
 	

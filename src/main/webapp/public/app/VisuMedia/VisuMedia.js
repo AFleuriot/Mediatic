@@ -105,8 +105,11 @@ angular
         }
 
         $scope.verifierDate = function(emprunt){
-            if(new Date(emprunt.dateRetourPrevue)<new Date() && emprunt.dateRetour == null){
-                return 'list-group-item-danger';
+            if (new Date(emprunt.dateRetourPrevue)<new Date()) {
+            	return 'list-group-item-danger';
+            }
+            else if(emprunt.dateRetour == null){
+                return 'list-group-item-info';
             }
             else{
                 return 'list-group-item-success';

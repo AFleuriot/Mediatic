@@ -65,5 +65,12 @@ public class EmpruntDAO extends AbstractJpaRepository<Emprunt> {
 		List<Emprunt> liste = (List<Emprunt>) c.list();		
 		return liste;
 	}
+	
+	public List<Emprunt> rechercheEmpruntParMedia(Media media){
+		Criteria c = getSession().createCriteria(getEntityClass());
+		c = c.add(Restrictions.eq("media", media));
+		List<Emprunt> liste = (List<Emprunt>) c.list();		
+		return liste;
+	}
 
 }
