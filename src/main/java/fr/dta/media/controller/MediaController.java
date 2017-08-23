@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.dta.configuration.View;
 import fr.dta.media.dao.MediaDAO;
 import fr.dta.media.modele.Media;
 import fr.dta.media.service.MediaService;
@@ -23,13 +26,14 @@ public class MediaController {
 	@Autowired
 	MediaDAO dao;
 	
+	@JsonView(View.MediaSummary.class)
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Media> getMedias(@RequestParam Map<String,String> criteria) {
 		return dao.rechercheCriteriaMedia(criteria);
 	}
 	
 	
-	
+	@JsonView(View.MediaSummary.class)
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public Media getMediaById(@PathVariable Long id) {
 		return dao.findOne(id);
