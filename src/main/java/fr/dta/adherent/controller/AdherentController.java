@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.modele.Adherent;
+import fr.dta.configuration.View;
 import fr.dta.media.modele.Media;
 
 @RestController
@@ -30,6 +32,7 @@ public class AdherentController {
 	AdherentDAO dao;
 	
 	@RequestMapping (value = "{id}", method = RequestMethod.GET)
+	@JsonView(View.Summary.class)
 	public Adherent rechercheAdherent( @PathVariable Long id) {
 		return dao.findOne(id);
 	}
@@ -40,6 +43,7 @@ public class AdherentController {
 	}
 	
 	@RequestMapping (method = RequestMethod.GET)
+	@JsonView(View.Summary.class)
 	public List<Adherent> rechercheAdherents(@RequestParam Map<String, String> criteria) throws JsonProcessingException {
 		/*Adherent adherent1 = new Adherent("Thomas", "Suzanne", "s.thomas@gmail.com", LocalDate.of(1989, 05, 21));
 		AdherentDAO.creerAdherent(adherent1);
