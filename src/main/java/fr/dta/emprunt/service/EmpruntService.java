@@ -4,9 +4,12 @@ import static fr.dta.emprunt.dao.EmpruntDAO.*;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Service;
+
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.media.dao.MediaDAO;
 
+@Service
 public class EmpruntService {
 	
 	public static void emprunter(Emprunt emprunt) {
@@ -22,6 +25,8 @@ public class EmpruntService {
 		modifierEmprunt(emprunt);
 		MediaDAO.modifierMedia(emprunt.getMedia());
 	}
+	
+	
 	
 /*	public static List<Media> getMediaEmpruntes(Adherent adherent) {
 		EntityManager em = createEntityManager();

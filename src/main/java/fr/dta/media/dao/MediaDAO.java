@@ -49,7 +49,6 @@ public class MediaDAO extends AbstractJpaRepository<Media> {
 
 	public List<Media> rechercheCriteriaMedia(Map<String,String> criteria){
 		Criteria c = getSession().createCriteria(getEntityClass());
-		System.out.println(criteria);
 		if(!criteria.isEmpty()) {
 			if( ( criteria.get("titre_like")!=null && !criteria.get("titre_like").isEmpty() )) {
 				c = c.add(Restrictions.like("titre", criteria.get("titre_like"), MatchMode.ANYWHERE));

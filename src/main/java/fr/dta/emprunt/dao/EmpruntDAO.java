@@ -4,9 +4,14 @@ import static fr.dta.databasehelper.DatabaseHelper.*;
 
 import javax.persistence.EntityManager;
 
-import fr.dta.emprunt.modele.Emprunt;
+import org.springframework.stereotype.Repository;
 
-public class EmpruntDAO {
+import fr.dta.configuration.AbstractJpaRepository;
+import fr.dta.emprunt.modele.Emprunt;
+import fr.dta.media.modele.Media;
+
+@Repository
+public class EmpruntDAO extends AbstractJpaRepository<Emprunt> {
 	
 	public static void creerEmprunt(Emprunt emprunt) {
 		EntityManager em = createEntityManager();
@@ -37,6 +42,11 @@ public class EmpruntDAO {
 		Emprunt emprunt = em.find(Emprunt.class, id);
 		commitTxAndClose(em);
 		return emprunt;
+	}
+
+	@Override
+	protected Class<Emprunt> getEntityClass() {
+		return Emprunt.class;
 	}
 
 }
