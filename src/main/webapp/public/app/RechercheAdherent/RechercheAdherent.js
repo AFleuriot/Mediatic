@@ -23,7 +23,7 @@ angular.module('mediatic.RechercheAdherent', ['ngRoute'])
     $scope.rechercher = function() {
         var criteria = {};
         criteria.nom_like=$scope.nomContient;
-        criteria.id_like=$scope.idCommencePar;
+        criteria.id=$scope.idCommencePar;
         $scope.adherents = AdherentService.searchAdherent(criteria);   
         $scope.adherents.$promise.then(initialiser);            
         
