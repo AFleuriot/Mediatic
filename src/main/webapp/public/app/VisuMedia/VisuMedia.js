@@ -102,7 +102,7 @@ angular
 
         $scope.emprunter = function(emprunt){
             var chaine = "";
-            if (new Date(emprunt.dateRetourPrevue)<new Date()) {
+            if (new Date(emprunt.dateRetourPrevue)<new Date() && emprunt.dateRetour == null) {
             	chaine = "(En retard)";
             }
             else if(emprunt.dateRetour == null){
@@ -115,7 +115,7 @@ angular
         }
 
         $scope.verifierDate = function(emprunt){
-            if (new Date(emprunt.dateRetourPrevue)<new Date()) {
+            if (new Date(emprunt.dateRetourPrevue)<new Date() && emprunt.dateRetour == null) {
             	return 'list-group-item-danger';
             }
             else if(emprunt.dateRetour == null){
