@@ -75,15 +75,15 @@ public class AdherentDAO extends AbstractJpaRepository<Adherent>{
 		}
 
 		public List<Adherent> rechercheCriteriaAdherent(Map<String,String> criteria){
-			Criteria c = getSession().createCriteria(getEntityClass());
+			Criteria c = getSession().createCriteria(getEntityClass());			
 			if(!criteria.isEmpty()) {
-				if( ( criteria.get("id")!=null && !criteria.get("id").isEmpty() )) {
-					c = c.add(Restrictions.idEq(Integer.parseInt(criteria.get("id"))));
+				if( ( criteria.get("id_like")!=null && !criteria.get("id_like").isEmpty() )) {										
+					c = c.add(Restrictions.sqlRestriction("cast(this_.id as TEXT) like ?",criteria.get("id_like")+"%", StringType.INSTANCE));
 				} 
 				if( criteria.get("nom_like")!=null && !criteria.get("nom_like").isEmpty()) {
 					Criterion c3 = Restrictions.sqlRestriction("concat(this_.nom, ' ', this_.prenom) ilike ?","%"+criteria.get("nom_like")+"%",StringType.INSTANCE);
 					Criterion c4 = Restrictions.sqlRestriction("concat(this_.prenom, ' ', this_.nom) ilike ?","%"+criteria.get("nom_like")+"%",StringType.INSTANCE);					
-					c.add(Restrictions.or(c3,c4));
+					c = c.add(Restrictions.or(c3,c4));
 				}
 			}
 			return (List<Adherent>) c.list();
