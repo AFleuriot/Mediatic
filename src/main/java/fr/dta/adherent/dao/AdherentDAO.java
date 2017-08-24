@@ -8,8 +8,11 @@ import java.util.Map;
 import javax.persistence.*;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.CriteriaQuery;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.type.StringType;
 import org.springframework.stereotype.Repository;
 
 import fr.dta.adherent.modele.Adherent;
@@ -76,10 +79,11 @@ public class AdherentDAO extends AbstractJpaRepository<Adherent>{
 			if(!criteria.isEmpty()) {
 				if( ( criteria.get("id")!=null && !criteria.get("id").isEmpty() )) {
 					c = c.add(Restrictions.idEq(Integer.parseInt(criteria.get("id"))));
-					//like("id", criteria.get("id_like"),MatchMode.START));
 				} 
 				if( criteria.get("nom_like")!=null && !criteria.get("nom_like").isEmpty()) {
-					c = c.add(Restrictions.like("nom", criteria.get("nom_like"),MatchMode.ANYWHERE));
+					Criterion c3 = Restrictions.sqlRestriction("concat(this_.nom, ' ', this_.prenom) ilike ?","%"+criteria.get("nom_like")+"%",StringType.INSTANCE);
+					Criterion c4 = Restrictions.sqlRestriction("concat(this_.prenom, ' ', this_.nom) ilike ?","%"+criteria.get("nom_like")+"%",StringType.INSTANCE);					
+					c.add(Restrictions.or(c3,c4));
 				}
 			}
 			return (List<Adherent>) c.list();
