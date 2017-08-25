@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import fr.dta.utilisateur.model.User;
+import fr.dta.utilisateur.service.UserService;
 
 
 @Configuration
@@ -14,7 +16,7 @@ import org.springframework.context.annotation.ImportResource;
 //@ImportResource("classpath:persistence.xml")
 public class App {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		SpringApplication.run(App.class, args);
 	}
 
