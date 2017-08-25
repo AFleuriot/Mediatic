@@ -3,7 +3,7 @@
 angular.module('mediatic')
     .factory('AdherentService', ['$resource', '$http', function($resource, $http) {
 
-        var Adherent = $resource('http://localhost:8080/adherent/:id', null,
+        var Adherent = $resource('/adherent/:id', null,
                 {
                     'update': { method:'PUT' }
                 });
