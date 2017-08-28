@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import fr.dta.emprunt.modele.Emprunt;
 import fr.dta.media.dao.MediaDAO;
 
-@Service
+//@Service
 public class EmpruntService {
 	
 	public static void emprunter(Emprunt emprunt) {

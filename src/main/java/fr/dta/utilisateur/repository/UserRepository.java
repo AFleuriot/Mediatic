@@ -19,7 +19,7 @@ public class UserRepository extends AbstractJpaRepository<User> {
 
 	@Transactional(readOnly = true)
     public Optional<User> findOneByLogin(String login) {
-        User user = (User) getSession().createCriteria(entityClass)
+        User user = (User) getSession().createCriteria(getEntityClass())
                 .add(Restrictions.eq("login", login))
                 .uniqueResult();
         return Optional.of(user);

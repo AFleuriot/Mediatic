@@ -1,19 +1,10 @@
 package fr.dta;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import fr.dta.utilisateur.model.User;
-import fr.dta.utilisateur.service.UserService;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
-//@ImportResource("classpath:persistence.xml")
+@SpringBootApplication
 public class App {
 	
 	public static void main(String[] args) {		

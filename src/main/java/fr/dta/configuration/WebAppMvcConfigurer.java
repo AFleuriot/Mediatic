@@ -12,7 +12,7 @@ public class WebAppMvcConfigurer extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations("/");
+		registry.addResourceHandler("/app/**").addResourceLocations("/public/app/");
 	}
 
 	@Override

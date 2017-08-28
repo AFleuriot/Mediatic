@@ -4,14 +4,14 @@ angular
     .module('mediatic')
     .factory('AccueilService', ['$localStorage','$rootScope', '$http', '$location', function($localStorage, $rootScope, $http, $location) {
 
+
+    	
     var service = {
-            storeUser: storeUser,
-            addAuthorization: addAuthorization,
             disconnect: disconnect
         };
 
         return service;
-
+        /*
         function storeUser(user) {
             $localStorage.$reset();
             $localStorage.$default(user);
@@ -26,17 +26,15 @@ angular
                 var token = btoa($rootScope.username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + token
             }
-        }
+        }*/
 
         function disconnect() {
-            $localStorage.$reset();
-            $rootScope.username = null;
-            $location.path('/accueil');
+            $location.path('/logout');
         }
     }])
     .run (function (AccueilService, $rootScope,$location) {
-            AccueilService.addAuthorization();
-            $rootScope.disconnect = AccueilService.disconnect;
+           // AccueilService.addAuthorization();
+            //$rootScope.disconnect = AccueilService.disconnect;
             $rootScope.verifLocation = function(url){            
                 if(url == $location.path()){
                     return 'active';
@@ -47,7 +45,7 @@ angular
                     return 'active_dropdown';
                 }
             }         
-            $rootScope.verifLogin = function(){
+         /*   $rootScope.verifLogin = function(){
                 if ($rootScope.username!=null) {
                     if($location.path()=='/accueil'){
                         $location.path('/rechercheAdherent');
@@ -56,5 +54,5 @@ angular
                 if($rootScope.username==undefined){
                     $location.path('/accueil');
                 }
-            }   
+            }   */
     });
