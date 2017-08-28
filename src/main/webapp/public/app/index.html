@@ -30,19 +30,12 @@
    <nav class=" container navbar navbar-default" ng-if="user">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="dropdown {{verifType('Media')}}">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">Médias<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="{{verifLocation('/rechercheMedia')}}"><a href="#!/rechercheMedia">Rechercher</a></li>
-                        <li class="{{verifLocation('/creationMedia')}}"><a href="#!/creationMedia">Ajouter</a></li>
-                    </ul>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#!/rechercheMedia">Médias</a>
                 </li>
-                <li class="dropdown {{verifType('Adherent')}}">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">Adhérents<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="{{verifLocation('/rechercheAdherent')}}"><a href="#!/rechercheAdherent">Rechercher</a></li>
-                        <li class="{{verifLocation('/creationAdherent')}}"><a href="#!/creationAdherent">Ajouter</a></li>
-                    </ul>
+                
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#!/rechercheAdherent">Adhérents</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
