@@ -3,6 +3,7 @@ package fr.dta.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -38,10 +39,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 			.authorizeRequests()
 			//.antMatchers("/app/**").permitAll()
 			.antMatchers("/login").permitAll()
-			.antMatchers("/app/index.html#!/accueil").permitAll()
-		    .antMatchers("/app/index.html#!/rechercheMedia").denyAll()
-			.antMatchers("/app/index.html#!/creationMedia").access("hasRole('ADMIN')")
-			.antMatchers("/app/index.html#!/creationAdherent").access("hasRole('ADMIN')")
+			.antMatchers("/app/**").permitAll()
+			.antMatchers("/api/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/adherent", "/media").hasAuthority("ADMIN")//.access("hasRole('ADMIN')")
+			.antMatchers(HttpMethod.PUT, "/adherent", "/media").hasAuthority("ADMIN")//.access("hasRole('ADMIN')")
+			.antMatchers("/emprunt").hasAuthority("USER")//.access("hasRole('USER')")
+			.antMatchers(HttpMethod.GET, "/adherent", "/media").hasAuthority("USER")//.access("hasRole('USER')")
 			
 			//.anyRequest().authenticated()
 		.and()
