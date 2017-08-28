@@ -80,13 +80,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         		//console.log('Success VerifLogin');
        		 	$rootScope.user = response.data;
        		 	if ($location.path()=="/creationAdherent" || $location.path()=="/creationMedia") {
-       		 		var admin = false;
-       		 		response.data.authorities.forEach(function(auth) {
-       		 			if (auth.authority=='ADMIN') {
-       		 				admin=true;
-       		 			}
-       		 		});
-       		 		if (!admin) {
+       		 		
+       		 		if (!$rootScope.isAdmin()) {
        		 			$location.path("/accueil");
        		 		}
        		 	}
@@ -96,6 +91,19 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
            	});
 
         }
+        
+    $rootScope.isAdmin = function() {
+    	var admin = false;
+    	if ($rootScope.user==undefined) {
+    		return false;
+    	}
+    	$rootScope.user.authorities.forEach(function(auth) {
+	 			if (auth.authority=='ADMIN') {
+	 				admin=true;
+	 			}
+	 		});
+	 	return admin;
+    }
         
     $rootScope.$on('$routeChangeSuccess', function () {
     	verifLogin();
