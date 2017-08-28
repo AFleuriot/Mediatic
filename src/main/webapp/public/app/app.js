@@ -79,6 +79,17 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         	user.then(function successCallBack(response) {
         		//console.log('Success VerifLogin');
        		 	$rootScope.user = response.data;
+       		 	if ($location.path()=="/creationAdherent" || $location.path()=="/creationMedia") {
+       		 		var admin = false;
+       		 		response.data.authorities.forEach(function(auth) {
+       		 			if (auth.authority=='ADMIN') {
+       		 				admin=true;
+       		 			}
+       		 		});
+       		 		if (!admin) {
+       		 			$location.path("/accueil");
+       		 		}
+       		 	}
            	}, function errorCallback(response) {
            		//console.log('Error VerifLogin');
                 $location.path("/accueil");

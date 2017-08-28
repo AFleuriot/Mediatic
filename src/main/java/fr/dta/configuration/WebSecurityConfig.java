@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	
 	@Override 
 	protected void configure(HttpSecurity http) throws Exception {
-		//System.out.println(new BCryptPasswordEncoder().encode("mdp"));
+		System.out.println(new BCryptPasswordEncoder(10).encode("password"));
 		http
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
