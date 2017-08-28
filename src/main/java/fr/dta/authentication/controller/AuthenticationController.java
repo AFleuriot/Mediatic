@@ -1,6 +1,8 @@
 package fr.dta.authentication.controller;
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletResponse;
+
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,10 @@ public class AuthenticationController {
 	
 	  @RequestMapping("/user")
 	  @ResponseBody
-	  public Principal user(Principal user) {
-		  System.out.println("======= Controller Authentication =======");
+	  public Principal user(HttpServletResponse response, Principal user) {
+		if (user==null) {
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		}
 	    return user;
 	  }
 	

@@ -54,4 +54,39 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     controllerAs: "ctrl"
   }) 
   .otherwise({redirectTo: '/accueil'});
-}]);
+}])
+.run(function($http, $location, $rootScope) {
+	
+	var getUser = function(){
+    	
+        if($location.path() == "/accueil") {
+        	return true;
+        }
+        return $http({
+            	method : 'GET',
+            	url : 'http://localhost:8080/api/authentication/user'
+            	                	
+        });
+            
+        }   
+        
+        var verifLogin = function() {
+        	var user = getUser();
+        	console.log(user);
+        	if (typeof user === "boolean" && user) {
+        		return;
+        	}
+        	user.then(function successCallBack(response) {
+        		console.log('Success VerifLogin');
+       		 	
+           	}, function errorCallback(response) {
+           		console.log('Error VerifLogin');
+                $location.path("/accueil");
+           	});
+
+        }
+        
+    $rootScope.$on('$routeChangeSuccess', function () {
+    	verifLogin();
+    });
+});

@@ -30,16 +30,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	
 	@Override 
 	protected void configure(HttpSecurity http) throws Exception {
-		//System.out.println("======= Configuration =======");
 		//System.out.println(new BCryptPasswordEncoder().encode("mdp"));
 		http
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
 		.and()
 			.authorizeRequests()
-			.antMatchers("/app/**").permitAll()
+			//.antMatchers("/app/**").permitAll()
 			.antMatchers("/login").permitAll()
-			.anyRequest().authenticated()
+			.antMatchers("/app/index.html#!/accueil").permitAll()
+		    .antMatchers("/app/index.html#!/rechercheMedia").denyAll()
+			.antMatchers("/app/index.html#!/creationMedia").access("hasRole('ADMIN')")
+			.antMatchers("/app/index.html#!/creationAdherent").access("hasRole('ADMIN')")
+			
+			//.anyRequest().authenticated()
 		.and()
 			.formLogin()
 			.loginPage("/app/index.html#!/accueil")
@@ -49,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 			//.defaultSuccessUrl("/public/app/index.html#!/rechercheMedia")
 		.and()
 			.logout()
-			.logoutUrl("/app/logout")
+			.logoutUrl("/logout")
 		.and()		
 			.httpBasic()
 		.and()
