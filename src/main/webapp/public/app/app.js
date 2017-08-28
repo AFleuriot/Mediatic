@@ -77,10 +77,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         		return;
         	}
         	user.then(function successCallBack(response) {
-        		console.log('Success VerifLogin');
-       		 	
+        		//console.log('Success VerifLogin');
+       		 	$rootScope.user = response.data;
            	}, function errorCallback(response) {
-           		console.log('Error VerifLogin');
+           		//console.log('Error VerifLogin');
                 $location.path("/accueil");
            	});
 

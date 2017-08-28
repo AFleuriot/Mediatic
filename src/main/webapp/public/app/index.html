@@ -27,7 +27,7 @@
         <img class="col-xs-4" src="Hibou.png" alt="Logo" style="width:150px" />
         <h1 class="col-xs-8">Médiatic, le gestionnaire de médiathèque.</h1>
     </header>
-   <nav class=" container navbar navbar-default">
+   <nav class=" container navbar navbar-default" ng-if="user">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li class="dropdown {{verifType('Media')}}">
@@ -46,7 +46,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="not-active" href="">Bienvenue {{username}}</a></li>
+                <li><a class="not-active" href="">Bienvenue {{user.name}}</a></li>
                 <li><a href="/logout">Logout</a></li>   
             </ul>            
         </div>
