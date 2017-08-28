@@ -7,7 +7,7 @@ angular
         $scope.badLogin = '';
         $scope.user = {};
 
-       $scope.submit = function() {
+      /* $scope.submit = function() {
     
             if (($scope.user.username == 'admin') && ($scope.user.password == 'admin1234')) {
    
@@ -18,8 +18,8 @@ angular
                 $location.path('/accueil');
                 $scope.badLogin = 'Le login ou le mot de passe est incorrect'
             }
-             
-        }
+          
+        } */  
         
         $scope.submit = function() { console.log('Lancement');
         	$http({
@@ -42,6 +42,9 @@ angular
                 $scope.badLogin = 'Le login ou le mot de passe est incorrect'
         	});
         }
+        
+        
+        
         
     }]
 );    

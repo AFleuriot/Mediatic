@@ -7,11 +7,13 @@ angular
 
     	
     var service = {
-            disconnect: disconnect
+            disconnect: disconnect,
+            storeUser: storeUser,
+            addAuthorization: addAuthorization
         };
 
         return service;
-        /*
+        
         function storeUser(user) {
             $localStorage.$reset();
             $localStorage.$default(user);
@@ -26,15 +28,20 @@ angular
                 var token = btoa($rootScope.username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + token
             }
-        }*/
+        }
 
         function disconnect() {
             $location.path('/logout');
         }
+        
+        
     }])
-    .run (function (AccueilService, $rootScope,$location) {
+    .run (function (AccueilService, $rootScope,$location, $http) {
            // AccueilService.addAuthorization();
             //$rootScope.disconnect = AccueilService.disconnect;
+    	
+    	
+    	
             $rootScope.verifLocation = function(url){            
                 if(url == $location.path()){
                     return 'active';
@@ -44,15 +51,13 @@ angular
                 if($location.path().indexOf(type)!=-1){
                     return 'active_dropdown';
                 }
-            }         
-         /*   $rootScope.verifLogin = function(){
-                if ($rootScope.username!=null) {
-                    if($location.path()=='/accueil'){
-                        $location.path('/rechercheAdherent');
-                    }
-                }    
-                if($rootScope.username==undefined){
-                    $location.path('/accueil');
-                }
-            }   */
+            } 
+            
+            
+            
+            
     });
+
+
+
+
