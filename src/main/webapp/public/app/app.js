@@ -72,7 +72,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         
         var verifLogin = function() {
         	var user = getUser();
-        	console.log(user);
         	if (typeof user === "boolean" && user) {
         		return;
         	}
