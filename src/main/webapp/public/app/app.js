@@ -64,7 +64,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         }
         return $http({
             	method : 'GET',
-            	url : 'http://localhost:8080/api/authentication/user'
+            	url : '/api/authentication/user'
             	                	
         });
             
