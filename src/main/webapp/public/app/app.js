@@ -77,7 +77,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         		return;
         	}
         	user.then(function successCallBack(response) {
-        		//console.log('Success VerifLogin');
        		 	$rootScope.user = response.data;
        		 	if ($location.path()=="/creationAdherent" || $location.path()=="/creationMedia") {
        		 		
@@ -86,7 +85,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
        		 		}
        		 	}
            	}, function errorCallback(response) {
-           		//console.log('Error VerifLogin');
                 $location.path("/accueil");
            	});
 
