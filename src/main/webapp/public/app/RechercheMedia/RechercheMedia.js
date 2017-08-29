@@ -43,7 +43,6 @@ angular.module('mediatic.RechercheMedia', ['ngRoute'])
         }
         $scope.medias = MediaService.searchMedia(criteria);
         $scope.medias.$promise.then(initialiser);
-        console.log($scope.medias);
     };
 
     $scope.sort = function(col) {

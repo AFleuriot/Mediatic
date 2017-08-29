@@ -13,7 +13,6 @@ angular
         else{
             var resource = AdherentService.getAdherentById(location.id);        
             resource.$promise.then(function(response){
-                console.log(response);
                 $scope.adherent = response;  
                 $scope.adherent.id = location.id;
                 $scope.adherent.cp = parseInt($scope.adherent.cp);

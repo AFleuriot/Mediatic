@@ -23,7 +23,6 @@ angular
                     dateAller.setDate(dateAller.getDate()+30);
                 }                
                 $scope.emprunt.dateRetour = dateAller;
-                console.log($scope.media);
             }); 
 
             resource = AdherentService.getAdherents();
@@ -95,10 +94,6 @@ angular
             }, this);
             return resultat;
         }
-
-        $scope.changerDate = function(){
-            console.log($scope.datepret);
-        };
 
         $scope.emprunter = function(emprunt){
             var chaine = "";

@@ -21,7 +21,6 @@ angular.module('mediatic')
                 e.dateEmprunt = emprunt.dateEmprunt;
                 e.dateRetour = emprunt.dateRetour;
                 e.dateRetourPrevue = emprunt.dateRetourPrevue;
-                console.log(JSON.stringify(e));
                 return e.$save();
             },
 
@@ -36,7 +35,6 @@ angular.module('mediatic')
             },
 
             getEmpruntById: function(id) {
-            	console.log(id);
                 return Emprunt.get({'id':id});
             },
 
