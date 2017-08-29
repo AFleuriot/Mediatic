@@ -51,10 +51,10 @@ public class MediaDAO extends AbstractJpaRepository<Media> {
 		Criteria c = getSession().createCriteria(getEntityClass());
 		if(!criteria.isEmpty()) {
 			if( ( criteria.get("titre_like")!=null && !criteria.get("titre_like").isEmpty() )) {
-				c = c.add(Restrictions.like("titre", criteria.get("titre_like"), MatchMode.ANYWHERE));
+				c = c.add(Restrictions.ilike("titre", criteria.get("titre_like"), MatchMode.ANYWHERE));
 			} 
 			if( criteria.get("auteur_like")!=null && !criteria.get("auteur_like").isEmpty()) {
-				c = c.add(Restrictions.like("auteur", criteria.get("auteur_like"), MatchMode.ANYWHERE));
+				c = c.add(Restrictions.ilike("auteur", criteria.get("auteur_like"), MatchMode.ANYWHERE));
 			}
 			if(criteria.get("type")!=null && !criteria.get("type").equals("Tous")) {
 				c = c.add(Restrictions.eq("type",  TypeMedia.valueOf(criteria.get("type"))));
